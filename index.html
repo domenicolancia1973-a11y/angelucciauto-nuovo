@@ -1,78 +1,449 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angelucci Auto | Roma</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #000; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angelucci Auto | Auto usate selezionate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111827;
+      --panel-2: #0f172a;
+      --soft: #1f2937;
+      --line: rgba(255,255,255,.08);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --brand: #d61f2c;
+      --brand-2: #ff4d5a;
+      --ok: #16a34a;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(0,0,0,.25);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1240px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(180deg, #05070c 0%, #0b1220 20%, #0b1220 100%);
+      color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(5,7,12,.78);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; padding: 18px 0;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 14px;
+      font-weight: 900; letter-spacing: -.03em;
+    }
+    .brand-badge {
+      width: 44px; height: 44px; border-radius: 14px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      font-weight: 900; box-shadow: var(--shadow);
+    }
+    .brand small { display: block; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    .nav { display: flex; gap: 22px; color: #e5e7eb; font-size: 14px; }
+    .nav a:hover { color: #fff; }
+    .cta-head {
+      display: flex; gap: 12px; align-items: center;
+    }
+    .btn, .btn-outline {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      border-radius: 999px; padding: 14px 22px; font-weight: 800; font-size: 14px;
+      transition: .25s ease; border: 1px solid transparent;
+    }
+    .btn { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; box-shadow: var(--shadow); }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-outline { border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.03); }
+    .hero { padding: 34px 0 16px; }
+    .hero-card {
+      display: grid; grid-template-columns: 1.15fr .85fr; overflow: hidden;
+      border-radius: 34px; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .hero-copy { padding: 56px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px;
+      background: rgba(214,31,44,.12); color: #fecdd3; border: 1px solid rgba(255,255,255,.06);
+      font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
+    }
+    h1 {
+      margin: 18px 0 16px; font-size: clamp(38px, 5vw, 64px); line-height: .95; letter-spacing: -.06em;
+    }
+    .lead {
+      color: #cbd5e1; font-size: 18px; line-height: 1.65; max-width: 640px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px;
+    }
+    .stat {
+      padding: 18px; border-radius: 18px; background: rgba(255,255,255,.03); border: 1px solid var(--line);
+    }
+    .stat strong { display: block; font-size: 28px; margin-bottom: 6px; }
+    .stat span { color: var(--muted); font-size: 13px; }
+    .hero-media {
+      min-height: 100%; position: relative; background: #0b0f16;
+    }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-badge {
+      position: absolute; left: 24px; bottom: 24px; right: 24px;
+      padding: 18px; border-radius: 20px; background: rgba(11,18,32,.78); border: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(12px);
+    }
+    .hero-badge strong { display: block; font-size: 18px; margin-bottom: 5px; }
+    .hero-badge span { color: #cbd5e1; font-size: 14px; }
+    .search-panel {
+      margin-top: 22px; padding: 18px; border-radius: 24px; background: rgba(255,255,255,.03); border: 1px solid var(--line);
+      display: grid; grid-template-columns: 1.2fr repeat(3, .7fr) auto; gap: 12px;
+    }
+    .field {
+      padding: 16px 18px; background: rgba(255,255,255,.04); border: 1px solid var(--line); color: #cbd5e1; border-radius: 16px; font-size: 14px;
+    }
+    .field strong { display: block; color: #fff; font-size: 15px; margin-top: 4px; }
+    section { padding: 34px 0; }
+    .section-head {
+      display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 22px;
+    }
+    .section-head h2 {
+      margin: 0 0 8px; font-size: clamp(28px, 4vw, 42px); line-height: 1; letter-spacing: -.05em;
+    }
+    .section-head p { margin: 0; color: var(--muted); max-width: 720px; }
+    .section-chip {
+      display: inline-flex; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.04); border: 1px solid var(--line); color: #cbd5e1; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+    }
+    .inventory-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+    }
+    .car-card {
+      overflow: hidden; border-radius: 24px; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .car-card img { height: 220px; object-fit: cover; }
+    .car-content { padding: 18px; }
+    .car-top { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+    .car-title { font-size: 20px; font-weight: 800; letter-spacing: -.03em; margin: 0; }
+    .price { color: #fff; font-size: 20px; font-weight: 900; white-space: nowrap; }
+    .tagline { margin: 7px 0 14px; color: #cbd5e1; font-size: 14px; }
+    .specs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .spec {
+      font-size: 12px; color: #dbe4ef; background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 999px; padding: 8px 10px; font-weight: 700;
+    }
+    .card-actions { display: flex; gap: 10px; }
+    .card-actions a {
+      flex: 1; text-align: center; padding: 12px 14px; border-radius: 14px; font-size: 13px; font-weight: 800;
+    }
+    .card-actions .primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+    .card-actions .secondary { background: rgba(255,255,255,.05); border: 1px solid var(--line); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .service-card {
+      overflow: hidden; border-radius: 26px; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .service-card img { height: 230px; object-fit: cover; }
+    .service-copy { padding: 22px; }
+    .service-copy h3 { margin: 0 0 10px; font-size: 24px; letter-spacing: -.04em; }
+    .service-copy p { margin: 0 0 18px; color: #cbd5e1; line-height: 1.7; }
+    .tick-list { display: grid; gap: 10px; color: #e2e8f0; font-size: 14px; }
+    .tick-list span::before { content: '•'; color: var(--brand-2); margin-right: 8px; }
+    .trust {
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px;
+    }
+    .trust-box, .contact-box {
+      padding: 28px; border-radius: 28px; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .trust-points { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 18px; }
+    .point { padding: 16px; border-radius: 18px; background: rgba(255,255,255,.03); border: 1px solid var(--line); }
+    .point strong { display: block; margin-bottom: 7px; font-size: 16px; }
+    .point span { color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .contact-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; }
+    .footer {
+      padding: 26px 0 46px; color: #94a3b8; font-size: 14px;
+    }
+    .footer-box {
+      display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 20px; border-top: 1px solid var(--line);
+    }
+    .muted-note { color: #94a3b8; font-size: 13px; margin-top: 8px; }
+    @media (max-width: 1100px) {
+      .hero-card, .trust { grid-template-columns: 1fr; }
+      .inventory-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .search-panel { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .nav, .cta-head .btn-outline { display: none; }
+      .hero-copy { padding: 28px; }
+      .hero-stats, .trust-points, .inventory-grid, .search-panel { grid-template-columns: 1fr; }
+      .section-head, .footer-box { flex-direction: column; align-items: start; }
+      .topbar-inner { padding: 14px 0; }
+      .card-actions { flex-direction: column; }
+      .hero-media { min-height: 320px; }
+    }
+  </style>
 </head>
-<body class="text-white">
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#home" class="brand">
+        <div class="brand-badge">AA</div>
+        <div>
+          <div>Angelucci Auto</div>
+          <small>Auto usate selezionate</small>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="#vetrina">Auto disponibili</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#perche-noi">Perché noi</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+      <div class="cta-head">
+        <a class="btn-outline" href="tel:+393330000000">Chiama ora</a>
+        <a class="btn" href="https://wa.me/393330000000">WhatsApp</a>
+      </div>
+    </div>
+  </header>
 
-    <header class="bg-white py-4 px-6 flex justify-center sticky top-0 z-50 shadow-xl">
-        <img src="logo.png" alt="Angelucci Auto" class="h-12 md:h-16 object-contain">
-    </header>
-
-    <main class="max-w-md mx-auto px-4 pt-8 pb-20">
-        
-        <div class="mb-8 border-l-4 border-red-600 pl-4">
-            <h1 class="text-3xl font-black uppercase italic tracking-tighter">Vetrina Auto</h1>
-            <p class="text-zinc-500 font-bold text-sm uppercase">Disponibilità Immediata</p>
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-copy">
+            <div class="eyebrow">Usato garantito • Finanziamenti personalizzati</div>
+            <h1>La tua prossima auto usata,<br>semplice da scegliere.</h1>
+            <p class="lead">Una home chiara, intuitiva e professionale per mettere subito in evidenza i veicoli disponibili, i servizi principali e i contatti rapidi. Struttura pensata per circa 25 auto in pronta consegna.</p>
+            <div class="hero-actions">
+              <a class="btn" href="#vetrina">Scopri le auto in vendita</a>
+              <a class="btn-outline" href="#servizi">Vedi i servizi</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat"><strong>25+</strong><span>Auto usate in pronta consegna</span></div>
+              <div class="stat"><strong>48h</strong><span>Tempo medio per preventivo e finanziamento</span></div>
+              <div class="stat"><strong>3</strong><span>Servizi chiave già visibili in home</span></div>
+            </div>
+          </div>
+          <div class="hero-media">
+            <img src="https://sspark.genspark.ai/cfimages?u1=11ebvsehi5HeG0FzdoR1pF4q77ODmbFVLKW6hyUkUgkcUx8JJSawgP5GCGOa%2BlGSnXTCfsIqHSBK6B7a9%2FjPleW33OG5H5%2BR6XtleyN5rogweYg6bGRfxU9aGn%2BP%2FJ4BdjBzctsflAOgLoebRjc7BqydYoMf0CtP&u2=2tUGdmEnM%2BOw%2BHoM&width=2560" alt="Showroom auto usate">
+            <div class="hero-badge">
+              <strong>Vetrina moderna e orientata alla conversione</strong>
+              <span>Le foto delle auto si possono sostituire facilmente una per una appena mi invii quelle definitive.</span>
+            </div>
+          </div>
         </div>
 
-        <div class="bg-zinc-900 rounded-[2rem] overflow-hidden border border-zinc-800 shadow-2xl mb-10">
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800" class="w-full h-64 object-cover" alt="Auto">
-                <div class="absolute bottom-4 left-4 bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
-                    In Arrivo
-                </div>
-            </div>
+        <div class="search-panel">
+          <div class="field">Ricerca rapida<strong>SUV, city car, berlina, station wagon</strong></div>
+          <div class="field">Budget<strong>da € 5.000 a € 30.000</strong></div>
+          <div class="field">Alimentazione<strong>Benzina, Diesel, GPL, Ibrida</strong></div>
+          <div class="field">Disponibilità<strong>Pronta consegna</strong></div>
+          <a class="btn" href="#vetrina">Vedi annunci</a>
+        </div>
+      </div>
+    </section>
 
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h2 class="text-2xl font-black uppercase italic leading-none">Porsche 911</h2>
-                        <p class="text-zinc-400 font-bold mt-1">Carrera S - Full Optional</p>
-                    </div>
-                    <div class="text-right">
-                        <span class="text-2xl font-black text-white">€ 85.000</span>
-                    </div>
-                </div>
-
-                <div class="flex gap-4 py-4 border-y border-zinc-800 my-4 text-sm font-bold">
-                    <span class="text-zinc-400"><i class="fa-solid fa-calendar-days text-red-600 mr-1"></i> 2021</span>
-                    <span class="text-zinc-400"><i class="fa-solid fa-gauge-high text-red-600 mr-1"></i> 32.000 KM</span>
-                    <span class="text-zinc-400"><i class="fa-solid fa-gas-pump text-red-600 mr-1"></i> Benzina</span>
-                </div>
-
-                <div class="grid grid-cols-1 gap-3 mt-6">
-                    <a href="https://wa.me/393330000000" class="flex items-center justify-center gap-3 bg-green-600 text-white py-4 rounded-xl font-black uppercase hover:bg-green-500 transition-all">
-                        <i class="fab fa-whatsapp text-xl"></i>
-                        Chat WhatsApp
-                    </a>
-                    <a href="tel:+393330000000" class="flex items-center justify-center gap-3 bg-white text-black py-4 rounded-xl font-black uppercase hover:bg-zinc-200 transition-all">
-                        <i class="fa-solid fa-phone"></i>
-                        Chiama Ora
-                    </a>
-                </div>
-            </div>
+    <section id="vetrina">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-chip">Home con annunci subito visibili</div>
+            <h2>Auto in evidenza</h2>
+            <p>Qui ti faccio vedere una home già pronta con annunci in primo piano. In produzione possiamo caricare tutte le 25 auto reali mantenendo questa stessa grafica.</p>
+          </div>
+          <a class="btn-outline" href="#contatti">Richiedi disponibilità</a>
         </div>
 
-        <footer class="text-center py-10 border-t border-zinc-900">
-            <p class="text-xl font-black uppercase italic italic">Angelucci Domenico</p>
-            <p class="text-zinc-500 text-sm mt-1">Via Appia Nuova, Roma (RM)</p>
-            <div class="flex justify-center gap-6 mt-6">
-                <a href="#" class="text-zinc-400 hover:text-white"><i class="fab fa-instagram text-2xl"></i></a>
-                <a href="#" class="text-zinc-400 hover:text-white"><i class="fab fa-facebook text-2xl"></i></a>
-                <a href="#" class="text-zinc-400 hover:text-white"><i class="fab fa-tiktok text-2xl"></i></a>
+        <div class="inventory-grid">
+          <article class="car-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=UdgK8jwzBHIoUw9mnfJAZPwYsTDg4v6psLRKu0WrPdEpjuf4yleZ7Ce50s5z4Tm4ppCLem5umS7Z9ovgF1neIv1rnqTX01isZKlmnMHbYMT2cx6CbdiYRJ7xsYyAQwe1pEYWn57KtG7%2BK4%2BRCSLuOtEIFMXMUWpG3UFxh5tcOFIUZVjXaeZqFyhBDNw%3D&u2=%2FNJ%2BM5GlUDyumMKd&width=2560" alt="Auto in vendita 1">
+            <div class="car-content">
+              <div class="car-top"><h3 class="car-title">Audi A3 Sportback</h3><div class="price">€ 18.900</div></div>
+              <p class="tagline">Compatta premium, perfetta per città e viaggio.</p>
+              <div class="specs"><span class="spec">2019</span><span class="spec">78.000 km</span><span class="spec">Diesel</span><span class="spec">Manuale</span></div>
+              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info WhatsApp</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
             </div>
-        </footer>
+          </article>
 
-    </main>
+          <article class="car-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=41gcvFZ%2FQxkWvmL0Yemz9fqzZNKWXeuJzzzbKCqtKeN6tXWgjdz4x42WHuUj%2BgEsM9dLkCEETIJoFMVeTORISPMlx1Dq0t%2FQaWsKn7urbXoWozeWLFp8J%2B%2Bn1gtvt3PExGS%2FzJqe2lkG71ftYeerKgEOUrU%3D&u2=IqdLMRsPp9Km3uDZ&width=2560" alt="Auto in vendita 2">
+            <div class="car-content">
+              <div class="car-top"><h3 class="car-title">BMW X1 sDrive</h3><div class="price">€ 22.400</div></div>
+              <p class="tagline">SUV elegante e comodo per famiglia e lavoro.</p>
+              <div class="specs"><span class="spec">2020</span><span class="spec">65.000 km</span><span class="spec">Benzina</span><span class="spec">Automatica</span></div>
+              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info WhatsApp</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
+            </div>
+          </article>
 
+          <article class="car-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=US7rd62Ja7MK4ghjwedgx%2FkXncG7Ninuy%2BmWtm%2BhtalG5XH%2BCj%2FOdpJ%2BHiyMKVsd6EVuhYEPBYMKIjg%2FEIV6mcJgveOH7VZNXI66bk3ZBLc%3D&u2=OSmIHg9UxWyXPKJD&width=2560" alt="Auto in vendita 3">
+            <div class="car-content">
+              <div class="car-top"><h3 class="car-title">Fiat 500 Lounge</h3><div class="price">€ 11.900</div></div>
+              <p class="tagline">City car pratica, perfetta per uso quotidiano.</p>
+              <div class="specs"><span class="spec">2018</span><span class="spec">52.000 km</span><span class="spec">Benzina</span><span class="spec">Manuale</span></div>
+              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info WhatsApp</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
+            </div>
+          </article>
+
+          <article class="car-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=4cgDXnSaTO7SNc5nQd%2B%2BRUp7TfU%2FpNThDxPr28CuBz3h1A1XFv9h0vKAhJucz6wztBgzaFEB5lo7LJU60cI1b87BvMJXSfYpQl4HZLs4OGyKsQ%3D%3D&u2=pCjrUWy7EgzLKlo%2F&width=2560" alt="Auto in vendita 4">
+            <div class="car-content">
+              <div class="car-top"><h3 class="car-title">Volkswagen Passat Variant</h3><div class="price">€ 19.700</div></div>
+              <p class="tagline">Station wagon spaziosa, ideale per famiglia e lavoro.</p>
+              <div class="specs"><span class="spec">2019</span><span class="spec">88.000 km</span><span class="spec">Diesel</span><span class="spec">Automatica</span></div>
+              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info WhatsApp</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
+            </div>
+          </article>
+
+          <article class="car-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=0Z50%2FylDgnMHEM9ARS0Twcd7C0Le2GyeQbimR8DkfDnnJDdm5U17uk8a%2FYmTVeSJdc%2F%2FfxieQjePncB3kYbojpiKfbHKH8pY197YU7qHOAw%3D&u2=U9YRfxaZgAAWRNB7&width=2560" alt="Auto in vendita 5">
+            <div class="car-content">
+              <div class="car-top"><h3 class="car-title">BMW Serie 3</h3><div class="price">€ 24.900</div></div>
+              <p class="tagline">Berlina dal look deciso e guida confortevole.</p>
+              <div class="specs"><span class="spec">2021</span><span class="spec">47.000 km</span><span class="spec">Ibrida</span><span class="spec">Automatica</span></div>
+              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info WhatsApp</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
+            </div>
+          </article>
+
+          <article class="car-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=PSIlIklOoq1eRGH6j8XsoHSr6D4GUyKLog8TIDOwBWvP4%2BbYkbXSgiT8c4ELexomxlXflXbKyxdWOfgPmgmKTQsSahu%2BKJF%2FOhLh4AWLQUcDnQ%3D%3D&u2=OR7i7w8NMhEJ6jnF&width=2560" alt="Auto in vendita 6">
+            <div class="car-content">
+              <div class="car-top"><h3 class="car-title">BMW X3 xLine</h3><div class="price">€ 27.800</div></div>
+              <p class="tagline">SUV premium, alta percezione di qualità.</p>
+              <div class="specs"><span class="spec">2020</span><span class="spec">72.000 km</span><span class="spec">Diesel</span><span class="spec">Automatica</span></div>
+              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info WhatsApp</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
+            </div>
+          </article>
+
+          <article class="car-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=pYUJMffkIiLDAI1zai7tJz43KkhEQK8t5LgEmPYRcqAdA8uPoasd7%2BMaDGn3uMi5eqtrBtyl8QHzX3THCa5iX5AvSyRFUWN4tkBTEyNActyAXw%3D%3D&u2=6XqInjkiBzpA5nEr&width=2560" alt="Auto in vendita 7">
+            <div class="car-content">
+              <div class="car-top"><h3 class="car-title">Peugeot 308 Allure</h3><div class="price">€ 15.600</div></div>
+              <p class="tagline">Linea moderna e ottimo rapporto qualità/prezzo.</p>
+              <div class="specs"><span class="spec">2018</span><span class="spec">69.000 km</span><span class="spec">Benzina</span><span class="spec">Manuale</span></div>
+              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info WhatsApp</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
+            </div>
+          </article>
+
+          <article class="car-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=bhWTX0nYW9JBsxpdt88sCjEH4xPdazRpzOLKRM99z7xD9tIjnfAN7MZsfVTEATcPktxbtyGVkTPOO2ZmMd1h3cuh8QoPmBJNGacNcJ02pbMJaQ%3D%3D&u2=X%2B8OBvH1Bqws7ugs&width=2560" alt="Auto in vendita 8">
+            <div class="car-content">
+              <div class="car-top"><h3 class="car-title">Volvo V60 Business</h3><div class="price">€ 21.300</div></div>
+              <p class="tagline">Station wagon solida e raffinata, pronta consegna.</p>
+              <div class="specs"><span class="spec">2019</span><span class="spec">91.000 km</span><span class="spec">GPL</span><span class="spec">Manuale</span></div>
+              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info WhatsApp</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
+            </div>
+          </article>
+        </div>
+        <p class="muted-note">Le schede auto qui sopra sono demo: nomi, prezzi e dati sono esempi di layout pronti da sostituire con le tue auto reali.</p>
+      </div>
+    </section>
+
+    <section id="servizi">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-chip">Tre box servizi in homepage</div>
+            <h2>I nostri servizi</h2>
+            <p>Sezione semplice ma forte commercialmente, con immagini dedicate e testi brevi per far capire subito cosa offrite oltre alla vendita delle auto.</p>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=XzOnZR5PnOZA5M5lZvdikX7K2bsKf8ZqhTQHqHjKe%2F5WVdvo%2F8qaw8zRGG9I4G4RfG36OSztvX4zxxSQrUgRUB22AVPAFRzLF2fIJCaUpMN5Lw%3D%3D&u2=5CbyL7GvLt2t6B3w&width=2560" alt="Servizio finanziamenti auto">
+            <div class="service-copy">
+              <h3>Finanziamenti</h3>
+              <p>Soluzioni su misura con rate personalizzabili e assistenza rapida in fase di acquisto, per rendere l’auto accessibile e semplice da portare a casa.</p>
+              <div class="tick-list">
+                <span>Valutazione pratica veloce</span>
+                <span>Rate personalizzabili</span>
+                <span>Supporto fino alla consegna</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=thfpa9be0on5bY%2FuVwrDo60LO9sm3cwJXEAZrJvJNyhsFtWNsHJCC7SyA%2BL7mAqF3RUtg2HFkbbdSBR%2Fxyv58az8G88UQ7IaGO6vNz6FcBoh2BMEq20kLlM%3D&u2=cMhsCE6LJsUQC%2Fop&width=2560" alt="Servizio impianti GPL">
+            <div class="service-copy">
+              <h3>Impianti G.P.L.</h3>
+              <p>Installazione e consulenza dedicata per chi cerca risparmio sui consumi e una soluzione affidabile per l’utilizzo quotidiano dell’auto.</p>
+              <div class="tick-list">
+                <span>Consulenza tecnica dedicata</span>
+                <span>Soluzioni orientate al risparmio</span>
+                <span>Assistenza post installazione</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <img src="https://sspark.genspark.ai/cfimages?u1=yc1VgLqw1KJoaPJN%2Bfwd3O%2FkHzJ1bC3iO82wPxjqn%2BZvfiMjegkAHDyxSAiFrNio1o8oAkVFQWKl0lncon1BqncWFW%2Fp6GwDVX1qVmJqo4FAHGteMhq0XQ%3D%3D&u2=GfRUVyhn6%2BGT1mt2&width=2560" alt="Servizio officina">
+            <div class="service-copy">
+              <h3>Officina</h3>
+              <p>Un punto di riferimento per manutenzione, controlli e preparazione consegna, così il cliente percepisce competenza e affidabilità già dal primo accesso al sito.</p>
+              <div class="tick-list">
+                <span>Tagliandi e manutenzione</span>
+                <span>Controlli pre consegna</span>
+                <span>Assistenza tecnica continuativa</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="perche-noi">
+      <div class="container trust">
+        <div class="trust-box">
+          <div class="section-chip">Immagine professionale</div>
+          <h2 style="margin:16px 0 10px; font-size: clamp(28px,4vw,40px); letter-spacing:-.05em;">Perché questa home funziona</h2>
+          <p style="color:#cbd5e1; line-height:1.75; margin:0;">La struttura mette davanti a tutto ciò che fa vendere: vetrina auto, contatti rapidi, servizi, credibilità e messaggio chiaro. È pensata per essere semplice da usare anche da mobile.</p>
+          <div class="trust-points">
+            <div class="point"><strong>Annunci subito visibili</strong><span>Niente home vuota: le auto compaiono già all’apertura del sito.</span></div>
+            <div class="point"><strong>Contatti immediati</strong><span>WhatsApp e telefono presenti in alto e dentro ogni scheda.</span></div>
+            <div class="point"><strong>Servizi valorizzati</strong><span>I tre box rafforzano il posizionamento dell’attività.</span></div>
+            <div class="point"><strong>Facile da aggiornare</strong><span>Foto, prezzi, chilometri e descrizioni si sostituiscono rapidamente.</span></div>
+          </div>
+        </div>
+        <div class="contact-box" id="contatti">
+          <div class="section-chip">Call to action finale</div>
+          <h2 style="margin:16px 0 10px; font-size: clamp(28px,4vw,40px); letter-spacing:-.05em;">Vuoi prenotare una visita o chiedere info su un’auto?</h2>
+          <p style="color:#cbd5e1; line-height:1.75; margin:0;">Qui possiamo inserire i tuoi recapiti reali, indirizzo, orari e una mappa Google. Per ora ho lasciato i pulsanti demo già pronti.</p>
+          <div class="contact-actions">
+            <a class="btn" href="https://wa.me/393330000000">Scrivici su WhatsApp</a>
+            <a class="btn-outline" href="tel:+393330000000">Chiama in sede</a>
+            <a class="btn-outline" href="mailto:info@angelucciauto.it">Richiedi informazioni via email</a>
+          </div>
+          <p class="muted-note">Sostituiremo contatti, indirizzo, foto auto e testi con i tuoi dati definitivi.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-box">
+      <div>
+        <strong style="display:block; color:#fff; margin-bottom:8px;">Angelucci Auto</strong>
+        <span>Bozza home page professionale per vendita auto usate.</span>
+      </div>
+      <div>Demo grafica pronta per essere adattata al repository.</div>
+    </div>
+  </footer>
 </body>
 </html>
