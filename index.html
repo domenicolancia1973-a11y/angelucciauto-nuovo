@@ -128,7 +128,7 @@
     </section>
   </main>
 
-  <!-- SUPABASE INTEGRATION -->
+<!-- SUPABASE INTEGRATION -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const SUPABASE_URL = 'https://xuxpnzaarkoymrvwabxy.supabase.co';
@@ -156,9 +156,20 @@
       }
 
       data.forEach(auto => {
+        // --- MODIFICA QUI: COSTRUIAMO IL LINK ALLA FOTO PRINCIPALE ---
+        let fotoUrl = 'https://via.placeholder.com/400x300?text=Foto+non+disponibile';
+        
+        // Se abbiamo sia la cartella che il nome del file, creiamo il link ufficiale
+        if (auto.cartella_foto && auto.foto_principale) {
+          fotoUrl = `${SUPABASE_URL}/storage/v1/object/public/veicoli/${auto.cartella_foto}/${auto.foto_principale}`;
+        } else if (auto.foto_url) {
+          // Questo serve come "salvagente" se hai ancora i vecchi link in foto_url
+          fotoUrl = auto.foto_url;
+        }
+
         container.innerHTML += `
           <article class="card">
-            <img src="${auto.foto_url || 'https://via.placeholder.com/400x300'}" alt="${auto.modello}" />
+            <img src="${fotoUrl}" alt="${auto.modello}" />
             <div class="card-body">
               <div style="display:flex; justify-content:space-between; align-items:start;">
                 <h3 class="title">${auto.modello}</h3>
@@ -169,7 +180,7 @@
                 <span class="spec">${auto.cambio}</span>
               </div>
               <div class="card-actions">
-               <a class="primary" href="dettaglio.html?id=${auto.id}">Dettagli</a>
+                <a class="primary" href="dettaglio.html?id=${auto.id}">Dettagli</a>
                 <a class="secondary" href="https://wa.me/393330000000?text=Info%20per%20${encodeURIComponent(auto.modello)}">WhatsApp</a>
               </div>
             </div>
