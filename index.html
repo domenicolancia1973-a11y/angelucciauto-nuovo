@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it"> 
+<html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,12 +12,12 @@
       --bg:#ffffff;
       --text:#111827;
       --muted:#6b7280;
-      --line:#e5e7eb;
-      --soft:#f8fafc;
+      --line:#f1f5f9;
+      --soft:#ffffff;
       --brand:#111111;
       --accent:#c1121f;
       --radius:20px;
-      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --shadow:0 10px 30px rgba(0,0,0,.03);
       --max:1180px;
     }
     *{box-sizing:border-box}
@@ -32,9 +32,10 @@
     a{text-decoration:none;color:inherit}
     .container{width:min(calc(100% - 28px),var(--max));margin:0 auto}
 
+    /* Header Estetica Bianca */
     .header{
       position:sticky;top:0;z-index:50;
-      background:rgba(255,255,255,.92);
+      background:rgba(255,255,255,.95);
       backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
     }
@@ -42,288 +43,142 @@
       display:flex;align-items:center;justify-content:space-between;
       gap:18px;padding:16px 0;
     }
-    .brand{
-      display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em;
-    }
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em;}
     .brand-mark{
-      width:42px;height:42px;border-radius:14px;background:#111;color:#fff;
+      width:42px;height:42px;border-radius:12px;background:#111;color:#fff;
       display:grid;place-items:center;font-size:14px;font-weight:800;
     }
     .brand small{display:block;color:var(--muted);font-size:12px;font-weight:600}
+    
     .nav{display:flex;gap:22px;font-size:14px;color:#374151}
-    .nav a:hover{color:#000}
     .actions{display:flex;gap:10px}
     .btn,.btn-light{
       display:inline-flex;align-items:center;justify-content:center;
-      padding:13px 18px;border-radius:999px;font-size:14px;font-weight:700;
-      border:1px solid transparent;transition:.2s ease;
+      padding:12px 20px;border-radius:999px;font-size:14px;font-weight:700;transition:.2s ease;
     }
-    .btn{background:#111;color:#fff}
-    .btn:hover{transform:translateY(-1px)}
-    .btn-light{background:#fff;border-color:var(--line);color:#111}
+    .btn{background:#111;color:#fff;border:none}
+    .btn-light{background:#fff;border:1px solid var(--line);color:#111}
 
-    .hero{padding:34px 0 22px}
-    .hero-grid{
-      display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch;
-    }
-    .hero-copy{
-      background:var(--soft);border:1px solid var(--line);border-radius:32px;
-      padding:42px;display:flex;flex-direction:column;justify-content:center;
-    }
-    .eyebrow{
-      display:inline-block;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);
-      color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
-    }
-    h1{
-      margin:16px 0 14px;font-size:clamp(34px,5vw,58px);line-height:.96;letter-spacing:-.05em;
-    }
-    .lead{margin:0;color:var(--muted);font-size:17px;line-height:1.7;max-width:600px}
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-    .hero-box{
-      overflow:hidden;border-radius:32px;border:1px solid var(--line);box-shadow:var(--shadow);background:#fff;
-    }
-    .hero-box img{height:100%;min-height:320px;object-fit:cover}
+    /* Hero */
+    .hero{padding:40px 0}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+    .hero-copy{padding:20px}
+    h1{font-size:clamp(34px,5vw,56px);line-height:1;letter-spacing:-.04em;margin:20px 0}
+    .lead{color:var(--muted);font-size:18px;line-height:1.6;margin-bottom:30px}
 
-    .section{padding:28px 0}
-    .section-head{
-      display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px;
-    }
-    .section-head h2{
-      margin:0 0 6px;font-size:clamp(26px,4vw,38px);letter-spacing:-.04em;
-    }
-    .section-head p{margin:0;color:var(--muted);font-size:15px}
-
-    .inventory{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
-    }
+    /* Griglia Auto */
+    .inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
     .card{
-      border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;box-shadow:var(--shadow);
+      background:#fff;border-radius:24px;overflow:hidden;
+      border:1px solid var(--line);transition:transform 0.3s ease;
     }
-    .card img{height:210px;object-fit:cover}
-    .card-body{padding:18px}
-    .row{display:flex;justify-content:space-between;gap:12px;align-items:start}
-    .title{margin:0;font-size:20px;font-weight:800;letter-spacing:-.03em}
-    .price{font-weight:800;font-size:18px;white-space:nowrap}
-    .meta{margin:8px 0 14px;color:var(--muted);font-size:14px;line-height:1.6}
-    .specs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-    .spec{
-      padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:var(--soft);font-size:12px;font-weight:700;color:#374151;
+    .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .card img{height:220px;object-fit:cover;background:#f9f9f9}
+    .card-body{padding:20px}
+    .title{font-size:19px;font-weight:700;margin:0}
+    .price{font-size:19px;font-weight:800;color:var(--brand)}
+    .meta{margin:8px 0 16px;color:var(--muted);font-size:14px}
+    .specs{display:flex;gap:8px;margin-bottom:20px}
+    .spec{background:#f8fafc;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600}
+    
+    .card-actions{display:flex;gap:8px}
+    .card-actions a{
+      flex:1;text-align:center;padding:10px;border-radius:12px;font-size:13px;font-weight:700;
     }
-    .card-actions{display:flex;gap:10px}
-    .card-actions a{flex:1;text-align:center;padding:12px 14px;border-radius:14px;font-size:13px;font-weight:700}
-    .card-actions .primary{background:#111;color:#fff}
-    .card-actions .secondary{background:#fff;border:1px solid var(--line)}
+    .primary{background:#111;color:#fff}
+    .secondary{background:#f1f5f9;color:#111}
 
-    .services{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
-    }
-    .service{
-      border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;box-shadow:var(--shadow);
-    }
-    .service img{height:200px;object-fit:cover}
-    .service-body{padding:20px}
-    .service-body h3{margin:0 0 8px;font-size:22px;letter-spacing:-.03em}
-    .service-body p{margin:0;color:var(--muted);line-height:1.7;font-size:15px}
-
-    .contact{
-      margin-top:8px;border:1px solid var(--line);background:var(--soft);border-radius:28px;padding:28px;
-      display:flex;align-items:center;justify-content:space-between;gap:16px;
-    }
-    .contact h2{margin:0 0 8px;font-size:clamp(24px,4vw,34px);letter-spacing:-.04em}
-    .contact p{margin:0;color:var(--muted);line-height:1.7}
-    .contact-actions{display:flex;gap:10px;flex-wrap:wrap}
-
-    .footer{padding:28px 0 40px;color:var(--muted);font-size:14px}
-    .footer-inner{border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;gap:16px}
-
-    @media (max-width:980px){
-      .hero-grid,.inventory,.services{grid-template-columns:1fr 1fr}
-      .hero-grid{grid-template-columns:1fr}
-      .hero-box img{height:360px}
-    }
-    @media (max-width:720px){
-      .nav,.actions .btn-light{display:none}
-      .hero-copy{padding:28px}
-      .inventory,.services,.footer-inner{grid-template-columns:1fr;display:grid}
-      .section-head,.contact,.header-inner{align-items:flex-start}
-      .section-head,.contact,.footer-inner{display:flex;flex-direction:column}
-      .card-actions{flex-direction:column}
-      .hero{padding-top:22px}
-      .card img,.service img{height:220px}
-    }
+    @media (max-width:980px){ .inventory{grid-template-columns:1fr 1fr} .hero-grid{grid-template-columns:1fr} }
+    @media (max-width:600px){ .inventory{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
+
   <header class="header">
     <div class="container header-inner">
-      <a href="#top" class="brand">
+      <a href="#" class="brand">
         <div class="brand-mark">AA</div>
-        <div>
-          Angelucci Auto
-          <small>Auto usate</small>
-        </div>
+        <div>Angelucci Auto<small>Selezione Usato</small></div>
       </a>
-      <nav class="nav">
-        <a href="#auto">Auto</a>
-        <a href="#servizi">Servizi</a>
-        <a href="#contatti">Contatti</a>
-      </nav>
       <div class="actions">
-        <a class="btn-light" href="tel:+393330000000">Chiama</a>
         <a class="btn" href="https://wa.me/393330000000">WhatsApp</a>
       </div>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Selezione usato • Pronta consegna</span>
-          <h1>Auto usate selezionate, in modo semplice.</h1>
-          <p class="lead">Una home pulita, professionale e adatta anche per cellulare, con annunci subito visibili e contatti rapidi.</p>
-          <div class="hero-actions">
-            <a class="btn" href="#auto">Vedi le auto</a>
-            <a class="btn-light" href="#servizi">I nostri servizi</a>
-          </div>
-        </div>
-        <div class="hero-box">
-          <img src="https://sspark.genspark.ai/cfimages?u1=11ebvsehi5HeG0FzdoR1pF4q77ODmbFVLKW6hyUkUgkcUx8JJSawgP5GCGOa%2BlGSnXTCfsIqHSBK6B7a9%2FjPleW33OG5H5%2BR6XtleyN5rogweYg6bGRfxU9aGn%2BP%2FJ4BdjBzctsflAOgLoebRjc7BqydYoMf0CtP&u2=2tUGdmEnM%2BOw%2BHoM&width=2560" alt="Showroom auto usate" />
+          <h1>Auto usate selezionate, pronte per te.</h1>
+          <p class="lead">Qualità, trasparenza e assistenza. Trova la tua prossima auto tra i nostri arrivi quotidiani.</p>
+          <a class="btn" href="#vetrina">Vedi Vetrina</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="auto">
+    <section class="section" id="vetrina">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Auto in evidenza</h2>
-            <p>Anteprima grafica con schede demo, pronta da sostituire con le tue auto reali.</p>
-          </div>
-        </div>
-
-        <div class="inventory">
-          <article class="card">
-            <img src="https://sspark.genspark.ai/cfimages?u1=UdgK8jwzBHIoUw9mnfJAZPwYsTDg4v6psLRKu0WrPdEpjuf4yleZ7Ce50s5z4Tm4ppCLem5umS7Z9ovgF1neIv1rnqTX01isZKlmnMHbYMT2cx6CbdiYRJ7xsYyAQwe1pEYWn57KtG7%2BK4%2BRCSLuOtEIFMXMUWpG3UFxh5tcOFIUZVjXaeZqFyhBDNw%3D&u2=%2FNJ%2BM5GlUDyumMKd&width=2560" alt="Audi A3 Sportback" />
-            <div class="card-body">
-              <div class="row"><h3 class="title">Audi A3 Sportback</h3><div class="price">€ 18.900</div></div>
-              <p class="meta">2019 · 78.000 km · Diesel</p>
-              <div class="specs"><span class="spec">Manuale</span><span class="spec">Pronta consegna</span></div>
-              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://sspark.genspark.ai/cfimages?u1=41gcvFZ%2FQxkWvmL0Yemz9fqzZNKWXeuJzzzbKCqtKeN6tXWgjdz4x42WHuUj%2BgEsM9dLkCEETIJoFMVeTORISPMlx1Dq0t%2FQaWsKn7urbXoWozeWLFp8J%2B%2Bn1gtvt3PExGS%2FzJqe2lkG71ftYeerKgEOUrU%3D&u2=IqdLMRsPp9Km3uDZ&width=2560" alt="BMW X1" />
-            <div class="card-body">
-              <div class="row"><h3 class="title">BMW X1</h3><div class="price">€ 22.400</div></div>
-              <p class="meta">2020 · 65.000 km · Benzina</p>
-              <div class="specs"><span class="spec">Automatica</span><span class="spec">SUV</span></div>
-              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://sspark.genspark.ai/cfimages?u1=US7rd62Ja7MK4ghjwedgx%2FkXncG7Ninuy%2BmWtm%2BhtalG5XH%2BCj%2FOdpJ%2BHiyMKVsd6EVuhYEPBYMKIjg%2FEIV6mcJgveOH7VZNXI66bk3ZBLc%3D&u2=OSmIHg9UxWyXPKJD&width=2560" alt="Fiat 500" />
-            <div class="card-body">
-              <div class="row"><h3 class="title">Fiat 500</h3><div class="price">€ 11.900</div></div>
-              <p class="meta">2018 · 52.000 km · Benzina</p>
-              <div class="specs"><span class="spec">City car</span><span class="spec">Manuale</span></div>
-              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://sspark.genspark.ai/cfimages?u1=4cgDXnSaTO7SNc5nQd%2B%2BRUp7TfU%2FpNThDxPr28CuBz3h1A1XFv9h0vKAhJucz6wztBgzaFEB5lo7LJU60cI1b87BvMJXSfYpQl4HZLs4OGyKsQ%3D%3D&u2=pCjrUWy7EgzLKlo%2F&width=2560" alt="Volkswagen Passat Variant" />
-            <div class="card-body">
-              <div class="row"><h3 class="title">VW Passat Variant</h3><div class="price">€ 19.700</div></div>
-              <p class="meta">2019 · 88.000 km · Diesel</p>
-              <div class="specs"><span class="spec">Station wagon</span><span class="spec">Automatica</span></div>
-              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://sspark.genspark.ai/cfimages?u1=0Z50%2FylDgnMHEM9ARS0Twcd7C0Le2GyeQbimR8DkfDnnJDdm5U17uk8a%2FYmTVeSJdc%2F%2FfxieQjePncB3kYbojpiKfbHKH8pY197YU7qHOAw%3D&u2=U9YRfxaZgAAWRNB7&width=2560" alt="BMW Serie 3" />
-            <div class="card-body">
-              <div class="row"><h3 class="title">BMW Serie 3</h3><div class="price">€ 24.900</div></div>
-              <p class="meta">2021 · 47.000 km · Ibrida</p>
-              <div class="specs"><span class="spec">Berlina</span><span class="spec">Automatica</span></div>
-              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Info</a><a class="secondary" href="tel:+393330000000">Chiama</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://sspark.genspark.ai/cfimages?u1=yc1VgLqw1KJoaPJN%2Bfwd3O%2FkHzJ1bC3iO82wPxjqn%2BZvfiMjegkAHDyxSAiFrNio1o8oAkVFQWKl0lncon1BqncWFW%2Fp6GwDVX1qVmJqo4FAHGteMhq0XQ%3D%3D&u2=GfRUVyhn6%2BGT1mt2&width=2560" alt="Servizio officina auto" />
-            <div class="card-body">
-              <div class="row"><h3 class="title">Altre auto in arrivo</h3><div class="price">25+</div></div>
-              <p class="meta">Questa scheda può diventare il link alla pagina completa del parco auto.</p>
-              <div class="specs"><span class="spec">Nuovi arrivi</span><span class="spec">Disponibilità rapida</span></div>
-              <div class="card-actions"><a class="primary" href="https://wa.me/393330000000">Richiedi elenco</a><a class="secondary" href="#contatti">Contatti</a></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="servizi">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Servizi</h2>
-            <p>Solo le informazioni essenziali, con tre box chiari e immediati.</p>
-          </div>
-        </div>
-
-        <div class="services">
-          <article class="service">
-            <img src="https://sspark.genspark.ai/cfimages?u1=XzOnZR5PnOZA5M5lZvdikX7K2bsKf8ZqhTQHqHjKe%2F5WVdvo%2F8qaw8zRGG9I4G4RfG36OSztvX4zxxSQrUgRUB22AVPAFRzLF2fIJCaUpMN5Lw%3D%3D&u2=5CbyL7GvLt2t6B3w&width=2560" alt="Finanziamenti auto" />
-            <div class="service-body">
-              <h3>Finanziamenti</h3>
-              <p>Soluzioni personalizzate per acquistare l’auto in modo semplice.</p>
-            </div>
-          </article>
-
-          <article class="service">
-            <img src="https://sspark.genspark.ai/cfimages?u1=thfpa9be0on5bY%2FuVwrDo60LO9sm3cwJXEAZrJvJNyhsFtWNsHJCC7SyA%2BL7mAqF3RUtg2HFkbbdSBR%2Fxyv58az8G88UQ7IaGO6vNz6FcBoh2BMEq20kLlM%3D&u2=cMhsCE6LJsUQC%2Fop&width=2560" alt="Impianti GPL" />
-            <div class="service-body">
-              <h3>Impianti G.P.L.</h3>
-              <p>Installazione e assistenza per chi cerca convenienza e affidabilità.</p>
-            </div>
-          </article>
-
-          <article class="service">
-            <img src="https://sspark.genspark.ai/cfimages?u1=yc1VgLqw1KJoaPJN%2Bfwd3O%2FkHzJ1bC3iO82wPxjqn%2BZvfiMjegkAHDyxSAiFrNio1o8oAkVFQWKl0lncon1BqncWFW%2Fp6GwDVX1qVmJqo4FAHGteMhq0XQ%3D%3D&u2=GfRUVyhn6%2BGT1mt2&width=2560" alt="Officina auto" />
-            <div class="service-body">
-              <h3>Officina</h3>
-              <p>Manutenzione e supporto tecnico per preparazione e assistenza.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contatti">
-      <div class="container">
-        <div class="contact">
-          <div>
-            <h2>Contattaci</h2>
-            <p>Telefono, WhatsApp e indirizzo possono essere aggiornati con i tuoi dati reali.</p>
-          </div>
-          <div class="contact-actions">
-            <a class="btn" href="https://wa.me/393330000000">WhatsApp</a>
-            <a class="btn-light" href="tel:+393330000000">Chiama</a>
-          </div>
+        <h2>Vetrina Auto</h2>
+        <div class="inventory" id="inventory-container">
+          <!-- Caricamento Dinamico -->
+          <p>Caricamento in corso...</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>Angelucci Auto</div>
-      <div>Bozza homepage minimal responsive</div>
-    </div>
-  </footer>
+  <!-- SUPABASE INTEGRATION -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://xuxpnzaarkoymrvwabxy.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh1eHBuemFhcmtveW1ydndhYnh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1MDg0NzQsImV4cCI6MjA5MzA4NDQ3NH0.5RCrbajUxvztZIZX7ZHff2WIPK-kg9v7WJ7litfQNyw';
+    
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    async function loadCars() {
+      const { data, error } = await _supabase
+        .from('auto')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error("Errore:", error);
+        return;
+      }
+
+      const container = document.getElementById('inventory-container');
+      container.innerHTML = '';
+
+      if (data.length === 0) {
+        container.innerHTML = '<p>Al momento non ci sono auto disponibili.</p>';
+        return;
+      }
+
+      data.forEach(auto => {
+        container.innerHTML += `
+          <article class="card">
+            <img src="${auto.foto_url || 'https://via.placeholder.com/400x300'}" alt="${auto.modello}" />
+            <div class="card-body">
+              <div style="display:flex; justify-content:space-between; align-items:start;">
+                <h3 class="title">${auto.modello}</h3>
+                <div class="price">€${Number(auto.prezzo).toLocaleString('it-IT')}</div>
+              </div>
+              <p class="meta">${auto.anno} · ${Number(auto.km).toLocaleString('it-IT')} km · ${auto.alimentazione}</p>
+              <div class="specs">
+                <span class="spec">${auto.cambio}</span>
+              </div>
+              <div class="card-actions">
+                <a class="primary" href="${auto.link_subito}" target="_blank">Dettagli</a>
+                <a class="secondary" href="https://wa.me/393330000000?text=Info%20per%20${encodeURIComponent(auto.modello)}">WhatsApp</a>
+              </div>
+            </div>
+          </article>
+        `;
+      });
+    }
+
+    loadCars();
+  </script>
 </body>
 </html>
