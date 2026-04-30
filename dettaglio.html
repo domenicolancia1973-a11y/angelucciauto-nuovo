@@ -110,7 +110,7 @@
 
       // Proviamo a elencare i file
       const { data: files, error: sError } = await _supabase.storage
-        .from('foto-auto')
+        .from('veicoli')
         .list(cartella);
 
       if (sError) {
@@ -132,8 +132,7 @@
 
       immaginiValide.forEach((file, index) => {
         // COSTRUIAMO IL LINK DIRETTAMENTE (visto che sappiamo che funziona)
-        const url = `${SUPABASE_URL}/storage/v1/object/public/foto-auto/${cartella}/${file.name}`;
-
+       const url = `${SUPABASE_URL}/storage/v1/object/public/veicoli/${cartella}/${file.name}`;
         if (index === 0) mainView.src = url;
 
         const img = document.createElement('img');
