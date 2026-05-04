@@ -134,36 +134,40 @@
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     async function caricaTutteLeAuto() {
+        // Cerchiamo nella tabella 'veicoli'
         const { data, error } = await _supabase
             .from('veicoli')
             .select('*')
-            .order('created_at', { ascending: false }); // Mostra le ultime inserite per prime
+            .order('created_at', { ascending: false });
 
         if (error) {
-            console.error('Errore nel caricamento:', error);
-            document.getElementById('lista-veicoli').innerHTML = '<p>Errore nel caricamento dei dati.</p>';
+            console.error('Errore dettagliato:', error);
+            document.getElementById('lista-veicoli').innerHTML = '<p>Errore nel caricamento: ' + error.message + '</p>';
             return;
         }
 
         const container = document.getElementById('lista-veicoli');
-        container.innerHTML = ''; // Svuota il caricamento
+        container.innerHTML = ''; 
 
         if (data.length === 0) {
-            container.innerHTML = '<p>Al momento non ci sono veicoli disponibili.</p>';
+            container.innerHTML = '<p>Nessun veicolo trovato nel database.</p>';
             return;
         }
 
         data.forEach(auto => {
+            // Usiamo i nomi delle tue colonne: modello, foto_principale, prezzo, ecc.
             container.innerHTML += `
                 <div class="car-card">
-                    <img src="${auto.immagine_url}" alt="${auto.marca_modello}">
+                    <img src="${auto.foto_principale}" alt="${auto.modello}" onerror="this.src='https://via.placeholder.com/400x250?text=Immagine+Non+Disponibile'">
                     <div class="car-card-body">
-                        <div class="car-title">${auto.marca_modello}</div>
+                        <div class="car-title">${auto.modello}</div>
                         <div class="car-info">
-                            ${auto.anno} • ${auto.km.toLocaleString()} km • ${auto.alimentazione}
+                            ${auto.anno} • ${auto.km ? auto.km.toLocaleString() : 'N/D'} km • ${auto.alimentazione}<br>
+                            <strong>Cambio:</strong> ${auto.cambio}
                         </div>
-                        <div class="car-price">€ ${auto.prezzo.toLocaleString()}</div>
-                        <a href="https://wa.me/393333402341?text=Salve, sono interessato alla ${auto.marca_modello}" class="btn-contact">
+                        <div class="car-price">€ ${auto.prezzo ? auto.prezzo.toLocaleString() : 'Trattativa privata'}</div>
+                        <p style="font-size: 0.8rem; color: #666; margin-bottom: 1rem;">${auto.descrizione ? auto.descrizione.substring(0, 80) + '...' : ''}</p>
+                        <a href="https://wa.me/393333402341?text=Salve, vorrei informazioni sulla ${auto.modello}" class="btn-contact">
                             Richiedi Informazioni
                         </a>
                     </div>
@@ -171,9 +175,7 @@
         });
     }
 
-    // Avvia la funzione
     caricaTutteLeAuto();
 </script>
-
 </body>
 </html>
