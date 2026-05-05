@@ -174,6 +174,68 @@
     @media (max-width: 560px) {
       .values-grid { grid-template-columns: 1fr; }
     }
+    /* Stile Attestato AutoScout */
+.attestato-container {
+    margin-top: 3rem;
+}
+
+.attestato-card {
+    background: linear-gradient(145deg, var(--dark3), #1a1a1a);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.attestato-card:hover {
+    border-color: var(--red);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(192, 57, 43, 0.1);
+}
+
+.attestato-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.badge-img {
+    max-width: 180px;
+    height: auto;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+}
+
+.badge-text h3 {
+    font-family: var(--font-head);
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.badge-text p {
+    color: #bbb;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.stars {
+    color: #f1c40f; /* Oro per le stelle */
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .attestato-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .badge-img {
+        max-width: 140px;
+    }
+}
   </style>
 </head>
 <body>
@@ -219,6 +281,19 @@
       </div>
     </div>
     <div>
+      <!-- Sezione Attestato Eccellenza -->
+<div class="attestato-container">
+    <div class="attestato-card">
+        <div class="attestato-content">
+            <img src="tuo-attestato-autoscout.png" alt="Attestato Eccellenza AutoScout24 2024" class="badge-img">
+            <div class="badge-text">
+                <h3>Eccellenza certificata 2024</h3>
+                <p>Siamo orgogliosi di essere stati premiati da <strong>AutoScout24</strong> con una valutazione di <strong>4.9 / 5</strong>. Un riconoscimento che premia la nostra trasparenza e la soddisfazione dei nostri clienti.</p>
+                <div class="stars">★★★★★</div>
+            </div>
+        </div>
+    </div>
+</div>
       <img src="https://xuxpnzaarkoymrvwabxy.supabase.co/storage/v1/object/public/veicoli/officina.jpg/1.jpg"
            alt="Officina Angelucci"
            style="width:100%; border-radius:10px; border:1px solid #2a2a2a; object-fit:cover; max-height:420px; display:block;" />
