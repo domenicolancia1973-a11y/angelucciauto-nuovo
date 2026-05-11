@@ -277,6 +277,28 @@ h1, h2, h3, .servizio-title {
 .nav-links a:hover {
     color: #ff4d4d !important; /* Cambia colore quando ci passi sopra (es. rosso/accento) */
 }   
+/* Rende i testi delle card Servizi nitidi e puliti */
+.servizio-card .servizio-title {
+    color: #ffffff !important;
+    font-weight: 800;          /* Titolo bello solido */
+    text-shadow: none;         /* Rimuove ogni ombra che crea sfocatura */
+    -webkit-font-smoothing: antialiased; /* Massima nitidezza su Mac/Chrome */
+    -moz-osx-font-smoothing: grayscale;  /* Massima nitidezza su Firefox */
+}
+
+.servizio-card .servizio-desc {
+    color: #ffffff !important;
+    font-weight: 500;          /* Grassetto medio per non impastare le lettere */
+    text-shadow: none;         /* Rimuove l'effetto sfocato */
+    line-height: 1.5;          /* Più spazio tra le righe = più ordine visivo */
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.01rem;   /* Separa leggermente i caratteri */
+}
+
+/* Opzionale: scurisce leggermente l'immagine per far risaltare il bianco limpido */
+.servizio-card img {
+    filter: brightness(0.6) contrast(1.1);
+}
   </style>
 </head>
 <body>
