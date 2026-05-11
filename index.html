@@ -244,18 +244,23 @@
     @media (max-width: 1100px) and (min-width: 901px) {
       .inventory-grid, .servizi-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    /* Rende tutti i paragrafi e le descrizioni bianche più spesse e leggibili */
-p, .servizio-desc, .hero-sub, .section-tag {
-    color: #ffffff !important; /* Forza il bianco */
-    font-weight: 600;          /* Rende il testo in grassetto */
-    line-height: 1.6;          /* Aumenta lo spazio tra le righe per la leggibilità */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Aggiunge un'ombra sottile per contrasto */
+   /* Testi nitidi e definiti */
+p, .servizio-desc, .hero-sub, .section-tag, .svc-desc {
+    color: #ffffff !important;
+    font-weight: 600;
+    line-height: 1.6;
+    /* Rimuoviamo l'ombra sfocata e usiamo un filtro per la nitidezza */
+    text-shadow: none; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.01em;
 }
 
-/* Rende i titoli ancora più evidenti */
+/* Titoli "taglienti" e chiari */
 h1, h2, h3, .servizio-title {
-    font-weight: 800;          /* Grassetto extra per i titoli */
-    letter-spacing: -0.02em;   /* Rende il titolo più compatto e moderno */
+    font-weight: 800;
+    text-shadow: none;
+    -webkit-font-smoothing: antialiased;
 }
   </style>
 </head>
