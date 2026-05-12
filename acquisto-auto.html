@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
   <style>
-    /* STILI CORE (Copiati dalla tua base per coerenza totale) */
+    /* STILI CORE */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --red:#c0392b;--red-dark:#96281b;--red-glow:rgba(192,57,43,0.15);
@@ -33,7 +33,6 @@
     /* ── HERO ── */
     .hero{position:relative;min-height:82vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden}
     .hero-bg{position:absolute;inset:0;background: linear-gradient(135deg, #0c0c0c 0%, #141414 50%, #0c0c0c 100%);z-index:0}
-    .hero-bg::after{content:'';position:absolute;top:20%;left:42%;width:2px;height:60%;background:linear-gradient(to bottom, transparent, rgba(192,57,43,.4), transparent)}
     .hero-copy{position:relative;z-index:2;padding:5rem 3rem 5rem 4rem}
     .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-head);font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
     .hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);display:block}
@@ -41,53 +40,27 @@
     .hero h1 .accent{color:var(--red);display:block}
     .hero-sub{font-size:1.1rem;font-weight:600;color:#fff;max-width:460px;margin-bottom:2.2rem;line-height:1.6;-webkit-font-smoothing:antialiased}
     
-   .hero-visual {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
+    .hero-visual { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+    .hero-img-wrap { position: relative; width: 100%; max-width: 520px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(201,168,76,.3); }
+    
+    /* STILE IMMAGINE - QUI HO AGGIUNTO IL FILTRO PER LA NITIDEZZA */
+    .hero-img-wrap img { width: 100%; height: 480px; object-fit: cover; display: block; filter: brightness(0.5) contrast(1.2); }
+    
+    .hero-img-wrap::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--red), var(--gold)); z-index: 2; }
 
-.hero-img-wrap {
-    position: relative;
-    width: 100%;
-    max-width: 520px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(201,168,76,.3); /* Bordo oro più visibile */
-}
-
-<img src="https://www.repubblica.it/resizer/main-static/v1/img/common/repubblica-logo-web.png" style="display:none;"> <img src="https://images.pixelexperience.org/wp-content/uploads/2024/03/vendere-auto-usata.jpg" onerror="this.src='https://cdn.pixabay.com/photo/2016/11/21/13/04/car-1845290_1280.jpg'" alt="Acquisto Auto Angelucci">
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--red), var(--gold));
-    z-index: 2;
-}
     /* ── SECTIONS ── */
     .section-tag{font-family:var(--font-head);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:.5rem}
     .section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--white);margin-bottom:2rem}
-    
     .intro-section{background:var(--dark2);padding:4rem}
     .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
     .intro-text p{font-size:1.1rem;color:#ffffff;margin-bottom:1.1rem;line-height:1.8;font-weight:600}
-    
     .why-section{background:var(--dark);padding:4rem}
     .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
-    .why-item{background:var(--dark4);border:1px solid #2a2a2a;border-radius:10px;padding:1.6rem;display:flex;gap:1.1rem;align-items:flex-start}
-    .why-title{font-family:var(--font-head);font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
+    .why-item{background:var(--dark4);border:1px solid #2a2a2a;border-radius:10px;padding:1.6rem;display:flex;flex-direction:column;gap:0.5rem}
+    .why-title{font-family:var(--font-head);font-size:1.3rem;font-weight:700;color:var(--white)}
     .why-desc{font-size:.95rem;color:#ffffff;line-height:1.6;font-weight:500}
-
     .cta-box{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(201,168,76,.06));border:1px solid rgba(192,57,43,0.4);border-radius:12px;padding:3rem;text-align:center;max-width:800px;margin:4rem auto}
     .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--red);color:#fff;font-family:var(--font-head);font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:16px 40px;border-radius:var(--radius);transition:all .2s}
-    .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(192,57,43,.3)}
-
     footer{background:#000000;border-top:1px solid #1a1a1a;padding:3rem 4rem 1.5rem}
     .footer-bottom{text-align:center;color:#444;font-size:0.8rem;margin-top:2rem}
 
@@ -107,6 +80,7 @@
     <li><a href="officina.html">Officina</a></li>
     <li><a href="gpl.html">GPL</a></li>
     <li><a href="finanziamenti.html">Finanziamenti</a></li>
+    <li><a href="acquisto-auto.html">Acquisto Auto</a></li>
     <li><a href="https://wa.me/39XXXXXXXXXX" class="btn-wa">Vendi ora</a></li>
   </ul>
 </nav>
@@ -123,11 +97,7 @@
   </div>
   <div class="hero-visual">
     <div class="hero-img-wrap">
-      <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&q=80&w=1000" alt="Acquisto Auto">
-      <div class="img-badge">
-        <div class="num">1H</div>
-        <div class="lbl">Pratica Conclusa</div>
-      </div>
+      <img src="https://images.pexels.com/photos/3728139/pexels-photo-3728139.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Acquisto Auto Angelucci">
     </div>
   </div>
 </section>
