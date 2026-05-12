@@ -2,120 +2,129 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Acquisto Auto – Angelucci Domenico Auto</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --red:#c0392b;--red-dark:#96281b;--red-glow:rgba(192,57,43,0.15);
-      --dark:#0c0c0c;--dark2:#141414;--dark3:#1e1e1e;--dark4:#252525;
-      --gold:#c9a84c;--gold-light:#e8c96a;
-      --white:#fff;--light:#f0ede8;--gray:#888;
-      --radius:8px;
-      --font-head:'Barlow Condensed',sans-serif;
-      --font-body:'Barlow',sans-serif;
-    }
-    html{scroll-behavior:smooth}
-    body{font-family:var(--font-body);background:var(--dark);color:var(--light);line-height:1.7;overflow-x:hidden}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acquisto Auto - Angelucci Auto</title>
+    <style>
+        /* RESET E BASE */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
 
-    /* ── NAV (COPIATA ESATTAMENTE DAL TUO CODICE) ── */
-    nav{position:sticky;top:0;z-index:100;background:rgba(12,12,12,.97);backdrop-filter:blur(14px);border-bottom:1px solid #1f1f1f;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:72px}
-    
-    .nav-logo img{
-        height:58px;
-        width:auto;
-        display:block;
-    }
+        /* NAV BAR */
+        nav {
+            background: rgba(12, 12, 12, 0.97);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
-    .nav-links a{font-family:var(--font-head);font-size:1rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#888;text-decoration:none;transition:color .2s}
-    .nav-links a:hover,.nav-links a.active{color:var(--white)}
-    .nav-links a.active{border-bottom:2px solid var(--red);padding-bottom:2px}
+        .nav-logo img {
+            height: 58px;
+            width: auto;
+            display: block;
+            /* TRUCCO FILTRO: Rende bianca la scritta Angelucci se l'immagine base è nera */
+            filter: brightness(0) invert(1);
+        }
 
-    .btn-wa{display:flex;align-items:center;gap:8px;background:#25d366;color:#fff!important;padding:9px 20px;border-radius:999px;font-family:var(--font-head)!important;font-size:.95rem!important;font-weight:700!important;text-decoration:none;transition:background .2s,transform .15s;white-space:nowrap}
-    .btn-wa:hover{background:#1ebe5d;transform:scale(1.03)}
-    .btn-wa svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
-    .nav-burger{display:none;background:none;border:none;color:#888;font-size:1.5rem;cursor:pointer}
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
 
-    /* ── HERO ACQUISTO AUTO ── */
-    .hero{
-      position:relative; min-height:82vh;
-      display:grid; grid-template-columns:1fr 1fr;
-      align-items:center; overflow:hidden;
-    }
-    .hero-bg{
-      position:absolute; inset:0;
-      background: linear-gradient(135deg, #0c0c0c 0%, #141414 50%, #0c0c0c 100%);
-      z-index:0;
-    }
-    .hero-copy{position:relative; z-index:2; padding:5rem 3rem 5rem 4rem}
-    .hero h1{
-      font-family:var(--font-head); font-size:clamp(3rem,5.5vw,5rem);
-      font-weight:800; line-height:1.0; color:var(--white);
-      margin-bottom:1rem;
-    }
-    .hero h1 .accent{color:var(--red); display:block}
-    .hero-sub{font-size:1.1rem; font-weight:300; font-style:italic; color:#bbb; max-width:420px; margin-bottom:2.2rem;}
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
 
-    .btn-primary{
-      display:inline-flex; align-items:center; gap:.5rem;
-      background:var(--red); color:#fff;
-      font-family:var(--font-head); font-size:1rem; font-weight:700;
-      letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
-      padding:14px 30px; border-radius:var(--radius);
-      transition:0.2s;
-    }
-    .btn-primary:hover{background:var(--red-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(192,57,43,.3)}
+        .nav-links a:hover {
+            color: #ff0000; /* Un tocco di rosso Angelucci al passaggio del mouse */
+        }
 
-    .hero-visual{position:relative; z-index:2; display:flex; align-items:center; justify-content:center; padding:2rem}
-    .hero-img-wrap{position:relative; width:100%; max-width:520px; border-radius:12px; overflow:hidden; border:1px solid rgba(201,168,76,.25);}
-    .hero-img-wrap img{width:100%; height:480px; object-fit:cover; display:block;}
+        /* CONTENUTO PAGINA */
+        .hero {
+            padding: 60px 5%;
+            background: #fff;
+            text-align: center;
+        }
 
-    @media(max-width:900px){
-      nav{padding:0 1.2rem}
-      .hero{grid-template-columns:1fr;}
-      .hero-copy{padding:3rem 1.5rem 2rem; text-align:center}
-      .hero-visual{padding:0 1.5rem 2rem}
-    }
-  </style>
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h1 { color: #111; }
+        
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            color: white;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img src="logo.png" alt="Angelucci Auto">
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="officina.html">Officina</a></li>
-    <li><a href="gpl.html">GPL</a></li>
-    <li><a href="finanziamenti.html">Finanziamenti</a></li>
-    <li><a href="acquisto-auto.html" class="active">Acquisto Auto</a></li>
-    <li>
-      <a href="https://wa.me/390666152690" class="btn-wa">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-    </li>
-  </ul>
-</nav>
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAADICAYAAACwPC+x..." alt="Angelucci Auto">
+        </a>
 
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-copy">
-    <h1>Acquistiamo la tua <span class="accent">Auto Usata</span></h1>
-    <p class="hero-sub">Valutazione immediata e pagamento garantito in sede.</p>
-    <a href="https://wa.me/390666152690" class="btn-primary">Richiedi Valutazione</a>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-img-wrap">
-      <img src="https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Acquisto Auto">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="auto.html">Auto</a>
+            <a href="finanziamenti.html">Finanziamenti</a>
+            <a href="officina.html">Officina</a>
+            <a href="contatti.html">Contatti</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Acquisto Auto</h1>
+        <p>Trova l'auto perfetta per le tue esigenze con Angelucci Auto.</p>
+    </section>
+
+    <div class="container">
+        <div class="card">
+            <h2>Perché scegliere noi?</h2>
+            <p>Offriamo una vasta gamma di veicoli garantiti e controllati. Il nostro processo di acquisto è trasparente e veloce.</p>
+            <ul>
+                <li>Garanzia 12/24 mesi</li>
+                <li>Finanziamenti personalizzati</li>
+                <li>Tagliando pre-consegna incluso</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Richiedi Informazioni</h2>
+            <p>Se hai visto un'auto che ti interessa o vuoi una consulenza, contattaci ora.</p>
+            </div>
     </div>
-  </div>
-</section>
+
+    <footer>
+        <p>&copy; 2024 Angelucci Auto - Tutti i diritti riservati</p>
+    </footer>
 
 </body>
 </html>
