@@ -172,26 +172,82 @@
 
     /* ── SERVIZI ── */
     #servizi { background: var(--dark); }
-    .servizi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .servizio-card {
-      background: var(--dark2); border: 1px solid #2a2a2a;
-      border-radius: 10px; overflow: hidden;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-    .servizio-card:hover { border-color: var(--red); transform: translateY(-4px); }
-    .servizio-card img {
-      width: 100%; height: 200px; object-fit: cover; display: block;
-      filter: brightness(0.75) saturate(0.8); transition: filter 0.3s;
-    }
-    .servizio-card:hover img { filter: brightness(0.9) saturate(1); }
-    .servizio-body { padding: 1.4rem; }
-    .servizio-icon {
-      width: 38px; height: 38px; background: var(--red); border-radius: 6px;
-      display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
-    }
-    .servizio-icon svg { width: 20px; height: 20px; fill: #fff; }
-    .servizio-title { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
-    .servizio-desc { font-size: 0.9rem; color: #888; }
+   /* Griglia a 4 colonne */
+.servizi-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); /* QUI CAMBI DA 3 A 4 */
+    gap: 1.2rem; /* Leggermente ridotto per far stare meglio 4 card */
+}
+
+.servizio-card {
+    background: var(--dark2); 
+    border: 1px solid #2a2a2a;
+    border-radius: 10px; 
+    overflow: hidden;
+    text-decoration: none; /* Toglie il blu dei link */
+    transition: border-color 0.25s, transform 0.25s;
+}
+
+.servizio-card:hover { 
+    border-color: var(--red); 
+    transform: translateY(-4px); 
+}
+
+.servizio-card img {
+    width: 100%; 
+    height: 180px; /* Ridotto un po' l'altezza per bilanciare le 4 colonne */
+    object-fit: cover; 
+    display: block;
+    filter: brightness(0.6) contrast(1.1); /* Più scuro e contrastato per far risaltare il testo */
+    transition: filter 0.3s;
+}
+
+.servizio-card:hover img { 
+    filter: brightness(0.8) contrast(1.1); 
+}
+
+.servizio-body { 
+    padding: 1.2rem; 
+}
+
+.servizio-icon {
+    width: 38px; 
+    height: 38px; 
+    background: var(--red); 
+    border-radius: 6px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 1rem;
+}
+
+.servizio-icon svg { width: 20px; height: 20px; fill: #fff; }
+
+/* Testi Limpidi e Nitidi */
+.servizio-title { 
+    font-family: var(--font-head); 
+    font-size: 1.2rem; 
+    font-weight: 800; /* Più grassetto */
+    color: var(--white) !important; 
+    margin-bottom: 0.5rem;
+    -webkit-font-smoothing: antialiased; 
+}
+
+.servizio-desc { 
+    font-size: 0.9rem; 
+    color: #ffffff !important; /* Da grigio a bianco per limpidezza */
+    font-weight: 600; /* Più leggibile */
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+}
+    /* Gestione per schermi medi e piccoli */
+@media (max-width: 1200px) {
+    .servizi-grid { grid-template-columns: repeat(2, 1fr); } /* 2 per riga su tablet */
+}
+
+@media (max-width: 768px) {
+    .servizi-grid { grid-template-columns: 1fr; } /* 1 per riga su mobile */
+}
 
     /* ── DOVE SIAMO ── */
     #dove-siamo { background: var(--dark2); }
@@ -326,6 +382,7 @@ body {
     <li><a href="dove-siamo.html">Dove siamo</a></li>
     <li><a href="lista-veicoli.html">Veicoli</a></li>
     <li><a href="contatti.html">Contatti</a></li>
+    <li><a href="acquisto-auto.html">Acquisto Auto</a></li> <li><a href="https://wa.me/..." class="btn-wa">...</a></li>
     <li>
       <a class="btn-wa" href="https://wa.me/390666152690" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.003 2.003C6.486 2.003 2 6.49 2 12.006a9.98 9.98 0 001.385 5.13L2 22l4.988-1.309A9.959 9.959 0 0012.003 22C17.52 22 22 17.514 22 12 22 6.487 17.52 2.003 12.003 2.003zm0 18.15a8.3 8.3 0 01-4.228-1.157l-.303-.18-3.12.818.832-3.048-.197-.314a8.316 8.316 0 01-1.276-4.47c0-4.593 3.738-8.33 8.33-8.33 4.59 0 8.327 3.737 8.327 8.33 0 4.591-3.738 8.33-8.327 8.33h-.038z"/></svg>
@@ -408,6 +465,16 @@ body {
         <p class="servizio-desc">Dal 1967 assistenza completa, tecnici costantemente aggiornati e interventi certificati su ogni veicolo.</p>
       </div>
     </a>
+    <a href="acquisto-auto.html" class="servizio-card">
+  <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=80" alt="Acquisto auto usate" />
+  <div class="servizio-body">
+    <div class="servizio-icon">
+      <svg viewBox="0 0 24 24"><path d="M12.74 2.32a1 1 0 00-1.48 0l-9 10A1 1 0 003 14h2v7a1 1 0 001 1h12a1 1 0 001-1v-7h2a1 1 0 00.74-1.68l-9-10zM7 20v-9.15L12 5.6l5 4.25V20H7z"/></svg>
+    </div>
+    <p class="servizio-title">Acquisto Auto</p>
+    <p class="servizio-desc">Valutazione immediata, pagamento garantito e passaggio di proprietà in sede in meno di un'ora.</p>
+  </div>
+</a>
 
   </div>
 </section>
