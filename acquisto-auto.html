@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -7,83 +8,83 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
   <style>
-    /* ── RESET & CORE ── */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --red:#c0392b;--red-dark:#96281b;
-      --dark:#0c0c0c;--dark2:#141414;--dark4:#252525;
-      --gold:#c9a84c;--white:#fff;--light:#f0ede8;
+      --red:#c0392b;--dark:#0c0c0c;--dark2:#141414;--gold:#c9a84c;--white:#fff;
       --font-head:'Barlow Condensed',sans-serif;
       --font-body:'Barlow',sans-serif;
     }
-    body{font-family:var(--font-body);background:var(--dark);color:var(--light);line-height:1.6;overflow-x:hidden}
+    body{font-family:var(--font-body);background:var(--dark);color:#f0ede8;line-height:1.6;overflow-x:hidden}
 
-    /* ── NAV ── */
-    nav{position:sticky;top:0;z-index:100;background:#000;border-bottom:1px solid #1f1f1f;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:80px}
-    .nav-logo img{height:65px;width:auto;display:block} /* Logo sistemato */
-    .nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}
-    .nav-links a{font-family:var(--font-head);font-size:1rem;font-weight:700;text-transform:uppercase;color:#fff;text-decoration:none;transition:0.2s}
+    /* ── NAV (COPIATA ESATTAMENTE DALLA HOME) ── */
+    nav{position:sticky;top:0;z-index:100;background:#000;border-bottom:1px solid #1f1f1f;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:72px}
+    .nav-logo img{height:58px;width:auto;display:block} /* Altezza standard Home */
+    .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+    .nav-links a{font-family:var(--font-head);font-size:1rem;font-weight:700;text-transform:uppercase;color:#fff;text-decoration:none;letter-spacing:.07em;-webkit-font-smoothing:antialiased}
     .nav-links a:hover{color:var(--red)}
     
-    .btn-wa{display:flex;align-items:center;gap:8px;background:#25d366;color:#fff!important;padding:10px 18px;border-radius:50px;font-family:var(--font-head);font-weight:700;text-decoration:none;font-size:0.9rem}
+    .btn-wa{display:flex;align-items:center;gap:8px;background:#25d366;color:#fff!important;padding:9px 20px;border-radius:999px;font-family:var(--font-head);font-weight:700;text-decoration:none;font-size:.95rem}
 
-    /* ── HERO (NITIDEZZA MASSIMA) ── */
-    .hero{position:relative;min-height:80vh;display:grid;grid-template-columns:1fr 1fr;align-items:center}
-    .hero-copy{padding:4rem;position:relative;z-index:2}
-    .hero h1{font-family:var(--font-head);font-size:4.5rem;font-weight:800;line-height:0.9;color:#fff;margin-bottom:1.5rem}
+    /* ── HERO ── */
+    .hero{position:relative;min-height:82vh;display:grid;grid-template-columns:1fr 1fr;align-items:center}
+    .hero-copy{padding:5rem 4rem;z-index:2}
+    .hero h1{font-family:var(--font-head);font-size:clamp(3rem,5vw,5rem);font-weight:800;line-height:1.0;color:#fff;margin-bottom:1rem}
     .hero h1 span{color:var(--red);display:block}
-    .hero-sub{font-size:1.2rem;font-weight:600;color:#fff;max-width:480px;margin-bottom:2rem;text-shadow: 1px 1px 2px rgba(0,0,0,0.5)}
+    .hero-sub{font-size:1.1rem;font-weight:600;color:#fff;max-width:460px;margin-bottom:2.2rem;-webkit-font-smoothing:antialiased}
 
     .hero-visual{display:flex;justify-content:center;padding:2rem}
-    .hero-img-wrap{position:relative;width:100%;max-width:550px;border-radius:15px;overflow:hidden;border:2px solid var(--gold)}
-    .hero-img-wrap img{width:100%;height:500px;object-fit:cover;display:block;filter:brightness(0.6) contrast(1.2)} /* Immagine scura = Testo nitido */
+    .hero-img-wrap{position:relative;width:100%;max-width:520px;border-radius:12px;overflow:hidden;border:1px solid rgba(201,168,76,.3)}
+    
+    /* FOTO AUTO - LINK AGGIORNATO */
+    .hero-img-wrap img{width:100%;height:480px;object-fit:cover;display:block;filter:brightness(0.5) contrast(1.1)}
 
     /* ── SECTIONS ── */
-    .intro-section{background:var(--dark2);padding:5rem 2rem}
-    .intro-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem}
-    .section-title{font-family:var(--font-head);font-size:2.5rem;font-weight:700;color:#fff;margin-bottom:1.5rem}
-    .intro-text p{font-size:1.1rem;font-weight:500;margin-bottom:1rem;color:#ddd}
+    .intro-section{background:var(--dark2);padding:4rem 2rem}
+    .intro-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .section-title{font-family:var(--font-head);font-size:2.5rem;font-weight:700;color:#fff;margin-bottom:2rem}
+    .intro-text p{font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:1.1rem}
 
-    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    .why-item{background:var(--dark4);padding:1.5rem;border-radius:10px;border-left:4px solid var(--red)}
-    .why-title{font-family:var(--font-head);font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
-    .why-desc{font-size:0.9rem;color:#ccc;font-weight:500}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+    .why-item{background:#252525;padding:1.6rem;border-radius:10px;border:1px solid #2a2a2a}
+    .why-title{font-family:var(--font-head);font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+    .why-desc{font-size:.95rem;color:#fff;font-weight:500}
 
-    .btn-primary{display:inline-block;background:var(--red);color:#fff;padding:15px 35px;border-radius:5px;font-family:var(--font-head);font-weight:800;text-transform:uppercase;text-decoration:none;transition:0.3s;font-size:1.1rem}
-    .btn-primary:hover{background:var(--red-dark);transform:translateY(-3px)}
+    .btn-primary{display:inline-flex;align-items:center;padding:16px 40px;background:var(--red);color:#fff;font-family:var(--font-head);font-weight:700;text-transform:uppercase;text-decoration:none;border-radius:8px;transition:0.2s}
+    .btn-primary:hover{background:#96281b;transform:translateY(-2px)}
 
-    footer{text-align:center;padding:3rem;border-top:1px solid #222;font-size:0.9rem;color:#666}
+    footer{text-align:center;padding:3rem;background:#000;border-top:1px solid #1a1a1a;color:#444;font-size:0.8rem}
 
-    @media(max-width:1000px){
+    @media(max-width:900px){
       .hero{grid-template-columns:1fr}
       .intro-grid{grid-template-columns:1fr}
-      .hero h1{font-size:3.5rem}
+      .hero-copy{padding:3rem 1.5rem}
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Angelucci Auto"></a>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Logo"></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="officina.html">Officina</a></li>
     <li><a href="gpl.html">GPL</a></li>
     <li><a href="finanziamenti.html">Finanziamenti</a></li>
     <li><a href="acquisto-auto.html" style="color:var(--red)">Acquisto Auto</a></li>
-    <li><a href="https://wa.me/390666152690" class="btn-wa">WhatsApp</a></li>
+    <li><a href="https://wa.me/390666152690" class="btn-wa">Vendi ora</a></li>
   </ul>
 </nav>
 
 <section class="hero">
   <div class="hero-copy">
+    <div style="font-family:var(--font-head); color:var(--gold); letter-spacing:.2em; text-transform:uppercase; font-size:.8rem; margin-bottom:1rem;">Valutazione Gratuita</div>
     <h1>Compriamo la tua <span>Auto Usata</span></h1>
-    <p class="hero-sub">Valutazione immediata, pagamento garantito e voltura in sede in meno di 60 minuti. Senza perdite di tempo.</p>
-    <a href="https://wa.me/390666152690" class="btn-primary">Vendi la tua auto ora</a>
+    <p class="hero-sub">Vendi il tuo veicolo oggi stesso. Valutazione immediata e pagamento garantito in meno di un'ora.</p>
+    <a href="https://wa.me/390666152690" class="btn-primary">Richiedi Valutazione</a>
   </div>
   <div class="hero-visual">
     <div class="hero-img-wrap">
-      <img src="https://images.unsplash.com/photo-1542362567-b05503f3af15?q=80&w=1000&auto=format&fit=crop" alt="Acquisto Auto">
+      <img src="https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Acquisto Auto">
     </div>
   </div>
 </section>
@@ -91,33 +92,25 @@
 <section class="intro-section">
   <div class="intro-grid">
     <div class="intro-text">
-      <h2 class="section-title">Trasparenza Totale</h2>
-      <p>Portaci la tua auto per una perizia dal vivo. Valutiamo il tuo usato secondo le reali quotazioni di mercato aggiornate.</p>
-      <p>Gestiamo internamente ogni pratica burocratica. Il pagamento è contestuale alla firma del passaggio di proprietà.</p>
+      <h2 class="section-title">Trasparenza e Affidabilità</h2>
+      <p>Da Angelucci Domenico Auto, l'acquisto del tuo usato è una procedura rapida e sicura. Valutiamo l'auto secondo i parametri reali di mercato.</p>
+      <p>Ci occupiamo noi di tutta la burocrazia: il passaggio di proprietà avviene direttamente in sede.</p>
     </div>
     <div class="why-grid">
       <div class="why-item">
-        <div class="why-title">Pagamento Istantaneo</div>
-        <p class="why-desc">Bonifico immediato o assegno circolare al momento dell'acquisto.</p>
+        <div class="why-title">Pagamento Immediato</div>
+        <p class="why-desc">Bonifico istantaneo al momento della firma.</p>
       </div>
       <div class="why-item">
-        <div class="why-title">Zero Burocrazia</div>
-        <p class="why-desc">Passaggio di proprietà eseguito in tempo reale presso la nostra sede.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-title">Massima Valutazione</div>
-        <p class="why-desc">Analizziamo lo stato d'uso per offrirti il miglior prezzo possibile.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-title">Sicurezza Garantita</div>
-        <p class="why-desc">Evita i rischi delle vendite tra privati. Tratti con professionisti.</p>
+        <div class="why-title">Massima Serietà</div>
+        <p class="why-desc">Tratti con un'azienda storica, non con privati anonimi.</p>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>&copy; 2026 Angelucci Domenico Auto - Via di Brava, Roma. Tel: 06 66152690</p>
+  <p>&copy; 2026 Angelucci Domenico Auto - Roma, Via di Brava. Tel: 06 66152690</p>
 </footer>
 
 </body>
