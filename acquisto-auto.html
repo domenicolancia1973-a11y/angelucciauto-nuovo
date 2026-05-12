@@ -1,142 +1,149 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Acquisto Auto – Angelucci Domenico Auto</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --red:#c0392b;--red-dark:#96281b;--red-glow:rgba(192,57,43,0.15);
-      --dark:#0c0c0c;--dark2:#141414;--dark3:#1e1e1e;--dark4:#252525;
-      --gold:#c9a84c;--gold-light:#e8c96a;
-      --white:#fff;--light:#f0ede8;--gray:#888;
-      --radius:8px;
-      --font-head:'Barlow Condensed',sans-serif;
-      --font-body:'Barlow',sans-serif;
-    }
-    html{scroll-behavior:smooth}
-    body{font-family:var(--font-body);background:var(--dark);color:var(--light);line-height:1.7;overflow-x:hidden}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── NAV AGGIORNATA ── */
-    nav{position:sticky;top:0;z-index:100;background:rgba(12,12,12,.97);backdrop-filter:blur(14px);border-bottom:1px solid #1f1f1f;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:72px}
+    :root {
+      --red: #c0392b;
+      --red-dark: #96281b;
+      --dark: #000000; /* Nero Assoluto come richiesto */
+      --dark2: #141414;
+      --dark3: #1e1e1e;
+      --dark4: #252525;
+      --white: #ffffff;
+      --light: #f4f4f2;
+      --gray: #888;
+      --radius: 6px;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--dark); color: var(--light); line-height: 1.6; overflow-x: hidden; }
+
+    /* ── NAV REPLICATA DALLA HOME ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #000000 !important;
+      border-bottom: 1px solid #111;
+      padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo img {
+      height: 58px; width: auto; display: block;
+      filter: brightness(0) invert(1); /* Forza il logo in bianco se necessario */
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; background-color: #000000 !important; }
+    .nav-links a {
+      font-family: var(--font-head); font-size: 0.95rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; color: #ffffff !important;
+      text-decoration: none; transition: color 0.3s ease; -webkit-font-smoothing: antialiased;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--red) !important; }
+
+    .btn-wa {
+      display: flex; align-items: center; gap: 8px; background: #25d366; color: #fff !important;
+      padding: 9px 20px; border-radius: 999px; font-family: var(--font-head) !important;
+      font-size: 0.95rem !important; font-weight: 700 !important; text-decoration: none;
+      transition: background 0.2s, transform 0.15s; white-space: nowrap;
+    }
+    .btn-wa:hover { background: #1ebe5d; transform: scale(1.03); }
+    .btn-wa svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+
+    /* ── HERO ACQUISTO ── */
+    .hero {
+      position: relative; min-height: 80vh; display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; padding: 5rem 4rem; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(192,57,43,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero h1 {
+      font-family: var(--font-head); font-size: clamp(3rem, 5.5vw, 4.5rem);
+      font-weight: 800; line-height: 1.0; color: var(--white); margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--red); display: block; }
+    .hero p { font-size: 1.1rem; color: #aaa; max-width: 500px; margin-bottom: 2.5rem; font-weight: 500; }
+
+    .btn-primary {
+      display: inline-block; background: var(--red); color: var(--white);
+      font-family: var(--font-head); font-size: 1.1rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      padding: 16px 40px; border-radius: var(--radius); transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+    .hero-image img {
+      width: 100%; max-width: 550px; border-radius: 10px; border: 1px solid #2e2e2e;
+      display: block; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    /* ── SEZIONE CONTENUTO ── */
+    .info-section { padding: 6rem 4rem; background: var(--dark2); }
+    .content-wrapper { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     
-    .nav-logo img{
-        height:58px;
-        width:auto;
-        display:block;
-        /* FILTRO AGGIUNTO PER SCRITTA BIANCA */
-        filter: brightness(0) invert(1);
+    .text-block h2 {
+      font-family: var(--font-head); font-size: 2.8rem; font-weight: 700;
+      color: var(--white); margin-bottom: 1.5rem; text-transform: uppercase;
     }
-
-    .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
-    .nav-links a{font-family:var(--font-head);font-size:1rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#888;text-decoration:none;transition:color .2s}
-    .nav-links a:hover,.nav-links a.active{color:var(--white)}
-    .nav-links a.active{border-bottom:2px solid var(--red);padding-bottom:2px}
-
-    .btn-wa{display:flex;align-items:center;gap:8px;background:#25d366;color:#fff!important;padding:9px 20px;border-radius:999px;font-family:var(--font-head)!important;font-size:.95rem!important;font-weight:700!important;text-decoration:none;transition:background .2s,transform .15s;white-space:nowrap}
-    .btn-wa:hover{background:#1ebe5d;transform:scale(1.03)}
-    .btn-wa svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
-
-    /* ── HERO ── */
-    .hero{
-      position:relative; min-height:80vh;
-      display:grid; grid-template-columns:1fr 1fr;
-      align-items:center; overflow:hidden;
-    }
-    .hero-bg{
-      position:absolute; inset:0;
-      background: linear-gradient(135deg, #0c0c0c 0%, #141414 50%, #0c0c0c 100%);
-      z-index:0;
-    }
-    .hero-copy{position:relative; z-index:2; padding:5rem 3rem 5rem 4rem}
-    .hero h1{
-      font-family:var(--font-head); font-size:clamp(3rem,5.5vw,5rem);
-      font-weight:800; line-height:1.0; color:var(--white);
-      margin-bottom:1rem;
-    }
-    .hero h1 .accent{color:var(--red); display:block}
-    .hero-sub{font-size:1.2rem; font-weight:300; color:#bbb; max-width:500px; margin-bottom:2.2rem;}
-
-    .btn-primary{
-      display:inline-flex; align-items:center; gap:.5rem;
-      background:var(--red); color:#fff;
-      font-family:var(--font-head); font-size:1.1rem; font-weight:700;
-      letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
-      padding:16px 35px; border-radius:var(--radius);
-      transition:0.2s;
-    }
-    .btn-primary:hover{background:var(--red-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(192,57,43,.4)}
-
-    .hero-visual{position:relative; z-index:2; display:flex; align-items:center; justify-content:center; padding:2rem}
-    .hero-img-wrap{position:relative; width:100%; max-width:520px; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5);}
-    .hero-img-wrap img{width:100%; height:450px; object-fit:cover; display:block;}
-
-    /* ── SEZIONE DESCRIZIONE / PUNTI DI FORZA ── */
-    .features {
-      padding: 5rem 2.5rem;
-      background: var(--dark2);
-      text-align: center;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 3rem auto 0;
-    }
-    .feature-card {
-      background: var(--dark3);
-      padding: 3rem 2rem;
-      border-radius: var(--radius);
-      border-bottom: 3px solid var(--red);
-      transition: transform 0.3s;
-    }
-    .feature-card:hover { transform: translateY(-10px); }
-    .feature-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.8rem;
-      color: var(--white);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-    .feature-card p { color: var(--gray); font-size: 1rem; }
-
-    /* ── DETTAGLI PAGAMENTO E PASSAGGIO ── */
-    .details-box {
-      padding: 5rem 2.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .details-content {
-      background: linear-gradient(to right, var(--dark4), var(--dark3));
-      padding: 3rem;
-      border-radius: 12px;
-      border-left: 5px solid var(--red);
-    }
-    .details-content h2 {
-      font-family: var(--font-head);
-      font-size: 2.5rem;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-    }
-    .details-content p {
-      font-size: 1.15rem;
-      margin-bottom: 1.5rem;
-      color: var(--light);
-    }
+    .text-block p { font-size: 1.05rem; margin-bottom: 1.5rem; color: #ccc; }
     .highlight { color: var(--red); font-weight: 700; }
 
-    @media(max-width:900px){
-      nav{padding:0 1.2rem; height: auto; padding: 10px 1.2rem;}
-      .nav-links{display:none;} /* Per semplicità mobile, andrebbe aggiunto un menu burger */
-      .hero{grid-template-columns:1fr;}
-      .hero-copy{padding:4rem 1.5rem 2rem; text-align:center}
-      .hero-sub{margin: 0 auto 2.2rem;}
-      .hero-visual{padding:0 1.5rem 4rem}
-      .details-content { padding: 2rem; }
+    .cards-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    .feature-card {
+      background: var(--dark3); padding: 2rem; border-radius: 8px;
+      border-left: 4px solid var(--red); transition: transform 0.3s;
+    }
+    .feature-card:hover { transform: translateX(10px); }
+    .feature-card h3 { font-family: var(--font-head); font-size: 1.4rem; color: var(--white); margin-bottom: 0.5rem; text-transform: uppercase; }
+    .feature-card p { font-size: 0.95rem; color: #999; }
+
+    /* ── FOOTER REPLICATO DALLA HOME ── */
+    footer {
+      background: #080808; border-top: 1px solid #1e1e1e;
+      padding: 3rem 4rem 1.5rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 2.5rem;
+    }
+    .footer-logo img { height: 52px; margin-bottom: 1rem; filter: brightness(0) invert(1); }
+    .footer-desc { font-size: 0.88rem; color: #666; max-width: 280px; }
+    .footer-col h4 {
+      font-family: var(--font-head); font-size: 0.8rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 1rem;
+    }
+    .footer-col p, .footer-col a {
+      font-size: 0.9rem; color: #777; text-decoration: none;
+      display: block; margin-bottom: 0.4rem; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid #1e1e1e; padding-top: 1.2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: #555; }
+
+    @media (max-width: 900px) {
+      .hero, .content-wrapper { grid-template-columns: 1fr; padding: 3rem 1.5rem; text-align: center; }
+      .hero-image { order: -1; margin-bottom: 2rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; }
+      .info-section { padding: 4rem 1.5rem; }
     }
   </style>
 </head>
@@ -162,53 +169,66 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-bg"></div>
   <div class="hero-copy">
-    <h1>Acquistiamo la tua <span class="accent">Auto Usata</span></h1>
-    <p class="hero-sub">Vendi la tua auto in sicurezza. Offriamo valutazioni reali basate sul mercato attuale e non su algoritmi freddi.</p>
-    <a href="https://wa.me/390666152690" class="btn-primary">Richiedi Valutazione Immediata</a>
+    <h1>Acquistiamo la tua <span>Auto Usata</span></h1>
+    <p>Vuoi vendere la tua auto senza perdite di tempo? Offriamo valutazioni reali e trasparenti con la garanzia di un professionista al tuo fianco.</p>
+    <a href="https://wa.me/390666152690" class="btn-primary">Ottieni Valutazione</a>
   </div>
-  <div class="hero-visual">
-    <div class="hero-img-wrap">
-      <img src="https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Acquisto Auto Angelucci">
+  <div class="hero-image">
+    <img src="https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=1260" alt="Acquisto Auto Roma">
+  </div>
+</section>
+
+<section class="info-section">
+  <div class="content-wrapper">
+    <div class="text-block">
+      <h2>Affidabilità e <span class="highlight">Rapidità</span></h2>
+      <p>Vendere a un privato comporta spesso rischi e tempi lunghi. Da <strong>Angelucci Domenico Auto</strong>, la compravendita è sicura e certificata.</p>
+      <p>Ci occupiamo noi di tutta la gestione burocratica, garantendo la massima trasparenza e la serenità di un'operazione eseguita a norma di legge.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="feature-card">
+        <h3>Pagamento Immediato</h3>
+        <p>Una volta concordato il prezzo, il pagamento avviene contestualmente alla consegna dell'auto tramite bonifico istantaneo.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Passaggio in Sede</h3>
+        <p>Il passaggio di proprietà viene effettuato in tempo reale presso la nostra sede, liberandoti da ogni responsabilità sul veicolo.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Valutazione Professionale</h3>
+        <p>Niente algoritmi automatici: un nostro esperto valuterà lo stato reale della tua vettura per darti il miglior prezzo possibile.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="features">
-  <h2 style="font-family: var(--font-head); font-size: 3rem; text-transform: uppercase;">Perché scegliere Angelucci Auto?</h2>
-  <div class="features-grid">
-    <div class="feature-card">
-      <h3>Massima Serietà</h3>
-      <p>Siamo nel settore da anni. La nostra reputazione si basa sulla trasparenza totale in ogni fase della trattativa.</p>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAADICAYAAACwPC+x..." alt="Angelucci Auto">
+      </div>
+      <p class="footer-desc">Angelucci Domenico Auto: dal 1990 professionisti del settore automobilistico a Roma. Qualità e trasparenza al vostro servizio.</p>
     </div>
-    <div class="feature-card">
-      <h3>Pagamento Immediato</h3>
-      <p>Nessuna attesa estenuante. Una volta raggiunto l'accordo, il pagamento viene emesso istantaneamente tramite bonifico istantaneo o assegno circolare.</p>
+    <div class="footer-col">
+      <h4>Servizi</h4>
+      <a href="officina.html">Officina Meccanica</a>
+      <a href="gpl.html">Installazione GPL</a>
+      <a href="finanziamenti.html">Finanziamenti</a>
+      <a href="acquisto-auto.html">Acquisto Auto Usate</a>
     </div>
-    <div class="feature-card">
-      <h3>Passaggio in Sede</h3>
-      <p>Gestiamo tutta la burocrazia. Il passaggio di proprietà viene effettuato immediatamente presso la nostra sede o agenzia convenzionata.</p>
-    </div>
-  </div>
-</section>
-
-<section class="details-box">
-  <div class="details-content">
-    <h2>La tua tranquillità è la nostra priorità</h2>
-    <p>Vendere un'auto a un privato può nascondere insidie, truffe o perdite di tempo. Da <span class="highlight">Angelucci Domenico Auto</span> garantiamo un processo lineare:</p>
-    <p>1. <strong>Valutazione:</strong> Mandaci foto e dati su WhatsApp o vieni a trovarci.<br>
-       2. <strong>Perizia:</strong> Controlliamo lo stato d'uso del veicolo insieme a te.<br>
-       3. <strong>Conclusione:</strong> Firmiamo i documenti e ricevi il pagamento <span class="highlight">nello stesso istante</span>.</p>
-    <p>Acquistiamo auto di ogni marca e modello, purché in regola con i documenti e non sinistrate gravemente.</p>
-    <div style="margin-top: 2rem;">
-        <a href="https://wa.me/390666152690" class="btn-wa" style="display: inline-flex; width: auto;">Contattaci per un appuntamento</a>
+    <div class="footer-col">
+      <h4>Contatti</h4>
+      <p>Via Aurelia 1051, Roma</p>
+      <p>Tel: 06 66152690</p>
+      <a href="mailto:info@angelucciauto.it">info@angelucciauto.it</a>
     </div>
   </div>
-</section>
-
-<footer style="padding: 3rem; text-align: center; border-top: 1px solid #1f1f1f; color: var(--gray); font-size: 0.9rem;">
-    <p>&copy; 2024 Angelucci Domenico Auto | Via Aurelia 1051, Roma | P.IVA 0123456789</p>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Angelucci Domenico Auto - Tutti i diritti riservati</p>
+    <p>P.IVA 0123456789</p>
+  </div>
 </footer>
 
 </body>
