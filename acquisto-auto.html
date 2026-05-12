@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -16,14 +15,40 @@
     }
     body{font-family:var(--font-body);background:var(--dark);color:#f0ede8;line-height:1.6;overflow-x:hidden}
 
-    /* ── NAV (COPIATA ESATTAMENTE DALLA HOME) ── */
-    nav{position:sticky;top:0;z-index:100;background:#000;border-bottom:1px solid #1f1f1f;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:72px}
-    .nav-logo img{height:58px;width:auto;display:block} /* Altezza standard Home */
-    .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
-    .nav-links a{font-family:var(--font-head);font-size:1rem;font-weight:700;text-transform:uppercase;color:#fff;text-decoration:none;letter-spacing:.07em;-webkit-font-smoothing:antialiased}
-    .nav-links a:hover{color:var(--red)}
-    
-    .btn-wa{display:flex;align-items:center;gap:8px;background:#25d366;color:#fff!important;padding:9px 20px;border-radius:999px;font-family:var(--font-head);font-weight:700;text-decoration:none;font-size:.95rem}
+    /* ── NAV REPLICATA DALLA TUA HOME ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,15,15,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #222;
+      padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img { height: 58px; width: auto; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      color: #aaa; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--white); border-bottom: 2px solid var(--red); }
+
+    .btn-wa {
+      display: flex; align-items: center; gap: 8px;
+      background: #25d366; color: #fff !important;
+      padding: 9px 20px; border-radius: 999px;
+      font-family: var(--font-head) !important;
+      font-size: 0.95rem !important; font-weight: 700 !important;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-wa:hover { background: #1ebe5d; transform: scale(1.03); }
+    .btn-wa svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
 
     /* ── HERO ── */
     .hero{position:relative;min-height:82vh;display:grid;grid-template-columns:1fr 1fr;align-items:center}
@@ -34,8 +59,6 @@
 
     .hero-visual{display:flex;justify-content:center;padding:2rem}
     .hero-img-wrap{position:relative;width:100%;max-width:520px;border-radius:12px;overflow:hidden;border:1px solid rgba(201,168,76,.3)}
-    
-    /* FOTO AUTO - LINK AGGIORNATO */
     .hero-img-wrap img{width:100%;height:480px;object-fit:cover;display:block;filter:brightness(0.5) contrast(1.1)}
 
     /* ── SECTIONS ── */
@@ -43,22 +66,13 @@
     .intro-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
     .section-title{font-family:var(--font-head);font-size:2.5rem;font-weight:700;color:#fff;margin-bottom:2rem}
     .intro-text p{font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:1.1rem}
-
     .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
     .why-item{background:#252525;padding:1.6rem;border-radius:10px;border:1px solid #2a2a2a}
     .why-title{font-family:var(--font-head);font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.3rem}
-    .why-desc{font-size:.95rem;color:#fff;font-weight:500}
-
     .btn-primary{display:inline-flex;align-items:center;padding:16px 40px;background:var(--red);color:#fff;font-family:var(--font-head);font-weight:700;text-transform:uppercase;text-decoration:none;border-radius:8px;transition:0.2s}
-    .btn-primary:hover{background:#96281b;transform:translateY(-2px)}
 
     footer{text-align:center;padding:3rem;background:#000;border-top:1px solid #1a1a1a;color:#444;font-size:0.8rem}
-
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .intro-grid{grid-template-columns:1fr}
-      .hero-copy{padding:3rem 1.5rem}
-    }
+    @media(max-width:900px){ .hero{grid-template-columns:1fr} .intro-grid{grid-template-columns:1fr} .hero-copy{padding:3rem 1.5rem} }
   </style>
 </head>
 <body>
@@ -70,21 +84,26 @@
     <li><a href="officina.html">Officina</a></li>
     <li><a href="gpl.html">GPL</a></li>
     <li><a href="finanziamenti.html">Finanziamenti</a></li>
-    <li><a href="acquisto-auto.html" style="color:var(--red)">Acquisto Auto</a></li>
-    <li><a href="https://wa.me/390666152690" class="btn-wa">Vendi ora</a></li>
+    <li><a href="acquisto-auto.html" class="active">Acquisto Auto</a></li>
+    <li>
+      <a href="https://wa.me/390666152690" class="btn-wa">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </li>
   </ul>
 </nav>
 
 <section class="hero">
   <div class="hero-copy">
-    <div style="font-family:var(--font-head); color:var(--gold); letter-spacing:.2em; text-transform:uppercase; font-size:.8rem; margin-bottom:1rem;">Valutazione Gratuita</div>
+    <div style="font-family:var(--font-head); color:var(--gold); letter-spacing:.2em; text-transform:uppercase; font-size:.8rem; margin-bottom:1rem;">Servizio Professionale</div>
     <h1>Compriamo la tua <span>Auto Usata</span></h1>
-    <p class="hero-sub">Vendi il tuo veicolo oggi stesso. Valutazione immediata e pagamento garantito in meno di un'ora.</p>
+    <p class="hero-sub">Valutazione istantanea allo 06 66152690. Pagamento garantito e voltura immediata in sede.</p>
     <a href="https://wa.me/390666152690" class="btn-primary">Richiedi Valutazione</a>
   </div>
   <div class="hero-visual">
     <div class="hero-img-wrap">
-      <img src="https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Acquisto Auto">
+      <img src="https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Acquisto Auto Angelucci">
     </div>
   </div>
 </section>
@@ -92,18 +111,18 @@
 <section class="intro-section">
   <div class="intro-grid">
     <div class="intro-text">
-      <h2 class="section-title">Trasparenza e Affidabilità</h2>
-      <p>Da Angelucci Domenico Auto, l'acquisto del tuo usato è una procedura rapida e sicura. Valutiamo l'auto secondo i parametri reali di mercato.</p>
-      <p>Ci occupiamo noi di tutta la burocrazia: il passaggio di proprietà avviene direttamente in sede.</p>
+      <h2 class="section-title">Vendi in 60 minuti</h2>
+      <p>Evita i rischi delle vendite tra privati. Da noi ricevi una valutazione onesta basata sullo stato d'uso reale del tuo veicolo.</p>
+      <p>Passaggio di proprietà gestito internamente in tempo reale. Massima trasparenza legale.</p>
     </div>
     <div class="why-grid">
       <div class="why-item">
-        <div class="why-title">Pagamento Immediato</div>
-        <p class="why-desc">Bonifico istantaneo al momento della firma.</p>
+        <div class="why-title">Pagamento Sicuro</div>
+        <p>Bonifico immediato al momento della firma.</p>
       </div>
       <div class="why-item">
-        <div class="why-title">Massima Serietà</div>
-        <p class="why-desc">Tratti con un'azienda storica, non con privati anonimi.</p>
+        <div class="why-title">Velocità</div>
+        <p>Pratica conclusa in meno di un'ora.</p>
       </div>
     </div>
   </div>
