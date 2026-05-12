@@ -25,15 +25,14 @@
       display: flex; align-items: center; justify-content: space-between;
       height: 72px;
     }
-    .nav-logo img { height: 58px; width: auto; display: block; }
-    .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
-    .nav-links a {
-      font-family: var(--font-head);
-      font-size: 1rem; font-weight: 600;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      color: #aaa; text-decoration: none;
-      transition: color 0.2s;
-    }
+   .nav-logo img {
+  height: 58px;
+  width: auto;
+  display: block;
+  /* Questo filtro inverte i colori e spara la luminosità al massimo rendendo la scritta bianca */
+  filter: brightness(0) invert(1); 
+  image-rendering: -webkit-optimize-contrast; /* Aumenta la nitidezza del logo */
+}
     .nav-links a:hover { color: var(--white); }
     .nav-links a.active { color: var(--white); border-bottom: 2px solid var(--red); }
 
