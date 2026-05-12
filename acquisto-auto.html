@@ -26,14 +26,15 @@
       display: flex; align-items: center; justify-content: space-between;
       height: 72px;
     }
-
-    .nav-logo img {
-      height: 58px;
-      width: auto;
-      display: block;
-      /* Tolti i filtri aggressivi: ora il logo mantiene i suoi colori originali (Grigio/Rosso/Scritta Bianca) */
-    }
-
+.nav-logo img {
+    height: 58px;
+    width: auto;
+    display: block;
+    /* Questo filtro mantiene i colori ma spinge le parti chiare/grigie al bianco puro */
+    filter: brightness(1.5) contrast(1.2) saturate(1.5);
+    image-rendering: -webkit-optimize-contrast;
+}
+    
     .nav-links {
       display: flex; align-items: center; gap: 1.8rem; list-style: none;
     }
