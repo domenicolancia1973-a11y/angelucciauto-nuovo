@@ -275,101 +275,110 @@ footer {
     line-height: 1.5;
 }
 
-/* ── SOLO PER CELLULARE: FIX HOME E CENTRATURA ── */
+/* ── SOLO PER CELLULARE: MODIFICHE SCRUPOLOSE ── */
 @media (max-width: 768px) {
 
-    /* 1. Reset generale per Mobile: evita che il sito sia "sottile" */
-    body, html {
-        overflow-x: hidden; /* Evita lo scorrimento laterale del sito intero */
-        width: 100%;
-    }
-
-    /* 2. Navbar: Centrata e piena larghezza */
+    /* 1. NAVBAR: Logo centrato e Hamburger (3 stanghette) */
     nav {
         display: flex !important;
-        justify-content: center !important;
+        justify-content: center !important; /* Centra il logo */
         align-items: center !important;
+        position: relative;
         width: 100%;
-        padding: 0 1rem !important;
-        height: 70px;
+        height: 72px;
+    }
+
+    /* Icona Hamburger (3 stanghette) a sinistra */
+    nav::before {
+        content: '☰'; 
+        position: absolute;
+        left: 20px;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
     }
 
     .nav-logo img {
-        height: 45px;
+        height: 50px;
         width: auto;
     }
 
-    /* 3. Hero (Immagine Principale): Ripristino dimensioni */
-    .hero {
+    .nav-links { display: none; } /* Nasconde menu PC */
+
+    /* 2. VETRINA AUTO: Box grandi come immagine Hero + Dettagli visibili */
+    .inventory-grid {
         display: flex !important;
-        flex-direction: column !important;
-        padding: 2rem 1.5rem !important; /* Spazio ai lati */
-        text-align: center;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 0;
         width: 100%;
     }
 
-    .hero-copy {
-        width: 100%;
-        margin-bottom: 2rem;
+    .car-card {
+        min-width: 100% !important; /* Un solo box che riempie lo schermo */
+        scroll-snap-align: center;
+        height: auto !important; /* Permette al contenuto di starci */
+        border: none;
     }
 
-    .hero-image {
-        display: block !important;
+    .car-card img {
         width: 100% !important;
-    }
-
-    .hero-image img {
-        width: 100% !important;
-        height: 250px !important; /* Altezza della foto principale */
+        height: 250px !important; /* Grande come la foto principale */
         object-fit: cover;
-        border-radius: 10px;
     }
 
-    /* 4. Griglie: Tornano a colonna singola per non essere "sottili" */
-    .inventory-grid, .servizi-grid {
+    /* Assicura che scritte, prezzo e info siano visibili */
+    .car-card-body {
+        padding: 1.5rem;
+        background: var(--dark3);
+        display: block !important;
+    }
+
+    /* 3. SERVIZI: Stessa logica della vetrina (1 box alla volta) */
+    .servizi-grid {
         display: flex !important;
-        flex-direction: column !important; /* Una card sotto l'altra per ora */
-        gap: 1.5rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 0;
         width: 100%;
-        padding: 0;
     }
 
-    /* Box grandi quanto la foto principale */
-    .car-card, .servizio-card, #dove-siamo iframe {
+    .servizio-card {
+        min-width: 100% !important;
+        scroll-snap-align: center;
+        height: auto !important;
+    }
+
+    .servizio-card img {
         width: 100% !important;
-        height: 250px !important; /* Stessa altezza della Hero */
-        margin: 0 auto;
+        height: 250px !important; /* Grande come la foto principale */
+        object-fit: cover;
     }
 
-    /* 5. Footer: Sistemazione colonne tagliate */
-    footer {
-        padding: 3rem 1.5rem !important;
-        width: 100%;
-    }
-
-    .footer-grid {
-        display: flex !important;
-        flex-direction: column !important; /* Colonne una sotto l'altra */
-        gap: 2rem;
-        text-align: center;
-    }
-
-    .footer-logo img {
-        margin: 0 auto 1rem; /* Centra il logo nel footer */
-    }
-
-    .footer-col {
-        width: 100%;
-    }
-
-    /* 6. Pulsante Lista: Centrato e leggibile */
-    .btn-lista {
-        display: inline-block !important;
+    /* 4. LE NOSTRE SEDI: Solo grandezza box (riempie lo schermo) */
+    #dove-siamo iframe, 
+    .map-container {
         width: 100% !important;
-        max-width: 320px;
-        margin: 2rem auto !important;
-        white-space: normal !important;
-        line-height: 1.3;
-        background: var(--red) !important;
+        height: 250px !important; /* Uguale agli altri box */
     }
+
+    /* 5. FRECCE DIREZIONALI (Indicazione visiva dentro i box) */
+    .inventory-grid::after, .servizi-grid::after {
+        content: '‹ scorri per vedere altri ›';
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.6);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        pointer-events: none;
+        z-index: 10;
+        text-transform: uppercase;
+        font-family: var(--font-head);
+    }
+
+    /* Footer non toccato come richiesto */
 }
