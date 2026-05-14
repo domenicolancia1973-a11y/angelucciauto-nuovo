@@ -441,18 +441,44 @@ footer {
     pointer-events: none;
 }
 
-    /* 4. LE NOSTRE SEDI: Box 100% */
-    #dove-siamo .section-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-    }
+   /* ── 4. LE NOSTRE SEDI: BOX A TUTTO SCHERMO ── */
+#dove-siamo {
+    width: 100% !important;
+    padding: 2rem 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+}
 
-    #dove-siamo iframe {
-        width: 100vw !important;
-        height: 300px !important;
-        margin: 0 !important;
-    }
+#dove-siamo .section-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0 !important; /* Toglie spazi bianchi tra i box delle sedi */
+    width: 100% !important;
+}
+
+/* Forza la mappa e il box informazioni a coprire tutto il display */
+.map-container, 
+#dove-siamo iframe, 
+.sede-info-box { 
+    width: 100vw !important; 
+    /* Trucco per centrare ignorando i margini del contenitore padre */
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    height: 300px !important; 
+    border: none !important;
+    border-radius: 0 !important; 
+    display: block !important;
+}
+
+/* Se hai del testo nelle info delle sedi, aggiungiamo un po' di respiro */
+.sede-info-box {
+    height: auto !important;
+    padding: 1.5rem !important;
+    box-sizing: border-box;
+    background: var(--dark2);
+    text-align: center;
+}
 
     /* 5. PULSANTE LISTA: Rosso e centrato */
     .btn-lista {
