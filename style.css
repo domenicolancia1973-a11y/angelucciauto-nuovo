@@ -274,58 +274,113 @@ footer {
     font-weight: 600;
     line-height: 1.5;
 }
-/* ── NAVBAR MOBILE: LOGO CENTRALE, HAMBURGER SX, WHATSAPP DX ── */
-nav {
-    display: flex !important;
-    justify-content: center !important; /* Logo al centro */
-    align-items: center !important;
-    width: 100% !important;
-    height: 70px !important;
-    padding: 0 15px !important;
-    position: relative !important;
-    background: #000 !important;
-}
+/* ── FIX TOTALE MOBILE: LARGHEZZA 100% E CENTRATURA ── */
+@media (max-width: 768px) {
 
-/* 1. Menu a stanghette (Hamburger) a sinistra */
-nav::before {
-    content: '☰';
-    position: absolute;
-    left: 20px;
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-}
+    /* Reset totale per evitare lo spostamento a sinistra */
+    html, body {
+        width: 100% !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 
-/* 2. Pulsante WhatsApp rotondo a destra */
-/* Nota: Questo crea l'icona grafica. Per renderla cliccabile serve l'HTML */
-nav::after {
-    content: ''; /* Codice icona o usiamo un cerchio verde se non hai fontawesome */
-    font-family: "Font Awesome 5 Brands"; /* Se lo usi, altrimenti usiamo un'immagine */
-    position: absolute;
-    right: 20px;
-    background: #25D366; /* Verde WhatsApp */
-    color: white;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
+    /* 1. NAVBAR: Hamburger SX, Logo Centro, WA Destra */
+    nav {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 70px !important;
+        position: relative !important;
+        padding: 0 !important;
+    }
 
-.nav-logo {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-}
+    nav::before {
+        content: '☰';
+        position: absolute;
+        left: 20px;
+        color: white;
+        font-size: 2rem;
+    }
 
-.nav-logo img {
-    height: 45px;
-    width: auto;
-}
+    .nav-links { display: none !important; }
 
-.nav-links {
-    display: none !important; /* Nasconde i link testuali */
+    /* 2. HERO (FOTO PRINCIPALE): Piena larghezza e pulsante sotto */
+    .hero {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .hero-image {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .hero-image img {
+        width: 100vw !important;
+        height: 250px !important;
+        object-fit: cover;
+    }
+
+    .hero-copy {
+        width: 100% !important;
+        padding: 1.5rem !important;
+        text-align: center !important;
+    }
+
+    /* 3. VETRINA E SERVIZI: Un solo box grande centrato */
+    .inventory-grid, .servizi-grid {
+        display: flex !important; /* Trasforma la griglia in riga */
+        flex-wrap: nowrap !important; /* Impedisce di andare a capo */
+        overflow-x: auto !important; /* Permette lo scorrimento */
+        scroll-snap-type: x mandatory;
+        width: 100vw !important;
+        gap: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .car-card, .servizio-card {
+        min-width: 100vw !important; /* Forza il box a essere largo quanto lo schermo */
+        max-width: 100vw !important;
+        flex: 0 0 100vw !important; /* Impedisce al box di rimpicciolirsi */
+        scroll-snap-align: center;
+        border: none !important;
+        margin: 0 !important;
+    }
+
+    .car-card img, .servizio-card img {
+        width: 100% !important;
+        height: 250px !important;
+        object-fit: cover;
+    }
+
+    /* 4. LE NOSTRE SEDI: Box 100% */
+    #dove-siamo .section-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    #dove-siamo iframe {
+        width: 100vw !important;
+        height: 300px !important;
+        margin: 0 !important;
+    }
+
+    /* 5. PULSANTE LISTA: Rosso e centrato */
+    .btn-lista {
+        display: flex !important;
+        background: #ff0000 !important;
+        width: 90% !important;
+        margin: 2rem auto !important;
+        white-space: normal !important;
+        text-align: center;
+        justify-content: center;
+        padding: 15px !important;
+    }
 }
