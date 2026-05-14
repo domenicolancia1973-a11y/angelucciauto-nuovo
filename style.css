@@ -275,42 +275,58 @@ footer {
     line-height: 1.5;
 }
 
-/* ── FIX DEFINITIVO MOBILE: LARGHEZZA TOTALE E CENTRATURA ── */
+/* ── FIX TOTALE: NAVBAR CENTRATA E CONTENUTO PIENO ── */
 @media (max-width: 768px) {
 
-    /* Reset fondamentale per evitare lo spostamento a sinistra */
-    * { max-width: 100vw; }
-    
+    /* Reset per evitare lo spostamento a sinistra */
     body {
         overflow-x: hidden;
         width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
-    /* 1. NAVBAR: Centrata con Hamburger */
+    /* 1. NAVBAR: Blocchiamo lo spostamento a SX */
     nav {
         display: flex !important;
-        justify-content: center !important;
+        justify-content: center !important; /* Forza il logo al centro */
         align-items: center !important;
         width: 100% !important;
-        left: 0 !important;
         padding: 0 !important;
+        position: relative;
     }
 
+    /* Le tre stanghette (Hamburger) */
     nav::before {
         content: '☰';
         position: absolute;
-        left: 20px;
+        left: 20px; /* Fisse a sinistra senza spingere il logo */
         color: white;
         font-size: 2rem;
+        z-index: 10;
     }
 
-    .nav-logo { margin: 0 auto; }
+    /* Nascondiamo i link del PC che causano il disastro */
+    .nav-links {
+        display: none !important; 
+    }
 
-    /* 2. HERO: Ripristino larghezza */
+    .nav-logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-logo img {
+        height: 48px;
+        width: auto;
+    }
+
+    /* 2. HERO: Piena larghezza */
     .hero {
         display: block !important;
         width: 100% !important;
         padding: 2rem 1rem !important;
+        text-align: center;
     }
 
     .hero-image img {
@@ -319,56 +335,42 @@ footer {
         object-fit: cover;
     }
 
-    /* 3. VETRINA & SERVIZI: Box 100% larghezza schermo */
+    /* 3. VETRINA E SERVIZI: Box 100% e Grandi */
     .inventory-grid, .servizi-grid {
         display: flex !important;
-        flex-direction: row !important;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        width: 100vw !important;
-        margin-left: -1rem; /* Compensa eventuale padding del contenitore padre */
-        padding: 0;
+        width: 100% !important;
         gap: 0;
     }
 
     .car-card, .servizio-card {
-        min-width: 100vw !important; /* Occupa tutto lo schermo */
+        min-width: 100% !important;
         scroll-snap-align: center;
-        border: none !important;
     }
 
     .car-card img, .servizio-card img {
+        height: 250px !important;
         width: 100% !important;
-        height: 250px !important; /* Uguale alla Hero */
         object-fit: cover;
     }
 
-    /* 4. LE NOSTRE SEDI: Box 100% */
+    /* 4. SEDE: Box 100% */
     #dove-siamo iframe {
         width: 100% !important;
         height: 250px !important;
     }
 
-    /* 5. FOOTER: Ripristino centratura (non spostato a sx) */
+    /* 5. FOOTER: Centrato e Pieno */
     footer {
         width: 100% !important;
-        padding: 3rem 1rem !important;
-        margin: 0 !important;
+        padding: 2rem 1rem !important;
     }
 
     .footer-grid {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        text-align: center !important;
-    }
-
-    /* 6. PULSANTE LISTA: Largo e leggibile */
-    .btn-lista {
-        display: block !important;
-        width: 90% !important;
-        margin: 2rem auto !important;
-        white-space: normal !important;
-        background: var(--red) !important;
+        text-align: center;
     }
 }
