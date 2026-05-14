@@ -277,89 +277,84 @@ footer {
 
 /* ── SOLO PER CELLULARE (Correzioni richieste) ── */
 @media (max-width: 768px) {
-
-    /* 1. Navbar: Logo centrato e Icona Hamburger */
+    /* Navbar centrata con Hamburger */
     nav {
-        display: flex;
-        justify-content: center; /* Centra il logo */
-        align-items: center;
-        position: relative;
+        justify-content: center !important;
         height: 70px;
+        padding: 0 !important;
     }
-
-    .nav-logo img {
-        height: 45px;
-        width: auto;
-    }
-
-    /* Creiamo l'icona hamburger (le tre stanghette) */
-    nav::before {
-        content: '☰'; 
+    .menu-icon {
+        display: block;
         position: absolute;
         left: 20px;
         color: white;
-        font-size: 1.8rem;
+        font-size: 2rem;
         cursor: pointer;
     }
 
-    .nav-links { display: none; } /* Nasconde il menu del PC */
-
-    /* 2. Riduzione spazio tra Navbar e Inizio Sito */
-    .hero {
-        padding-top: 1rem !important;
+    /* Menu a comparsa (Hamburger funzionante) */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #000;
+        padding: 20px;
+        z-index: 1000;
     }
+    .nav-links.active { display: flex; } /* Si attiva al click */
 
-    /* 3. Grandezza Box (Uguali alla foto principale) */
-    /* Vetrina, Servizi e Sedi devono avere tutti la stessa altezza */
-    .hero-image img,
-    .car-card,
-    .servizio-card,
-    .map-container, /* O il contenitore della tua mappa */
-    #dove-siamo iframe {
+    /* Spazio ridotto tra Nav e Hero */
+    .hero { padding-top: 1rem !important; grid-template-columns: 1fr !important; }
+    .hero-image { display: block !important; width: 100%; }
+
+    /* Box Grandi come la foto principale */
+    .hero-image img, .car-card, .servizio-card, #dove-siamo iframe {
+        height: 350px !important; /* Altezza fissa per tutti */
         width: 100% !important;
-        height: 300px !important; /* Altezza uniforme */
         object-fit: cover;
     }
 
-    /* 4. Scorrimento con Freccie (Slider) */
+    /* Slider orizzontale */
     .inventory-grid, .servizi-grid {
         display: flex !important;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         gap: 0;
-        position: relative;
+        scroll-behavior: smooth;
     }
-
     .car-card, .servizio-card {
-        min-width: 100% !important; /* Un box occupa tutto lo spazio */
+        min-width: 100% !important;
         scroll-snap-align: center;
     }
 
-    /* 5. Pulsante Lista Veicoli (In risalto e su due righe) */
-    .btn-lista {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        white-space: normal !important; /* Permette le due righe */
-        width: 90%;
-        max-width: 300px;
-        margin: 2rem auto;
-        padding: 15px;
-        background-color: var(--red) !important; /* In risalto */
-        line-height: 1.2;
+    /* Frecce dentro i box */
+    .slider-container { position: relative; width: 100%; }
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        border: none;
+        font-size: 2rem;
+        padding: 10px;
+        z-index: 10;
     }
+    .arrow.left { left: 5px; }
+    .arrow.right { right: 5px; }
 
-    /* 6. Freccie Direzionali dentro i box */
-    /* Usiamo degli indicatori visivi per lo scorrimento */
-    .section::after {
-        content: '‹ scorri ›';
-        display: block;
-        text-align: center;
-        color: var(--red);
-        font-family: var(--font-head);
-        text-transform: uppercase;
-        margin-top: 10px;
-        letter-spacing: 2px;
+    /* Pulsante Lista Veicoli */
+    .btn-lista {
+        display: flex !important;
+        white-space: normal !important;
+        height: auto !important;
+        padding: 20px !important;
+        background: var(--red) !important;
+        font-size: 1.2rem !important;
+        margin: 20px auto !important;
+        width: 90%;
     }
 }
