@@ -274,147 +274,102 @@ footer {
     font-weight: 600;
     line-height: 1.5;
 }
+/* ── FOTO PRINCIPALE (HERO): CENTRATURA TOTALE ── */
+.hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* Centra tutto il contenuto */
+    text-align: center !important;
+    width: 100% !important;
+    padding: 1rem 0 !important;
+    margin: 0 !important;
+}
 
-/* ── FIX TOTALE: NAVBAR CENTRATA E CONTENUTO PIENO ── */
-@media (max-width: 768px) {
+.hero-image {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important; /* Centra l'immagine se fosse più piccola */
+    margin: 0 0 1.5rem 0 !important;
+}
 
-    /* Reset per evitare lo spostamento a sinistra */
-    body {
-        overflow-x: hidden;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
+.hero-image img {
+    width: 100vw !important; /* Occupa tutta la larghezza */
+    height: 250px !important;
+    object-fit: cover;
+    display: block;
+}
 
-    /* 1. NAVBAR: Blocchiamo lo spostamento a SX */
-    nav {
-        display: flex !important;
-        justify-content: center !important; /* Forza il logo al centro */
-        align-items: center !important;
-        width: 100% !important;
-        padding: 0 !important;
-        position: relative;
-    }
+/* ── VETRINA E SERVIZI: UN BOX CENTRATO E SCORREVOLE ── */
+.inventory-grid, .servizi-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    gap: 0 !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-overflow-scrolling: touch;
+    /* Rimuove eventuali scrollbar visibili */
+    scrollbar-width: none; 
+}
+.inventory-grid::-webkit-scrollbar { display: none; }
 
-    /* Le tre stanghette (Hamburger) */
-    nav::before {
-        content: '☰';
-        position: absolute;
-        left: 20px; /* Fisse a sinistra senza spingere il logo */
-        color: white;
-        font-size: 2rem;
-        z-index: 10;
-    }
+.car-card, .servizio-card {
+    min-width: 100vw !important; /* Ogni box è largo esattamente come lo schermo */
+    max-width: 100vw !important;
+    scroll-snap-align: center; /* Forza il blocco al centro dello schermo */
+    flex-shrink: 0;
+    margin: 0 !important;
+    border: none !important;
+}
 
-    /* Nascondiamo i link del PC che causano il disastro */
-    .nav-links {
-        display: none !important; 
-    }
+.car-card img, .servizio-card img {
+    width: 100% !important;
+    height: 250px !important; /* Altezza uguale alla foto principale */
+    object-fit: cover;
+}
 
-    .nav-logo {
-        display: flex;
-        justify-content: center;
-    }
+/* ── LE NOSTRE SEDI: BOX A TUTTO SCHERMO ── */
+#dove-siamo {
+    padding: 2rem 0 !important;
+    width: 100% !important;
+}
 
-    .nav-logo img {
-        height: 48px;
-        width: auto;
-    }
+#dove-siamo .section-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
 
-/* ── SISTEMAZIONE HERO E BOX (LARGHI E PROPORZIONATI) ── */
+#dove-siamo iframe, 
+.map-container {
+    width: 100vw !important; /* Mappa a tutta larghezza */
+    height: 300px !important;
+    margin: 0 !important;
+    border: none;
+}
 
-    /* 1. Spostamento Pulsante sotto l'immagine principale */
-    .hero {
-        display: flex !important;
-        flex-direction: column !important; /* Mette gli elementi uno sotto l'altro */
-        padding: 1rem 0 !important; /* Toglie spazi inutili sopra/sotto */
-        width: 100% !important;
-    }
+/* ── FRECCE E INDICAZIONI (HTML FIX DOPO) ── */
+.inventory-grid::before, .servizi-grid::before {
+    /* Questo crea un piccolo spazio d'invito allo scorrimento */
+    content: '';
+}
 
-    .hero-image {
-        order: 1; /* L'immagine sta sopra */
-        width: 100% !important;
-        margin-bottom: 1.5rem;
-    }
-
-    .hero-copy {
-        order: 2; /* Il testo e il pulsante vanno sotto l'immagine */
-        width: 100% !important;
-        padding: 0 1.5rem; /* Spazio solo per il testo */
-        text-align: center;
-    }
-
-    .hero-image img {
-        width: 100% !important;
-        height: 250px !important; /* Altezza fissa per non farlo troppo alto */
-        border-radius: 0; /* Rende l'immagine a tutto schermo senza bordi tondi se preferisci */
-        object-fit: cover;
-    }
-
- /* ── SEZIONE VETRINA E SERVIZI (UN SOLO BOX GRANDE ALLA VOLTA) ── */
-
-    /* Contenitore che permette lo scorrimento orizzontale */
-    .inventory-grid, .servizi-grid {
-        display: flex !important;
-        flex-direction: row !important; /* Forza i box uno di fianco all'altro */
-        overflow-x: auto !important;   /* Permette lo scorrimento col dito */
-        scroll-snap-type: x mandatory; /* Blocca il box al centro quando scorri */
-        gap: 0 !important;             /* Elimina spazi tra i box */
-        width: 100vw !important;       /* Largo quanto lo schermo */
-        margin-left: -1.5rem !important; /* Annulla il padding laterale della sezione */
-        padding: 0 !important;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* La singola card: deve essere enorme quanto la foto principale */
-    .car-card, .servizio-card {
-        min-width: 100vw !important;  /* Forza il box a essere largo quanto tutto lo schermo */
-        max-width: 100vw !important;
-        scroll-snap-align: start;     /* Lo aggancia al bordo quando scorri */
-        flex-shrink: 0;               /* Impedisce al box di rimpicciolirsi */
-        border: none !important;
-    }
-
-    /* Immagini dei box: Stessa altezza della foto principale (250px) */
-    .car-card img, .servizio-card img {
-        width: 100% !important;
-        height: 250px !important; 
-        object-fit: cover;
-    }
-
-    /* ── LE NOSTRE SEDI: INGRANDIMENTO BOX ── */
-    #dove-siamo iframe, 
-    .map-container {
-        width: 100vw !important;
-        margin-left: -1.5rem !important; /* Lo attacca ai bordi del telefono */
-        height: 300px !important;        /* Più grande e visibile */
-        border: none;
-    }
-
-    /* ── FRECCE DIREZIONALI (Simulazione Visiva) ── */
-    /* Aggiungiamo un segnale che faccia capire che si può scorrere */
-    .inventory-grid::after, .servizi-grid::after {
-        content: '‹ TRASCINA PER VEDERE ALTRI ›';
-        display: block;
-        width: 100%;
-        text-align: center;
-        color: var(--red);
-        font-weight: 800;
-        font-family: var(--font-head);
-        padding: 10px 0;
-        letter-spacing: 1px;
-    }
-
-    /* 5. FOOTER: Centrato e Pieno */
-    footer {
-        width: 100% !important;
-        padding: 2rem 1rem !important;
-    }
-
-    .footer-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center;
-    }
+/* Pulsante Lista Veicoli: Rosso, centrato, due righe */
+.btn-lista {
+    background-color: #ff0000 !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 90% !important;
+    margin: 2rem auto !important;
+    padding: 15px !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: none !important;
 }
