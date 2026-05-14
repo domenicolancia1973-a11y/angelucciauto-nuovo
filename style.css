@@ -275,63 +275,91 @@ footer {
     line-height: 1.5;
 }
 
-/* Fix per Mobile: una colonna sola per tutto */
+/* ── SOLO PER CELLULARE (Correzioni richieste) ── */
 @media (max-width: 768px) {
-    /* Navbar: Logo centrato e icona menu */
+
+    /* 1. Navbar: Logo centrato e Icona Hamburger */
     nav {
-        justify-content: center;
-        padding: 0 1rem;
+        display: flex;
+        justify-content: center; /* Centra il logo */
+        align-items: center;
+        position: relative;
+        height: 70px;
     }
-    
-    /* Icona Hamburger (le 3 lineette) */
-    .menu-icon {
-        display: block;
+
+    .nav-logo img {
+        height: 45px;
+        width: auto;
+    }
+
+    /* Creiamo l'icona hamburger (le tre stanghette) */
+    nav::before {
+        content: '☰'; 
         position: absolute;
         left: 20px;
-        font-size: 1.8rem;
         color: white;
+        font-size: 1.8rem;
         cursor: pointer;
     }
 
-    /* Foto principale e Box: Stessa dimensione */
-    .hero-image img, 
-    .car-card, 
+    .nav-links { display: none; } /* Nasconde il menu del PC */
+
+    /* 2. Riduzione spazio tra Navbar e Inizio Sito */
+    .hero {
+        padding-top: 1rem !important;
+    }
+
+    /* 3. Grandezza Box (Uguali alla foto principale) */
+    /* Vetrina, Servizi e Sedi devono avere tutti la stessa altezza */
+    .hero-image img,
+    .car-card,
     .servizio-card,
+    .map-container, /* O il contenitore della tua mappa */
     #dove-siamo iframe {
         width: 100% !important;
-        min-width: 100% !important;
-        height: 300px !important; /* Altezza uniforme per tutto */
+        height: 300px !important; /* Altezza uniforme */
         object-fit: cover;
     }
 
-    /* Scorrimento con frecce */
+    /* 4. Scorrimento con Freccie (Slider) */
     .inventory-grid, .servizi-grid {
         display: flex !important;
-        overflow-x: hidden; /* Nascondiamo la barra per usare le frecce */
-        scroll-behavior: smooth;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 0;
         position: relative;
     }
 
-    /* Posizionamento Frecce dentro i box */
-    .arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0,0,0,0.6);
-        color: white;
-        border: none;
-        padding: 10px;
-        z-index: 5;
-        font-size: 1.5rem;
+    .car-card, .servizio-card {
+        min-width: 100% !important; /* Un box occupa tutto lo spazio */
+        scroll-snap-align: center;
     }
-    .arrow-left { left: 10px; }
-    .arrow-right { right: 10px; }
 
-    /* Pulsante Lista Veicoli */
+    /* 5. Pulsante Lista Veicoli (In risalto e su due righe) */
     .btn-lista {
-        white-space: normal !important;
-        max-width: 90%;
-        margin: 20px auto;
-        background: var(--red) !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        white-space: normal !important; /* Permette le due righe */
+        width: 90%;
+        max-width: 300px;
+        margin: 2rem auto;
+        padding: 15px;
+        background-color: var(--red) !important; /* In risalto */
+        line-height: 1.2;
+    }
+
+    /* 6. Freccie Direzionali dentro i box */
+    /* Usiamo degli indicatori visivi per lo scorrimento */
+    .section::after {
+        content: '‹ scorri ›';
+        display: block;
+        text-align: center;
+        color: var(--red);
+        font-family: var(--font-head);
+        text-transform: uppercase;
+        margin-top: 10px;
+        letter-spacing: 2px;
     }
 }
