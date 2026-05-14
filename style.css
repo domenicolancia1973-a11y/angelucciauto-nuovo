@@ -208,3 +208,150 @@
     justify-content: center; 
     margin-bottom: 1rem;
 } 
+.servizio-icon svg { width: 20px; height: 20px; fill: #fff; }
+
+/* Testi Limpidi e Nitidi */
+.servizio-title { 
+    font-family: var(--font-head); 
+    font-size: 1.2rem; 
+    font-weight: 800; /* Più grassetto */
+    color: var(--white) !important; 
+    margin-bottom: 0.5rem;
+    -webkit-font-smoothing: antialiased; 
+}
+
+.servizio-desc { 
+    font-size: 0.9rem; 
+    color: #ffffff !important; /* Da grigio a bianco per limpidezza */
+    font-weight: 600; /* Più leggibile */
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+}
+    /* Gestione per schermi medi e piccoli */
+@media (max-width: 1200px) {
+    .servizi-grid { grid-template-columns: repeat(2, 1fr); } /* 2 per riga su tablet */
+}
+
+@media (max-width: 768px) {
+    .servizi-grid { grid-template-columns: 1fr; } /* 1 per riga su mobile */
+}
+
+    /* ── DOVE SIAMO ── */
+    #dove-siamo { background: var(--dark2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808; border-top: 1px solid #1e1e1e;
+      padding: 3rem 4rem 1.5rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 2.5rem;
+    }
+    .footer-logo img { height: 52px; margin-bottom: 1rem; }
+    .footer-desc { font-size: 0.88rem; color: #666; max-width: 280px; }
+    .footer-col h4 {
+      font-family: var(--font-head); font-size: 0.8rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 1rem;
+    }
+    .footer-col p, .footer-col a {
+      font-size: 0.9rem; color: #777; text-decoration: none;
+      display: block; margin-bottom: 0.4rem; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid #1e1e1e; padding-top: 1.2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: #555; }
+
+    /* ── STATUS ── */
+    .status-msg {
+      grid-column: 1 / -1; text-align: center;
+      padding: 3rem 0; color: var(--gray); font-size: 1rem;
+    }
+    .status-msg.error { color: #e74c3c; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+      .hero-image { display: none; }
+      .section { padding: 3rem 1.5rem; }
+      .inventory-grid, .servizi-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; }
+      footer { padding: 2rem 1.5rem 1rem; }
+    }
+    @media (max-width: 1100px) and (min-width: 901px) {
+      .inventory-grid, .servizi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+   /* Testi nitidi e definiti */
+p, .servizio-desc, .hero-sub, .section-tag, .svc-desc {
+    color: #ffffff !important;
+    font-weight: 600;
+    line-height: 1.6;
+    /* Rimuoviamo l'ombra sfocata e usiamo un filtro per la nitidezza */
+    text-shadow: none; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.01em;
+}
+
+/* Titoli "taglienti" e chiari */
+h1, h2, h3, .servizio-title {
+    font-weight: 800;
+    text-shadow: none;
+    -webkit-font-smoothing: antialiased;
+}
+ /* Navbar: Testo nitido, grassetto e ben spaziato */
+.nav-links a {
+    color: #ffffff !important;
+    font-weight: 700;          /* Grassetto deciso */
+    text-transform: uppercase; /* Rende tutto maiuscolo per massima chiarezza */
+    letter-spacing: 0.05em;    /* Spazia leggermente le lettere */
+    font-size: 0.95rem;        /* Dimensione ottimale */
+    -webkit-font-smoothing: antialiased;
+    transition: color 0.3s ease;
+}
+
+/* Effetto al passaggio del mouse (opzionale) */
+.nav-links a:hover {
+    color: #ff4d4d !important; /* Cambia colore quando ci passi sopra (es. rosso/accento) */
+}   
+/* Rende i testi delle card Servizi nitidi e puliti */
+.servizio-card .servizio-title {
+    color: #ffffff !important;
+    font-weight: 800;          /* Titolo bello solido */
+    text-shadow: none;         /* Rimuove ogni ombra che crea sfocatura */
+    -webkit-font-smoothing: antialiased; /* Massima nitidezza su Mac/Chrome */
+    -moz-osx-font-smoothing: grayscale;  /* Massima nitidezza su Firefox */
+}
+
+.servizio-card .servizio-desc {
+    color: #ffffff !important;
+    font-weight: 500;          /* Grassetto medio per non impastare le lettere */
+    text-shadow: none;         /* Rimuove l'effetto sfocato */
+    line-height: 1.5;          /* Più spazio tra le righe = più ordine visivo */
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.01rem;   /* Separa leggermente i caratteri */
+}
+
+/* Opzionale: scurisce leggermente l'immagine per far risaltare il bianco limpido */
+.servizio-card img {
+    filter: brightness(0.6) contrast(1.1);
+}
+    /* Nero assoluto per Navbar e Footer */
+nav, 
+footer, 
+.nav-links {
+    background-color: #000000 !important;
+    background-image: none !important; /* Rimuove eventuali sfumature */
+    border-bottom: 1px solid #111; /* Opzionale: una linea sottilissima per separare */
+}
+
+/* Assicurati che lo sfondo del sito non rovini l'effetto */
+body {
+    background-color: #000000;
+}
