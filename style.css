@@ -351,35 +351,58 @@ footer {
         object-fit: cover;
     }
 
-    /* 2. BOX VETRINA E SERVIZI (Bassi e Larghi) */
-    .car-card, .servizio-card {
-        min-width: 100% !important;
-        width: 100% !important;
+ /* ── SEZIONE VETRINA E SERVIZI (UN SOLO BOX GRANDE ALLA VOLTA) ── */
+
+    /* Contenitore che permette lo scorrimento orizzontale */
+    .inventory-grid, .servizi-grid {
         display: flex !important;
-        flex-direction: column !important;
-        border: none !important;
-        background: var(--dark2);
-        margin: 0;
+        flex-direction: row !important; /* Forza i box uno di fianco all'altro */
+        overflow-x: auto !important;   /* Permette lo scorrimento col dito */
+        scroll-snap-type: x mandatory; /* Blocca il box al centro quando scorri */
+        gap: 0 !important;             /* Elimina spazi tra i box */
+        width: 100vw !important;       /* Largo quanto lo schermo */
+        margin-left: -1.5rem !important; /* Annulla il padding laterale della sezione */
+        padding: 0 !important;
+        -webkit-overflow-scrolling: touch;
     }
 
-    /* Rendiamo l'immagine del box meno alta per farlo sembrare più largo */
+    /* La singola card: deve essere enorme quanto la foto principale */
+    .car-card, .servizio-card {
+        min-width: 100vw !important;  /* Forza il box a essere largo quanto tutto lo schermo */
+        max-width: 100vw !important;
+        scroll-snap-align: start;     /* Lo aggancia al bordo quando scorri */
+        flex-shrink: 0;               /* Impedisce al box di rimpicciolirsi */
+        border: none !important;
+    }
+
+    /* Immagini dei box: Stessa altezza della foto principale (250px) */
     .car-card img, .servizio-card img {
         width: 100% !important;
-        height: 200px !important; /* Ridotto da 250 a 200 per togliere l'effetto "stretto e alto" */
+        height: 250px !important; 
         object-fit: cover;
     }
 
-    .car-card-body, .servizio-body {
-        width: 100% !important;
-        padding: 1.2rem !important;
-        box-sizing: border-box;
+    /* ── LE NOSTRE SEDI: INGRANDIMENTO BOX ── */
+    #dove-siamo iframe, 
+    .map-container {
+        width: 100vw !important;
+        margin-left: -1.5rem !important; /* Lo attacca ai bordi del telefono */
+        height: 300px !important;        /* Più grande e visibile */
+        border: none;
     }
 
-    /* 3. SEDI (Mappa larga) */
-    #dove-siamo iframe {
-        width: 100% !important;
-        height: 200px !important;
-        border: none;
+    /* ── FRECCE DIREZIONALI (Simulazione Visiva) ── */
+    /* Aggiungiamo un segnale che faccia capire che si può scorrere */
+    .inventory-grid::after, .servizi-grid::after {
+        content: '‹ TRASCINA PER VEDERE ALTRI ›';
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: var(--red);
+        font-weight: 800;
+        font-family: var(--font-head);
+        padding: 10px 0;
+        letter-spacing: 1px;
     }
 
     /* 5. FOOTER: Centrato e Pieno */
