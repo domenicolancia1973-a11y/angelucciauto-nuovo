@@ -274,32 +274,34 @@ footer {
     font-weight: 600;
     line-height: 1.5;
 }
-/* ── FOTO PRINCIPALE (HERO): CENTRATURA TOTALE ── */
+/* ── FOTO PRINCIPALE (HERO): CENTRATURA E ORDINE ── */
 .hero {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important; /* Centra tutto il contenuto */
+    flex-direction: column !important; /* Forza il pulsante sotto l'immagine */
+    align-items: center !important; 
     text-align: center !important;
     width: 100% !important;
     padding: 1rem 0 !important;
-    margin: 0 !important;
 }
 
 .hero-image {
+    order: 1 !important; /* Immagine sopra */
     width: 100% !important;
-    display: flex !important;
-    justify-content: center !important; /* Centra l'immagine se fosse più piccola */
     margin: 0 0 1.5rem 0 !important;
 }
 
 .hero-image img {
-    width: 100vw !important; /* Occupa tutta la larghezza */
+    width: 100vw !important;
     height: 250px !important;
     object-fit: cover;
-    display: block;
 }
 
-/* ── VETRINA E SERVIZI: UN BOX CENTRATO E SCORREVOLE ── */
+.hero-copy {
+    order: 2 !important; /* Testo e pulsante sotto */
+    width: 100% !important;
+}
+
+/* ── VETRINA E SERVIZI (UN SOLO BOX GRANDE E CENTRATO) ── */
 .inventory-grid, .servizi-grid {
     display: flex !important;
     flex-direction: row !important;
@@ -309,16 +311,12 @@ footer {
     width: 100vw !important;
     margin: 0 !important;
     padding: 0 !important;
-    -webkit-overflow-scrolling: touch;
-    /* Rimuove eventuali scrollbar visibili */
-    scrollbar-width: none; 
 }
-.inventory-grid::-webkit-scrollbar { display: none; }
 
 .car-card, .servizio-card {
-    min-width: 100vw !important; /* Ogni box è largo esattamente come lo schermo */
+    min-width: 100vw !important;
     max-width: 100vw !important;
-    scroll-snap-align: center; /* Forza il blocco al centro dello schermo */
+    scroll-snap-align: center; /* Calamita il box al centro */
     flex-shrink: 0;
     margin: 0 !important;
     border: none !important;
@@ -326,37 +324,25 @@ footer {
 
 .car-card img, .servizio-card img {
     width: 100% !important;
-    height: 250px !important; /* Altezza uguale alla foto principale */
+    height: 250px !important; 
     object-fit: cover;
 }
 
-/* ── LE NOSTRE SEDI: BOX A TUTTO SCHERMO ── */
-#dove-siamo {
-    padding: 2rem 0 !important;
-    width: 100% !important;
-}
-
+/* ── LE NOSTRE SEDI: INGRANDIMENTO BOX ── */
 #dove-siamo .section-grid {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
 }
 
-#dove-siamo iframe, 
-.map-container {
-    width: 100vw !important; /* Mappa a tutta larghezza */
+#dove-siamo iframe {
+    width: 100vw !important;
     height: 300px !important;
     margin: 0 !important;
     border: none;
 }
 
-/* ── FRECCE E INDICAZIONI (HTML FIX DOPO) ── */
-.inventory-grid::before, .servizi-grid::before {
-    /* Questo crea un piccolo spazio d'invito allo scorrimento */
-    content: '';
-}
-
-/* Pulsante Lista Veicoli: Rosso, centrato, due righe */
+/* ── PULSANTE LISTA: ROSSO E SU DUE RIGHE ── */
 .btn-lista {
     background-color: #ff0000 !important;
     color: white !important;
@@ -365,9 +351,10 @@ footer {
     justify-content: center;
     text-align: center;
     width: 90% !important;
+    max-width: 300px;
     margin: 2rem auto !important;
     padding: 15px !important;
-    white-space: normal !important;
+    white-space: normal !important; /* Testo su due righe */
     line-height: 1.2 !important;
     font-weight: 800;
     text-transform: uppercase;
