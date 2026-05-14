@@ -283,3 +283,85 @@ footer {
         grid-template-columns: 1fr !important;
     }
 }
+/* ── SOLO PER CELLULARE ── */
+@media (max-width: 768px) {
+
+    /* 1. Navbar: Logo centrato e riduzione spazio */
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem !important;
+        gap: 0.5rem;
+    }
+
+    .nav-logo img {
+        height: 45px; /* Logo leggermente più piccolo su mobile */
+        margin: 0 auto;
+    }
+
+    /* Spazio tra navbar e inizio sito ridotto */
+    .hero {
+        padding-top: 2rem !important;
+        margin-top: 0 !important;
+    }
+
+    /* 2. Menu Hamburger (Placeholder estetico) */
+    .nav-links {
+        display: none; /* Nascondiamo i link estesi */
+    }
+    
+    /* 3. Vetrina e Servizi: Effetto scorrimento orizzontale */
+    .inventory-grid, .servizi-grid {
+        display: flex !important; /* Trasformiamo la griglia in una riga */
+        overflow-x: auto; /* Permette lo scorrimento laterale con il dito */
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .car-card, .servizio-card {
+        min-width: 85vw; /* Il box occupa quasi tutta la larghezza */
+        scroll-snap-align: center;
+        height: auto;
+    }
+
+    .car-card img, .servizio-card img {
+        height: 180px; /* Altezza bilanciata per non essere troppo alto */
+    }
+
+    /* 4. Pulsante Lista Veicoli (In risalto e su due righe) */
+    .btn-lista {
+        display: block;
+        width: 90%;
+        margin: 2rem auto;
+        padding: 15px 20px;
+        font-size: 1.1rem !important;
+        line-height: 1.2;
+        white-space: normal; /* Permette il testo su due righe */
+        background: var(--red); /* Colore pieno per massimo risalto */
+        border: none;
+    }
+
+    /* 5. Simulazione frecce (estetica) */
+    /* Nota: Per renderle cliccabili e farle scorrere serve un piccolo script JS */
+    .inventory-grid::before, .inventory-grid::after,
+    .servizi-grid::before, .servizi-grid::after {
+        content: '‹'; 
+        position: absolute;
+        z-index: 10;
+        color: white;
+        font-size: 2rem;
+        background: rgba(0,0,0,0.5);
+        padding: 0 10px;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none; /* Per ora solo visive */
+    }
+    
+    .inventory-grid::after, .servizi-grid::after {
+        content: '›';
+        right: 1rem;
+    }
+}
