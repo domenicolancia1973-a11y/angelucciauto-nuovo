@@ -321,44 +321,65 @@ footer {
         width: auto;
     }
 
-    /* 2. HERO: Piena larghezza */
+/* ── SISTEMAZIONE HERO E BOX (LARGHI E PROPORZIONATI) ── */
+
+    /* 1. Spostamento Pulsante sotto l'immagine principale */
     .hero {
-        display: block !important;
+        display: flex !important;
+        flex-direction: column !important; /* Mette gli elementi uno sotto l'altro */
+        padding: 1rem 0 !important; /* Toglie spazi inutili sopra/sotto */
         width: 100% !important;
-        padding: 2rem 1rem !important;
+    }
+
+    .hero-image {
+        order: 1; /* L'immagine sta sopra */
+        width: 100% !important;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-copy {
+        order: 2; /* Il testo e il pulsante vanno sotto l'immagine */
+        width: 100% !important;
+        padding: 0 1.5rem; /* Spazio solo per il testo */
         text-align: center;
     }
 
     .hero-image img {
         width: 100% !important;
-        height: 250px !important;
+        height: 250px !important; /* Altezza fissa per non farlo troppo alto */
+        border-radius: 0; /* Rende l'immagine a tutto schermo senza bordi tondi se preferisci */
         object-fit: cover;
     }
 
-    /* 3. VETRINA E SERVIZI: Box 100% e Grandi */
-    .inventory-grid, .servizi-grid {
-        display: flex !important;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        width: 100% !important;
-        gap: 0;
-    }
-
+    /* 2. BOX VETRINA E SERVIZI (Bassi e Larghi) */
     .car-card, .servizio-card {
         min-width: 100% !important;
-        scroll-snap-align: center;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        border: none !important;
+        background: var(--dark2);
+        margin: 0;
     }
 
+    /* Rendiamo l'immagine del box meno alta per farlo sembrare più largo */
     .car-card img, .servizio-card img {
-        height: 250px !important;
         width: 100% !important;
+        height: 200px !important; /* Ridotto da 250 a 200 per togliere l'effetto "stretto e alto" */
         object-fit: cover;
     }
 
-    /* 4. SEDE: Box 100% */
+    .car-card-body, .servizio-body {
+        width: 100% !important;
+        padding: 1.2rem !important;
+        box-sizing: border-box;
+    }
+
+    /* 3. SEDI (Mappa larga) */
     #dove-siamo iframe {
         width: 100% !important;
-        height: 250px !important;
+        height: 200px !important;
+        border: none;
     }
 
     /* 5. FOOTER: Centrato e Pieno */
