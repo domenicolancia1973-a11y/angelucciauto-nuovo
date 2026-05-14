@@ -35,15 +35,17 @@
     .section-title { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.1; margin-bottom: 14px; font-weight: 800; }
     .section-subtitle { color: var(--muted); font-size: 1.05rem; font-weight: 700; max-width: 760px; margin-bottom: 40px; }
 
-    /* Navbar */
-    .navbar { position: sticky; top: 0; z-index: 1000; background: rgba(15, 15, 16, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-    .nav-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .logo { display: flex; flex-direction: column; line-height: 1; }
-    .logo-main { font-size: 1.5rem; font-weight: 800; letter-spacing: 0.5px; color: var(--text); }
-    .logo-sub { margin-top: 4px; font-size: 0.82rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
-    .nav-menu { display: flex; align-items: center; gap: 22px; }
-    .nav-menu a { color: #ffffff; font-weight: 800; font-size: 0.98rem; transition: var(--transition); }
-    .nav-menu a:hover, .nav-menu a.active { color: var(--accent); }
+       /* ── NAV ── */
+    nav{position:sticky;top:0;z-index:100;background:rgba(9,9,9,.97);backdrop-filter:blur(14px);border-bottom:1px solid #1a1a1a;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:72px}
+    .nav-logo img{height:58px;width:auto;display:block}
+    .nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
+    .nav-links a{font-family:var(--font-head);font-size:.95rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#666;text-decoration:none;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}
+    .nav-links a.active{border-bottom:2px solid var(--blue);padding-bottom:2px}
+    .btn-wa{display:flex;align-items:center;gap:8px;background:#25d366;color:#fff!important;padding:9px 18px;border-radius:999px;font-family:var(--font-head)!important;font-size:.9rem!important;font-weight:700!important;text-decoration:none;transition:background .2s,transform .15s;white-space:nowrap}
+    .btn-wa:hover{background:#1ebe5d;transform:scale(1.03)}
+    .btn-wa svg{width:17px;height:17px;fill:#fff;flex-shrink:0}
+    .nav-burger{display:none;background:none;border:none;color:#666;font-size:1.5rem;cursor:pointer}
 
     /* Buttons */
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; font-weight: 800; font-size: 0.95rem; text-transform: uppercase; transition: var(--transition); cursor: pointer; border: none; text-decoration: none; }
