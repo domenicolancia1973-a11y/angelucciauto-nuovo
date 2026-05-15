@@ -233,30 +233,23 @@
   </div>
 </footer>
 
-<!-- ── SUPABASE ── -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+  // 1. Configurazione Supabase
   const SUPABASE_URL = 'https://xuxpnzaarkoymrvwabxy.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh1eHBuemFhcmtveW1ydndhYnh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1MDg0NzQsImV4cCI6MjA5MzA4NDQ3NH0.5RCrbajUxvztZIZX7ZHff2WIPK-kg9v7WJ7litfQNyw';
   const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-  <script>
-  // Configurazione Supabase (Già presente)
-  const SUPABASE_URL = 'https://xuxpnzaarkoymrvwabxy.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // la tua chiave
-  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // --- AGGIUNGI QUESTA FUNZIONE QUI ---
+  // 2. Funzione per il Menu Mobile (Hamburger)
   function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      if (navLinks) {
-          navLinks.classList.toggle('open');
-      }
+    const navLinks = document.getElementById('navLinks');
+    if (navLinks) {
+      navLinks.classList.toggle('open');
+    }
+  }
 
-
-  // Caricamento auto (Già presente)
-  loadCars();
-</script>
-
+  // 3. Funzione Sicurezza Testi
   function escapeHtml(str) {
     if (str === null || str === undefined) return '';
     return String(str)
@@ -264,8 +257,11 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  // 4. Funzione Caricamento Auto
   async function loadCars() {
     const container = document.getElementById('inventory-container');
+    if (!container) return;
+
     try {
       const { data, error } = await _supabase
         .from('auto')
@@ -287,60 +283,27 @@
       data.forEach(auto => {
         let fotoUrl = 'https://placehold.co/800x500/1a1a1a/888?text=Foto+non+disponibile';
         if (auto.cartella_foto && auto.foto_principale) {
-          fotoUrl = SUPABASE_URL + '/storage/v1/object/public/veicoli/'
-            + encodeURIComponent(auto.cartella_foto) + '/'
-            + encodeURIComponent(auto.foto_principale);
+          fotoUrl = SUPABASE_URL + '/storage/v1/object/public/veicoli/' + 
+                    encodeURIComponent(auto.cartella_foto) + '/' + 
+                    encodeURIComponent(auto.foto_principale);
         } else if (auto.foto_url) {
           fotoUrl = auto.foto_url;
         }
 
         const article = document.createElement('article');
         article.className = 'car-card';
-
-        const img = document.createElement('img');
-        img.src = fotoUrl;
-        img.alt = escapeHtml(auto.modello);
-        img.loading = 'lazy';
-        img.onerror = function() { this.src = 'https://placehold.co/800x500/1a1a1a/888?text=Foto+non+disponibile'; };
-
-        const body = document.createElement('div');
-        body.className = 'car-card-body';
-
-        const title = document.createElement('p');
-        title.className = 'car-title';
-        title.textContent = auto.modello;
-
-        const meta = document.createElement('p');
-        meta.className = 'car-meta';
-        meta.textContent = auto.anno + ' · ' + Number(auto.km).toLocaleString('it-IT') + ' km · ' + auto.alimentazione + ' · ' + auto.cambio;
-
-        const price = document.createElement('p');
-        price.className = 'car-price';
-        price.textContent = '€' + Number(auto.prezzo).toLocaleString('it-IT');
-
-        const actions = document.createElement('div');
-        actions.className = 'car-actions';
-
-        const linkDetail = document.createElement('a');
-        linkDetail.className = 'btn-detail';
-        linkDetail.href = 'dettaglio.html?id=' + encodeURIComponent(auto.id);
-        linkDetail.textContent = 'Dettagli';
-
-        const linkWa = document.createElement('a');
-        linkWa.className = 'btn-chat';
-        linkWa.href = 'https://wa.me/390666152690?text=' + encodeURIComponent('Ciao, sono interessato a: ' + auto.modello);
-        linkWa.target = '_blank';
-        linkWa.rel = 'noopener';
-        linkWa.textContent = 'WhatsApp';
-
-        actions.appendChild(linkDetail);
-        actions.appendChild(linkWa);
-        body.appendChild(title);
-        body.appendChild(meta);
-        body.appendChild(price);
-        body.appendChild(actions);
-        article.appendChild(img);
-        article.appendChild(body);
+        article.innerHTML = `
+          <img src="${fotoUrl}" alt="${escapeHtml(auto.modello)}" loading="lazy" onerror="this.src='https://placehold.co/800x500/1a1a1a/888?text=Foto+non+disponibile'">
+          <div class="car-card-body">
+            <p class="car-title">${escapeHtml(auto.modello)}</p>
+            <p class="car-meta">${auto.anno} · ${Number(auto.km).toLocaleString('it-IT')} km · ${auto.alimentazione} · ${auto.cambio}</p>
+            <p class="car-price">€${Number(auto.prezzo).toLocaleString('it-IT')}</p>
+            <div class="car-actions">
+              <a href="dettaglio.html?id=${encodeURIComponent(auto.id)}" class="btn-detail">Dettagli</a>
+              <a href="https://wa.me/390666152690?text=Ciao, sono interessato a: ${encodeURIComponent(auto.modello)}" class="btn-chat" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        `;
         fragment.appendChild(article);
       });
 
@@ -352,7 +315,8 @@
     }
   }
 
-  loadCars();
+  // Fa partire il caricamento appena la pagina è pronta
+  document.addEventListener('DOMContentLoaded', loadCars);
 </script>
 </body>
 </html>
