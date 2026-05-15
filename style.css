@@ -680,4 +680,48 @@ footer {
         height: 45px !important; 
         width: auto;
     }
+/* --- RESET PER PC: TORNA TUTTO UGUALE A PRIMA --- */
+.menu-icon-mobile, .wa-btn-mobile {
+    display: none !important;
+}
+
+/* --- SOLO PER MOBILE --- */
+@media (max-width: 768px) {
+    nav {
+        display: flex !important;
+        justify-content: center !important; /* Mette il logo al centro */
+        position: relative !important;
+        padding: 0 10px !important;
+    }
+
+    .nav-links {
+        display: none !important; /* Nasconde i link testuali */
+    }
+
+    .menu-icon-mobile {
+        display: block !important;
+        position: absolute;
+        left: 15px;
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .wa-btn-mobile {
+        display: block !important;
+        position: absolute;
+        right: 15px;
+        width: 38px;
+        height: 38px;
+        background-color: #25D366;
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
+        border-radius: 50%;
+    }
+    
+    .nav-logo img {
+        height: 40px !important; /* Un po' più piccolo per stare bene al centro */
+    }
 }
