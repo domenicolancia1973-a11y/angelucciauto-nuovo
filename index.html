@@ -11,34 +11,29 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<nav class="navbar">
-    <div class="nav-container">
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
+<nav>
+    <button class="nav-burger" onclick="toggleMenu()">☰</button>
 
-        <a href="#" class="nav-logo">
-            <img src="data:image/png;base64,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|AAEl" alt="Logo">
-        </a>
+    <a href="index.html" class="nav-logo">
+        <img src="tuo-logo.png" alt="Logo">
+    </a>
 
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="#chi-siamo" class="nav-links">Chi Siamo</a></li>
-            <li class="nav-item"><a href="#vetrina" class="nav-links">Vetrina Auto</a></li>
-            <li class="nav-item"><a href="#servizi" class="nav-links">I Nostri Servizi</a></li>
-            <li class="nav-item"><a href="#dove-stiamo" class="nav-links">Dove Siamo</a></li>
-            <li class="nav-item"><a href="#contatti" class="nav-links">Contatti</a></li>
-        </ul>
+    <ul class="nav-links">
+        <li><a href="#vetrina">Vetrina</a></li>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#dove-siamo">Dove Siamo</a></li>
+    </ul>
 
-        <div class="nav-button">
-            <a href="https://wa.me/39123456789" class="whatsapp-nav" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
-    </div>
+    <a href="https://wa.me/tuonumero" class="btn-wa">
+        <svg>...</svg> WhatsApp
+    </a>
+
+    <a href="https://wa.me/tuonumero" class="wa-btn-mobile">
+        <svg viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
 </nav>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <!-- ── HERO / CHI SIAMO ── -->
 <section class="hero" id="chi-siamo">
