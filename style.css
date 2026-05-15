@@ -32,7 +32,8 @@
     .nav-logo img {
       height: 58px; width: auto; display: block;
     }
-
+/* Inserisci questo subito sotto la regola della .nav-logo img (parte PC) */
+.nav-burger, .wa-btn-mobile { display: none; }
     .nav-links {
       display: flex; align-items: center; gap: 2.2rem; list-style: none;
     }
