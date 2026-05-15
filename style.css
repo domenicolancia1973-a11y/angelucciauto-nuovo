@@ -537,4 +537,49 @@ footer {
         margin-top: 2rem !important;
         padding-top: 1rem !important;
     }
+      /* ── CENTRATURA TITOLI E LOGO FOOTER ── */
+    
+    /* Centra i titoli di tutte le sezioni (Vetrina, Servizi, Sedi) */
+    .section-header, 
+    #vetrina h2, 
+    #vetrina h3,
+    #servizi h2, 
+    #servizi h3,
+    #dove-siamo h2,
+    #dove-siamo h3,
+    .section-title {
+        text-align: center !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+    }
+
+    /* Centra specificamente le scritte "Disponibili ora" e "Quello che facciamo" */
+    /* Se usi dei paragrafi o degli span sopra i titoli principali */
+    .subtitle, 
+    section p {
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    /* Centratura Logo nel Footer */
+    .footer-logo {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .footer-logo img {
+        margin: 0 auto !important; /* Forza il margine automatico ai lati */
+        display: block !important;
+    }
+
+    /* Centratura testi nelle info delle sedi */
+    .sede-info-box h3, 
+    .sede-info-box p {
+        text-align: center !important;
+    }
 }
