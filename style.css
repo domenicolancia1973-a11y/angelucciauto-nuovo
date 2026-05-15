@@ -17,56 +17,75 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--dark); color: var(--light); line-height: 1.6; }
 
-/* --- STILE NAVBAR PER PC --- */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(15,15,15,0.97);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid #222;
-  padding: 0 2.5rem;
-  display: flex; align-items: center; justify-content: space-between;
+/* NAVBAR BASE (PC) */
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
   height: 72px;
+  background: #0f0f0f !important; /* Colore solido così siamo sicuri che si veda */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-bottom: 1px solid #222;
 }
 
-.nav-logo img { height: 58px; width: auto; display: block; }
+.nav-logo img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
 
-.nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
 
-/* Nascondiamo i tasti mobile su PC */
-.menu-icon, .wa-btn-mobile { display: none; }
+.nav-links a {
+  color: white !important;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: sans-serif;
+}
 
-/* --- STILE NAVBAR PER MOBILE --- */
+/* Nascondi icone mobile su PC */
+.menu-icon, .wa-btn-mobile {
+  display: none;
+}
+
+/* MODIFICHE PER MOBILE */
 @media (max-width: 768px) {
-    nav {
-        padding: 0 15px !important;
-        justify-content: center !important; /* Logo al centro */
-    }
+  .main-nav {
+    justify-content: center !important;
+    padding: 0 15px !important;
+  }
 
-    .menu-icon {
-        display: block;
-        position: absolute;
-        left: 20px;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-    }
+  .nav-links {
+    display: none !important; /* Nasconde i link su mobile */
+  }
 
-    .wa-btn-mobile {
-        display: block;
-        position: absolute;
-        right: 20px;
-        width: 42px;
-        height: 42px;
-        background: #25D366 url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg') no-repeat center;
-        background-size: 60%;
-        border-radius: 50%;
-    }
+  .menu-icon {
+    display: block !important;
+    position: absolute;
+    left: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
 
-    /* Nascondiamo il menu a lista su mobile */
-    .nav-links { display: none !important; }
-    
-    /* Pulizia dei vecchi tentativi */
-    nav::before, nav::after { content: none !important; }
+  .wa-btn-mobile {
+    display: block !important;
+    position: absolute;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: #25D366;
+    border-radius: 50%;
+  }
 }
 
     /* ── HERO ── */
