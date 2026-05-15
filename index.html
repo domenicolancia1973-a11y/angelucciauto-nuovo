@@ -11,35 +11,32 @@
 </head>
 <body>
 <!-- ── NAVBAR ── -->
-<header class="navbar">
-  <div class="container nav-container">
-    
-    <button class="menu-toggle" aria-label="Apri Menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
+<nav class="navbar-main">
+  <div class="nav-container">
+    <button class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
 
-    <a href="index.html" class="nav-logo">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAADICAYAAACwPC+x..." alt="Logo">
+    <a href="#" class="nav-logo">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAADICAYAAACwPC+xAAEAAEl..." alt="Logo">
     </a>
 
-    <nav class="nav-menu">
-      <a href="index.html">Home</a>
-      <a href="index.html#auto">Auto</a>
-      <a href="index.html#servizi">Servizi</a>
-      <a href="acquisto-auto.html" class="active">Acquisto Auto</a>
-      <a href="officina.html">Officina</a>
-      <a href="index.html#contatti">Contatti</a>
-    </nav>
+    <ul class="nav-menu">
+      <li><a href="#vetrina">Vetrina Auto</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#sedi">Le Nostre Sedi</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
 
-    <a href="https://wa.me/390666152690" class="nav-whatsapp" target="_blank">
-      <i class="fab fa-whatsapp"></i>
-      <span class="wa-text">WhatsApp</span>
-    </a>
-
+    <div class="nav-actions">
+      <a href="https://wa.me/tuonumero" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
   </div>
-</header>
+</nav>
 
 <!-- ── HERO / CHI SIAMO ── -->
 <section class="hero" id="chi-siamo">
