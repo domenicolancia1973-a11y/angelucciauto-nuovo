@@ -274,6 +274,24 @@ footer {
     font-weight: 600;
     line-height: 1.5;
 }
+/* --- CSS PER PC (Fuori dai media query) --- */
+
+/* Assicurati che le stanghette siano NASCOSTE su PC */
+.menu-icon {
+    display: none;
+}
+
+/* Assicurati che il pulsante WA sia NASCOSTO su PC (se lo vuoi solo su mobile) */
+.wa-btn-mobile {
+    display: none;
+}
+
+/* Assicurati che i link del menu siano VISIBILI su PC */
+.nav-links {
+    display: flex; /* O quello che usavi prima */
+    list-style: none;
+    gap: 20px;
+}
 /* ── FIX TOTALE MOBILE: LARGHEZZA 100% E CENTRATURA ── */
 @media (max-width: 768px) {
 
