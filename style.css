@@ -225,4 +225,122 @@ footer {
         margin: 2rem auto !important;
         justify-content: center;
     }
+/* --- STILI BASE NAVBAR --- */
+.navbar {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.nav-logo img {
+  height: 50px; /* Regola in base al tuo logo */
+  display: block;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-menu a.active, .nav-menu a:hover {
+  color: #d32f2f; /* Colore brand */
+}
+
+/* Bottone WhatsApp */
+.nav-whatsapp {
+  background: #25d366;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+}
+
+.menu-toggle {
+  display: none; /* Nascosto su PC */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+}
+
+/* --- MOBILE OPTIMIZATION (Sotto 992px) --- */
+@media (max-width: 991px) {
+  .nav-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* 3 colonne uguali per centrare perfettamente */
+    align-items: center;
+  }
+
+  /* Hamburger a sinistra */
+  .menu-toggle {
+    display: flex;
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  /* Logo al centro */
+  .nav-logo {
+    grid-column: 2;
+    justify-self: center;
+  }
+
+  /* WhatsApp a destra (tondo su mobile) */
+  .nav-whatsapp {
+    grid-column: 3;
+    justify-self: end;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  
+  .nav-whatsapp span {
+    display: none; /* Nasconde la scritta WhatsApp su mobile */
+  }
+
+  /* Menu a comparsa (Nascondi per ora, si apre con JS) */
+  .nav-menu {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .nav-menu.active {
+    display: flex;
+  }
 }
