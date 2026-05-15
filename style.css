@@ -18,48 +18,65 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--dark); color: var(--light); line-height: 1.6; }
 
-    /* ── NAV ── */
+ /* ── NAV (VERSIONE GEMELLA OFFICINA) ── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(15,15,15,0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #222;
-      padding: 0 2.5rem;
+      background: rgba(9, 9, 9, .97); /* Colore esatto Officina */
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #1a1a1a;
+      padding: 0 1.5rem; /* Ottimizzato per allineamento mobile */
       display: flex; align-items: center; justify-content: space-between;
       height: 72px;
     }
 
-    .nav-logo img {
-      height: 58px; width: auto; display: block;
-    }
-/* Inserisci questo subito sotto la regola della .nav-logo img (parte PC) */
-.nav-burger, .wa-btn-mobile { display: none; }
-    .nav-links {
-      display: flex; align-items: center; gap: 2.2rem; list-style: none;
-    }
+    .nav-logo img { height: 50px; width: auto; display: block; }
+
+    .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
 
     .nav-links a {
-      font-family: var(--font-head);
-      font-size: 1rem; font-weight: 600;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      color: #aaa; text-decoration: none;
-      transition: color 0.2s;
+      font-family: var(--font-head); font-size: .95rem; font-weight: 600;
+      letter-spacing: .07em; text-transform: uppercase; color: #666;
+      text-decoration: none; transition: color .2s;
     }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a.active { border-bottom: 2px solid var(--blue); padding-bottom: 2px; }
 
+    /* Bottone WhatsApp (Desktop & Mobile) */
     .btn-wa {
-      display: flex; align-items: center; gap: 8px;
-      background: #25d366; color: #fff !important;
-      padding: 9px 20px; border-radius: 999px;
-      font-family: var(--font-head) !important;
-      font-size: 0.95rem !important; font-weight: 700 !important;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+      display: flex; align-items: center; gap: 8px; background: #25d366;
+      color: #fff !important; padding: 8px 16px; border-radius: 999px;
+      font-family: var(--font-head); font-size: .9rem; font-weight: 700;
+      text-decoration: none; transition: background .2s, transform .15s;
       white-space: nowrap;
     }
     .btn-wa:hover { background: #1ebe5d; transform: scale(1.03); }
-    .btn-wa svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+    .btn-wa svg { width: 17px; height: 17px; fill: #fff; flex-shrink: 0; }
 
+    /* Burger Menu - Nascosto su PC, visibile su Mobile */
+    .nav-burger {
+      display: none; background: none; border: none; color: #666;
+      font-size: 1.6rem; cursor: pointer; order: -1; /* Lo mette a sinistra */
+    }
+
+    /* ── RESPONSIVE NAV ── */
+    @media(max-width: 1000px) {
+      nav { padding: 0 1rem; }
+      .nav-burger { display: block; } /* Mostra Hamburger */
+      
+      .nav-links {
+        display: none; flex-direction: column; position: absolute;
+        top: 72px; left: 0; right: 0; background: #0a0a0a;
+        padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid #1a1a1a;
+      }
+      .nav-links.open { display: flex; } /* Quando clicchi ☰ */
+      
+      /* Logo al centro solo su mobile */
+      .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); }
+      
+      /* Nascondiamo il testo "WhatsApp" su mobile se lo spazio è poco, lasciando solo l'icona? 
+         Per ora lo lasciamo intero come in officina */
+      .btn-wa { padding: 8px 12px; font-size: 0.8rem; }
+    }
     /* ── HERO ── */
     .hero {
       min-height: 88vh;
