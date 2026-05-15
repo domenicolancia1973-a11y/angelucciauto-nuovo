@@ -630,4 +630,54 @@ footer {
     .sede-info-box p {
         text-align: center !important;
     }
+/* 1. REGOLE PER PC (Nascondiamo i nuovi elementi mobile) */
+.menu-icon-mobile, .wa-btn-mobile {
+    display: none;
+}
+
+/* 2. REGOLE PER MOBILE (Cambiamenti solo sotto i 768px) */
+@media (max-width: 768px) {
+    nav {
+        display: flex !important;
+        justify-content: center !important; /* Logo al centro */
+        align-items: center;
+        position: relative;
+        padding: 0 15px !important;
+    }
+
+    /* Nascondiamo la lista dei link su mobile */
+    .nav-links {
+        display: none !important;
+    }
+
+    /* Mostriamo l'hamburger a sinistra */
+    .menu-icon-mobile {
+        display: block;
+        position: absolute;
+        left: 15px;
+        font-size: 28px;
+        color: white; /* Cambia colore se serve */
+        cursor: pointer;
+    }
+
+    /* Mostriamo il cerchio WhatsApp a destra */
+    .wa-btn-mobile {
+        display: block;
+        position: absolute;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        background-color: #25D366;
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
+        border-radius: 50%;
+    }
+
+    /* Ridimensiona il logo su mobile se serve */
+    .nav-logo img {
+        height: 45px !important; 
+        width: auto;
+    }
 }
