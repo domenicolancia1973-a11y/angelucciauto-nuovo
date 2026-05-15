@@ -28,14 +28,13 @@
       display: flex; align-items: center; justify-content: space-between;
       height: 72px;
     }
-.nav-logo img { 
+
+   .nav-logo img { 
   height: 58px; 
   width: auto; 
   display: block;
-  /* Questo trasforma il nero in bianco */
-  filter: brightness(0) invert(1); 
+  filter: brightness(2); /* Aumenta la luminosità, ma non inverte i colori */
 }
-   
 
     .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
 
