@@ -18,10 +18,10 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--dark); color: var(--light); line-height: 1.6; }
 
-/* ── NAV IDENTICA A OFFICINA ── */
+/* ── NAV GEMELLA OFFICINA ── */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(9, 9, 9, .97);
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(9, 9, 9, 0.97);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid #1a1a1a;
       padding: 0 2.5rem;
@@ -41,6 +41,7 @@
     .nav-links a:hover, .nav-links a.active { color: var(--white); }
     .nav-links a.active { border-bottom: 2px solid var(--blue); padding-bottom: 2px; }
 
+    /* Pulsante WhatsApp */
     .btn-wa {
       display: flex; align-items: center; gap: 8px; background: #25d366;
       color: #fff !important; padding: 9px 18px; border-radius: 999px;
@@ -51,25 +52,33 @@
     .btn-wa:hover { background: #1ebe5d; transform: scale(1.03); }
     .btn-wa svg { width: 17px; height: 17px; fill: #fff; flex-shrink: 0; }
 
+    /* Burger Menu */
     .nav-burger {
       display: none; background: none; border: none; 
-      color: #666; font-size: 1.5rem; cursor: pointer;
+      color: #666; font-size: 1.8rem; cursor: pointer;
     }
 
-    /* ── RESPONSIVE (Logica Officina) ── */
+    /* ── RESPONSIVE ── */
     @media(max-width: 1000px) {
-      nav { padding: 0 1.2rem; }
-      .nav-burger { display: block; order: -1; } /* Hamburger a sinistra */
+      nav { padding: 0 1rem; }
       
+      .nav-burger { display: block; order: -1; } /* Hamburger a SINISTRA */
+      
+      .nav-logo { 
+        position: absolute; left: 50%; transform: translateX(-50%); 
+      }
+      .nav-logo img { height: 45px; } /* Più piccolo su mobile */
+
       .nav-links {
         display: none; flex-direction: column; position: absolute;
         top: 72px; left: 0; right: 0; background: #0a0a0a;
         padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid #1a1a1a;
+        text-align: center;
       }
       .nav-links.open { display: flex; }
       
-      .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); }
-      .nav-logo img { height: 45px; } /* Leggermente più piccolo su mobile */
+      .btn-wa { order: 1; padding: 8px 12px; } /* WhatsApp a DESTRA */
+      .btn-wa span { display: none; } /* Nasconde il testo "WhatsApp" su mobile per spazio */
     }
     /* ── HERO ── */
     .hero {
