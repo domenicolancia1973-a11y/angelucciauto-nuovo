@@ -491,4 +491,50 @@ footer {
         justify-content: center;
         padding: 15px !important;
     }
+      /* ── 6. FOOTER: CENTRATO E SENZA MARGINI ── */
+    footer {
+        width: 100% !important;
+        padding: 3rem 1rem !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        background: #000 !important;
+    }
+
+    .footer-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 2rem !important;
+        width: 100% !important;
+    }
+
+    .footer-section {
+        width: 100% !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .footer-logo img {
+        height: 50px !important;
+        margin-bottom: 1rem;
+    }
+
+    .social-links {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 1.5rem !important;
+    }
+
+    .footer-bottom {
+        width: 100% !important;
+        text-align: center !important;
+        border-top: 1px solid #333;
+        margin-top: 2rem !important;
+        padding-top: 1rem !important;
+    }
 }
