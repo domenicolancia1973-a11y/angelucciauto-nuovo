@@ -242,15 +242,15 @@
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh1eHBuemFhcmtveW1ydndhYnh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1MDg0NzQsImV4cCI6MjA5MzA4NDQ3NH0.5RCrbajUxvztZIZX7ZHff2WIPK-kg9v7WJ7litfQNyw';
   const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // 2. Vecchia Funzione per il Menu Mobile (Mantengo per l'ID navLinks)
+  // 2. Funzione per il Menu Mobile Aggiornata con i nuovi ID
   function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
+    const navLinks = document.getElementById('nav-links-menu');
     if (navLinks) {
-      navLinks.classList.toggle('open');
+      navLinks.classList.toggle('active');
     }
   }
 
-  // 3. Funzione Sicurezza Testi
+  // 3. Funzione Sicurezza Testi (Inalterata)
   function escapeHtml(str) {
     if (str === null || str === undefined) return '';
     return String(str)
@@ -258,7 +258,7 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  // 4. Funzione Caricamento Auto da Supabase
+  // 4. Funzione Caricamento Auto da Supabase (Inalterata)
   async function loadCars() {
     const container = document.getElementById('inventory-container');
     if (!container) return;
@@ -316,22 +316,19 @@
     }
   }
 
-  // 5. Inizializzazione pulita senza conflitti sul layout PC
+  // 5. Inizializzazione pulita con gli ID della nuova Nav Bar
   document.addEventListener('DOMContentLoaded', () => {
     // Carica le auto da Supabase
     loadCars();
 
-    // Gestione click dell'hamburger (solo se gli elementi esistono nella pagina)
-    const navBurger = document.getElementById('navBurger');
-    const mobileMenu = document.getElementById('mobileMenu');
+    // Gestione click dell'hamburger corretta
+    const navBurger = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('nav-links-menu');
 
     if (navBurger && mobileMenu) {
       navBurger.addEventListener('click', function () {
         navBurger.classList.toggle('active');
-        mobileMenu.classList.toggle('open');
-
-        const expanded = navBurger.classList.contains('active');
-        navBurger.setAttribute('aria-expanded', expanded);
+        mobileMenu.classList.toggle('active');
       });
     }
   });
