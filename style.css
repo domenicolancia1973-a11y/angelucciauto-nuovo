@@ -643,3 +643,52 @@ nav {
     display: none !important;
   }
 }
+/* ========================================================
+   PEZZO DA AGGIUNGERE IN FONDO AL FILE PER SISTEMARE LA NAVBAR
+   ======================================================== */
+
+/* Fix Desktop: mostra gli elementi corretti e nasconde il mobile */
+.main-nav {
+  display: flex;
+  align-items: center;
+  height: 72px;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.nav-menu {
+  display: flex !important;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+}
+.nav-burger, .wa-btn-mobile, .mobile-menu {
+  display: none !important;
+}
+
+/* Fix Mobile: applica gli stili solo sotto i 768px */
+@media (max-width: 768px) {
+  .nav-menu, .nav-wa-desktop { 
+    display: none !important; 
+  }
+  .nav-burger {
+    display: flex !important;
+  }
+  .wa-btn-mobile {
+    display: flex !important;
+  }
+  .nav-logo {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+  }
+  .mobile-menu.open {
+    display: flex !important;
+  }
+}
