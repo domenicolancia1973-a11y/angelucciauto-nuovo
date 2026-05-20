@@ -243,15 +243,7 @@
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh1eHBuemFhcmtveW1ydndhYnh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1MDg0NzQsImV4cCI6MjA5MzA4NDQ3NH0.5RCrbajUxvztZIZX7ZHff2WIPK-kg9v7WJ7litfQNyw';
   const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // 2. Funzione per il Menu Mobile (Hamburger)
-  function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
-    if (navLinks) {
-      navLinks.classList.toggle('open');
-    }
-  }
-
-  // 3. Funzione Sicurezza Testi
+  // 2. Funzione Sicurezza Testi
   function escapeHtml(str) {
     if (str === null || str === undefined) return '';
     return String(str)
@@ -259,7 +251,7 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  // 4. Funzione Caricamento Auto
+  // 3. Funzione Caricamento Auto da Supabase
   async function loadCars() {
     const container = document.getElementById('inventory-container');
     if (!container) return;
@@ -317,21 +309,25 @@
     }
   }
 
-  // Fa partire il caricamento appena la pagina è pronta
-  document.addEventListener('DOMContentLoaded', loadCars);
-  <script>
-  const navBurger = document.getElementById('navBurger');
-  const mobileMenu = document.getElementById('mobileMenu');
+  // 4. Gestione Menu Mobile e Inizializzazione al caricamento della pagina
+  document.addEventListener('DOMContentLoaded', () => {
+    // Fai partire il caricamento delle auto
+    loadCars();
 
-  navBurger.addEventListener('click', function () {
-    navBurger.classList.toggle('active');
-    mobileMenu.classList.toggle('open');
+    // Gestione del menu Hamburger mobile
+    const navBurger = document.getElementById('navBurger');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-    const expanded = navBurger.classList.contains('active');
-    navBurger.setAttribute('aria-expanded', expanded);
+    if (navBurger && mobileMenu) {
+      navBurger.addEventListener('click', function () {
+        navBurger.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+
+        const expanded = navBurger.classList.contains('active');
+        navBurger.setAttribute('aria-expanded', expanded);
+      });
+    }
   });
-</script>
-
 </script>
 </body>
 </html>
