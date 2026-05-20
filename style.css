@@ -18,101 +18,94 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--dark); color: var(--light); line-height: 1.6; }
 
-/* ── COMPORTAMENTO STRUTTURALE CSS ── */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2.2rem;
-}
-
-.btn-wa {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #25d366 !important;
-  color: #ffffff !important;
-  padding: 9px 20px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 700;
-  white-space: nowrap;
-}
-.btn-wa hover {
-  background-color: #1ebe5d !important;
-}
-.btn-wa svg {
-  width: 18px;
-  height: 18px;
-  fill: #ffffff !important;
-}
-
-/* Gestione Hamburger Nascosto su PC */
+/* ── COMPORTAMENTO SU PC (DI BASE) ── */
 .menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-.menu-toggle span {
-  width: 25px;
-  height: 3px;
-  background-color: #1a1a1a !important;
-  display: block;
+  display: none !important; /* Nasconde l'hamburger su PC */
 }
 
-/* ── REGOLE PER SMARTPHONE (SOTTO I 768px) ── */
+.nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2.2rem !important;
+}
+
+.nav-links a {
+  font-family: var(--font-head), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #1a1a1a !important; /* Scritte scure su sfondo bianco */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: #000000 !important;
+}
+
+.btn-wa:hover {
+  background-color: #1ebe5d !important;
+  transform: scale(1.03);
+}
+
+/* ── COMPORTAMENTO SU MOBILE (SOTTO I 768px) ── */
 @media (max-width: 768px) {
-  nav {
-    padding: 0 1rem !important;
-  }
-
+  /* Mostra l'hamburger a sinistra */
   .menu-toggle {
-    display: flex !important;
+    display: block !important;
   }
 
+  /* Ridimensiona leggermente il logo sul telefono */
   .nav-logo img {
-    height: 45px !important;
+    height: 42px !important;
   }
 
+  /* Nasconde la voce Veicoli */
   .desktop-only {
     display: none !important;
   }
 
-  .nav-right-wa .btn-wa span {
+  /* Nasconde il testo del numero sul telefono per lasciare solo l'icona tonda verde a destra */
+  .nav-right-wa .btn-wa {
+    padding: 10px !important;
+    border-radius: 50% !important;
+  }
+  .nav-right-wa .wa-text {
     display: none !important;
   }
 
-  /* Tendina Mobile nascosta di base */
+  /* Trasforma il menu in una tendina verticale sotto la barra */
   .nav-links {
-    display: none !important;
+    display: none !important; /* Nascosto di base */
     flex-direction: column !important;
     position: absolute !important;
     top: 72px !important;
     left: 0 !important;
     width: 100% !important;
-    background-color: #ffffff !important;
+    background-color: #ffffff !important; /* Sfondo tendina bianco */
     border-bottom: 1px solid #e2e8f0 !important;
     padding: 2rem 0 !important;
     gap: 2rem !important;
     align-items: center !important;
-    z-index: 99991 !important;
+    z-index: 99998 !important;
+    margin: 0 !important;
   }
 
-  /* Mostra la tendina quando clicchi l'hamburger */
+  /* Quando l'hamburger viene cliccato, JavaScript aggiunge la classe .active e mostra il menu */
   .nav-links.active {
     display: flex !important;
   }
-  
+
   .nav-links.active li {
     display: block !important;
     width: 100% !important;
     text-align: center !important;
   }
-  
+
   .nav-links.active a {
     color: #1a1a1a !important;
     display: block !important;
-    padding: 10px 0 !important;
+    font-size: 1.1rem !important;
   }
 }
     /* ── HERO ── */
