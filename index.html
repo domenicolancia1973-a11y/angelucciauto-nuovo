@@ -11,47 +11,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(15,15,15,0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #222;
-      padding: 0 2.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 72px;
-    }
-
-    .nav-logo img {
-      height: 58px; width: auto; display: block;
-    }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 2.2rem; list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-head);
-      font-size: 1rem; font-weight: 600;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      color: #aaa; text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--white); }
-
-    .btn-wa {
-      display: flex; align-items: center; gap: 8px;
-      background: #25d366; color: #fff !important;
-      padding: 9px 20px; border-radius: 999px;
-      font-family: var(--font-head) !important;
-      font-size: 0.95rem !important; font-weight: 700 !important;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      white-space: nowrap;
-    }
-    .btn-wa:hover { background: #1ebe5d; transform: scale(1.03); }
-    .btn-wa svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
-
+<a href="#" class="nav-logo">
+    <div class="logo-car-crop">
+      <img src="data:image/png;base64,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" alt="Domenico Angelucci">
+    </div>
+    
+    <div class="logo-text-block">
+      <span class="logo-name">DOMENICO ANGELUCCI</span>
+      <span class="logo-sub">AUTO</span>
+    </div>
+  </a>
 <!-- ── HERO / CHI SIAMO ── -->
 <section class="hero" id="chi-siamo">
   <div class="hero-copy">
