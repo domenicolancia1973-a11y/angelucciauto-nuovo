@@ -242,7 +242,7 @@
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh1eHBuemFhcmtveW1ydndhYnh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1MDg0NzQsImV4cCI6MjA5MzA4NDQ3NH0.5RCrbajUxvztZIZX7ZHff2WIPK-kg9v7WJ7litfQNyw';
   const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // 2. Vecchia Funzione per il Menu Mobile (Mantengo per sicurezza se usata da HTML)
+  // 2. Vecchia Funzione per il Menu Mobile (Preesistente nel tuo codice)
   function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     if (navLinks) {
@@ -316,12 +316,12 @@
     }
   }
 
-  // 5. Inizializzazione degli eventi al caricamento della pagina
+  // 5. Gestione Eventi al caricamento sicuro del DOM
   document.addEventListener('DOMContentLoaded', () => {
-    // Carica le macchine da Supabase
+    // Avvia la chiamata a Supabase per mostrare le auto
     loadCars();
 
-    // Gestione click del tuo hamburger originale (Senza toccare le classi del CSS)
+    // Gestione del click sull'hamburger per dispositivi mobili
     const navBurger = document.getElementById('navBurger');
     const mobileMenu = document.getElementById('mobileMenu');
 
