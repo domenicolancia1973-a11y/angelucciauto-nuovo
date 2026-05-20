@@ -40,17 +40,20 @@ nav {
 }
 
 /* Questo box fa vedere solo la macchina e taglia fuori la vecchia scritta nera */
+/* Regola corretta per non far sparire la macchina */
 .logo-car-crop {
-  height: 38px; /* Mostra solo la parte superiore dell'immagine */
+  height: 42px;       /* Alzato lo spazio per far entrare tutta la macchina */
   overflow: hidden;
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* Centra l'immagine verticalmente così non viene tagliata */
+  justify-content: center;
 }
 
 .logo-car-crop img {
-  height: 58px; /* Mantiene la stessa identica dimensione che avevi prima */
+  height: 58px;       /* Mantiene la dimensione esatta originale */
   width: auto;
   display: block;
+  margin-top: -6px;   /* Sposta leggermente l'immagine verso l'alto per nascondere la vecchia scritta nera */
 }
 
 /* Blocco del nuovo testo sotto la macchina */
