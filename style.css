@@ -18,57 +18,87 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--dark); color: var(--light); line-height: 1.6; }
 
-/* ── NAV ── */
+/* ── NAV BAR (SFONDO CHIARO) ── */
 nav {
-  position: sticky; top: 0; z-index: 100;
-  /* SFONDO CHIARO (Invertito) */
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(12px);
-  /* BORDO GRIGIO CHIARO */
-  border-bottom: 1px solid #ddd;
+  position: sticky; 
+  top: 0; 
+  z-index: 100;
+  background: #ffffff !important; /* Bianco totale per far risaltare il logo */
+  border-bottom: 1px solid #e0e0e0;
   padding: 0 2.5rem;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
   height: 72px;
 }
 
+/* LOGO SEMPRE VISIBILE */
+.nav-logo {
+  display: block !important;
+}
 .nav-logo img {
-  height: 58px; width: auto; display: block;
+  height: 58px; 
+  width: auto; 
+  display: block;
 }
 
 .nav-links {
-  display: flex; align-items: center; gap: 2.2rem; list-style: none;
+  display: flex; 
+  align-items: center; 
+  gap: 2.2rem; 
+  list-style: none;
 }
 
+/* SCRITTE DEL MENU SCURE */
 .nav-links a {
   font-family: var(--font-head);
-  font-size: 1rem; font-weight: 600;
-  letter-spacing: 0.07em; text-transform: uppercase;
-  /* SCRITTE SCURE (Invertito) */
-  color: #333; text-decoration: none;
+  font-size: 1rem; 
+  font-weight: 600;
+  letter-spacing: 0.07em; 
+  text-transform: uppercase;
+  color: #222222 !important; /* Grigio scuro/Nero */
+  text-decoration: none;
   transition: color 0.2s;
 }
-/* COLORE AL PASSAGGIO DEL MOUSE (Grigio più scuro o nero) */
-.nav-links a:hover { color: #000; }
 
+/* SCRITTE AL PASSAGGIO DEL MOUSE */
+.nav-links a:hover { 
+  color: #000000 !important; /* Nero pieno */
+}
+
+/* PULSANTE WHATSAPP (Resta verde con scritte bianche) */
 .btn-wa {
-  display: flex; align-items: center; gap: 8px;
-  background: #25d366; color: #fff !important;
-  padding: 9px 20px; border-radius: 999px;
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+  background: #25d366 !important; 
+  color: #ffffff !important; /* Testo bianco dentro il rettangolo verde */
+  padding: 9px 20px; 
+  border-radius: 999px;
   font-family: var(--font-head) !important;
-  font-size: 0.95rem !important; font-weight: 700 !important;
+  font-size: 0.95rem !important; 
+  font-weight: 700 !important;
   text-decoration: none;
   transition: background 0.2s, transform 0.15s;
   white-space: nowrap;
 }
-.btn-wa:hover { background: #1ebe5d; transform: scale(1.03); }
-.btn-wa svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+.btn-wa:hover { 
+  background: #1ebe5d !important; 
+  transform: scale(1.03); 
+}
+.btn-wa svg { 
+  width: 18px; 
+  height: 18px; 
+  fill: #ffffff !important; 
+  flex-shrink: 0; 
+}
 
-/* Nascosti di base su PC */
+/* Nascosti su PC di base */
 .menu-toggle, .mobile-only-wa {
   display: none;
 }
 
-/* Stile delle stanghette hamburger */
+/* STANGHETTE HAMBURGER SCURE */
 .menu-toggle {
   flex-direction: column;
   gap: 5px;
@@ -77,8 +107,7 @@ nav {
 .menu-toggle span {
   width: 25px;
   height: 3px;
-  /* STANGHETTE SCURE PER SFONDO CHIARO */
-  background-color: #333;
+  background-color: #222222 !important; /* Stanghette scure ben visibili */
 }
 
 
@@ -93,20 +122,17 @@ nav {
     display: flex;
   }
 
-  /* Il logo rimane visibile */
-  .nav-logo {
-    display: block;
-  }
+  /* Logo su mobile */
   .nav-logo img {
     height: 48px;
   }
 
-  /* Nasconde le cose del PC */
+  /* Nasconde le voci esclusive del PC */
   .desktop-only {
     display: none !important;
   }
 
-  /* Mostra il pulsante WhatsApp a destra */
+  /* Mostra il pulsante WhatsApp a destra dello schermo */
   .mobile-only-wa {
     display: block;
   }
@@ -114,9 +140,8 @@ nav {
     padding: 10px;
     border-radius: 50%;
   }
-  .mobile-only-wa .btn-wa span, 
-  .mobile-only-wa .btn-wa text {
-    display: none;
+  .mobile-only-wa .btn-wa span {
+    display: none !important;
   }
 
   /* Menu a tendina verticale per mobile */
@@ -127,18 +152,22 @@ nav {
     top: 72px;
     left: 0;
     width: 100%;
-    /* TENDINA CHIARA (Invertito) */
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid #ddd;
+    background: #ffffff !important; /* Sfondo tendina bianco */
+    border-bottom: 1px solid #e0e0e0;
     padding: 2rem 0;
     gap: 2rem;
     align-items: center;
+    z-index: 99;
   }
 
-  /* Classe attivata dal JavaScript per aprire la tendina */
+  /* Mostra i link quando la tendina è attiva */
   .nav-links.active {
     display: flex;
+  }
+  
+  /* Forza le scritte dentro la tendina ad essere scure */
+  .nav-links.active a {
+    color: #222222 !important;
   }
 }
     /* ── HERO ── */
