@@ -18,72 +18,95 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--dark); color: var(--light); line-height: 1.6; }
 
-/* ── NAV GEMELLA OFFICINA ── */
+/* ── NAV ── */
     nav {
-      position: sticky; top: 0; z-index: 1000;
-      background: rgba(9, 9, 9, 0.97);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid #1a1a1a;
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,15,15,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #222;
       padding: 0 2.5rem;
       display: flex; align-items: center; justify-content: space-between;
       height: 72px;
     }
 
-  .nav-logo img {
-  height: 58px;
-  width: auto;
-  display: block;
-}
+    /* Modifica per contenere il logo e la scritta sotto */
+    .nav-logo {
+      display: flex;
+      flex-direction: column; /* Mette la scritta sotto il disegno */
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      height: 100%;
+    }
 
-    .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+    /* Questa regola mostra solo la macchina e taglia via la vecchia scritta nera in fondo all'immagine */
+    .logo-car-crop {
+      height: 38px; /* Altezza per isolare la macchina */
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .logo-car-crop img {
+      height: 58px; /* Mantiene la dimensione originale del tuo logo */
+      width: auto;
+      display: block;
+    }
+
+    /* Contenitore della nuova scritta */
+    .logo-text-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    /* La scritta Domenico Angelucci diventa BIANCA */
+    .logo-name {
+      color: #ffffff !important;
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* La scritta AUTO sotto diventa BIANCA */
+    .logo-sub {
+      color: #ffffff !important;
+      font-family: var(--font-head);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 2.2rem; list-style: none;
+    }
 
     .nav-links a {
-      font-family: var(--font-head); font-size: .95rem; font-weight: 600;
-      letter-spacing: .07em; text-transform: uppercase; color: #666;
-      text-decoration: none; transition: color .2s;
+      font-family: var(--font-head);
+      font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      color: #aaa; text-decoration: none;
+      transition: color 0.2s;
     }
-    .nav-links a:hover, .nav-links a.active { color: var(--white); }
-    .nav-links a.active { border-bottom: 2px solid var(--blue); padding-bottom: 2px; }
+    .nav-links a:hover { color: var(--white); }
 
-    /* Pulsante WhatsApp */
     .btn-wa {
-      display: flex; align-items: center; gap: 8px; background: #25d366;
-      color: #fff !important; padding: 9px 18px; border-radius: 999px;
-      font-family: var(--font-head) !important; font-size: .9rem !important;
-      font-weight: 700 !important; text-decoration: none;
-      transition: background .2s, transform .15s; white-space: nowrap;
+      display: flex; align-items: center; gap: 8px;
+      background: #25d366; color: #fff !important;
+      padding: 9px 20px; border-radius: 999px;
+      font-family: var(--font-head) !important;
+      font-size: 0.95rem !important; font-weight: 700 !important;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
     }
     .btn-wa:hover { background: #1ebe5d; transform: scale(1.03); }
-    .btn-wa svg { width: 17px; height: 17px; fill: #fff; flex-shrink: 0; }
-
-    /* Burger Menu */
-    .nav-burger {
-      display: none; background: none; border: none; 
-      color: #666; font-size: 1.8rem; cursor: pointer;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media(max-width: 1000px) {
-      nav { padding: 0 1rem; }
-      
-      .nav-burger { display: block; order: -1; } /* Hamburger a SINISTRA */
-      
-      .nav-logo { 
-        position: absolute; left: 50%; transform: translateX(-50%); 
-      }
-      .nav-logo img { height: 45px; } /* Più piccolo su mobile */
-
-      .nav-links {
-        display: none; flex-direction: column; position: absolute;
-        top: 72px; left: 0; right: 0; background: #0a0a0a;
-        padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid #1a1a1a;
-        text-align: center;
-      }
-      .nav-links.open { display: flex; }
-      
-      .btn-wa { order: 1; padding: 8px 12px; } /* WhatsApp a DESTRA */
-      .btn-wa span { display: none; } /* Nasconde il testo "WhatsApp" su mobile per spazio */
-    }
+    .btn-wa svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
     /* ── HERO ── */
     .hero {
       min-height: 88vh;
