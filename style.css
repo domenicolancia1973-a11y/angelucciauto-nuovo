@@ -18,88 +18,91 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--dark); color: var(--light); line-height: 1.6; }
 
-/* ── NAV BAR (SFONDO CHIARO) ── */
+/* ── STRUTTURA BARRA (SFONDO BIANCO) ── */
 nav {
-  position: sticky; 
-  top: 0; 
+  position: sticky;
+  top: 0;
   z-index: 100;
-  background: #ffffff !important; /* Bianco totale per far risaltare il logo */
-  border-bottom: 1px solid #e0e0e0;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0;
   padding: 0 2.5rem;
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   height: 72px;
+  box-sizing: border-box;
 }
 
-/* LOGO SEMPRE VISIBILE */
+/* LOGO */
 .nav-logo {
   display: block !important;
 }
 .nav-logo img {
-  height: 58px; 
-  width: auto; 
+  height: 58px;
+  width: auto;
   display: block;
 }
 
+/* LISTA LINK PC */
 .nav-links {
-  display: flex; 
-  align-items: center; 
-  gap: 2.2rem; 
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* SCRITTE DEL MENU SCURE */
+/* TESTI DEL MENU FORZATI IN NERO */
 .nav-links a {
-  font-family: var(--font-head);
-  font-size: 1rem; 
+  font-family: var(--font-head), sans-serif;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.07em; 
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: #222222 !important; /* Grigio scuro/Nero */
+  color: #1a1a1a !important; /* Nero/Grigio scuro */
   text-decoration: none;
   transition: color 0.2s;
 }
-
-/* SCRITTE AL PASSAGGIO DEL MOUSE */
-.nav-links a:hover { 
-  color: #000000 !important; /* Nero pieno */
+.nav-links a:hover {
+  color: #000000 !important;
 }
 
-/* PULSANTE WHATSAPP (Resta verde con scritte bianche) */
+/* BLOCCO DI DESTRA WHATSAPP */
+.nav-right-wa {
+  display: block !important;
+}
+
+/* PULSANTE WHATSAPP VERDE */
 .btn-wa {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   gap: 8px;
-  background: #25d366 !important; 
-  color: #ffffff !important; /* Testo bianco dentro il rettangolo verde */
-  padding: 9px 20px; 
+  background-color: #25d366 !important;
+  color: #ffffff !important; /* Testo bianco dentro il verde */
+  padding: 9px 20px;
   border-radius: 999px;
-  font-family: var(--font-head) !important;
-  font-size: 0.95rem !important; 
+  font-family: var(--font-head), sans-serif !important;
+  font-size: 0.95rem !important;
   font-weight: 700 !important;
   text-decoration: none;
   transition: background 0.2s, transform 0.15s;
   white-space: nowrap;
 }
-.btn-wa:hover { 
-  background: #1ebe5d !important; 
-  transform: scale(1.03); 
+.btn-wa:hover {
+  background-color: #1ebe5d !important;
+  transform: scale(1.03);
 }
-.btn-wa svg { 
-  width: 18px; 
-  height: 18px; 
-  fill: #ffffff !important; 
-  flex-shrink: 0; 
-}
-
-/* Nascosti su PC di base */
-.menu-toggle, .mobile-only-wa {
-  display: none;
+.btn-wa svg {
+  width: 18px;
+  height: 18px;
+  fill: #ffffff !important;
+  flex-shrink: 0;
 }
 
-/* STANGHETTE HAMBURGER SCURE */
+/* NASCONDE L'HAMBURGER SU PC */
 .menu-toggle {
+  display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
@@ -107,44 +110,40 @@ nav {
 .menu-toggle span {
   width: 25px;
   height: 3px;
-  background-color: #222222 !important; /* Stanghette scure ben visibili */
+  background-color: #1a1a1a !important; /* Linee dell'hamburger nere */
+  display: block;
 }
 
-
-/* ── REGOLE ESCLUSIVE PER MOBILE ── */
+/* ── COSA SUCCEDE SU MOBILE (SOTTO I 768px) ── */
 @media (max-width: 768px) {
   nav {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
 
-  /* Mostra hamburger a sinistra */
+  /* Mostra le stanghette a sinistra */
   .menu-toggle {
     display: flex;
   }
 
-  /* Logo su mobile */
+  /* Ridimensiona il logo per farlo stare comodo */
   .nav-logo img {
-    height: 48px;
+    height: 45px;
   }
 
-  /* Nasconde le voci esclusive del PC */
+  /* Nasconde la voce Veicoli */
   .desktop-only {
     display: none !important;
   }
 
-  /* Mostra il pulsante WhatsApp a destra dello schermo */
-  .mobile-only-wa {
-    display: block;
-  }
-  .mobile-only-wa .btn-wa {
+  /* Nasconde il testo scritto del numero sul telefono, lascia solo l'icona tonda verde a destra */
+  .nav-right-wa .btn-wa padding {
     padding: 10px;
-    border-radius: 50%;
   }
-  .mobile-only-wa .btn-wa span {
+  .nav-right-wa .btn-wa span {
     display: none !important;
   }
 
-  /* Menu a tendina verticale per mobile */
+  /* Trasforma il menu in una tendina a comparsa verticale */
   .nav-links {
     display: none;
     flex-direction: column;
@@ -152,22 +151,22 @@ nav {
     top: 72px;
     left: 0;
     width: 100%;
-    background: #ffffff !important; /* Sfondo tendina bianco */
-    border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff !important; /* Sfondo tendina bianco */
+    border-bottom: 1px solid #e2e8f0;
     padding: 2rem 0;
     gap: 2rem;
     align-items: center;
     z-index: 99;
   }
 
-  /* Mostra i link quando la tendina è attiva */
+  /* Quando clicchi l'hamburger la tendina si apre */
   .nav-links.active {
-    display: flex;
+    display: flex !important;
   }
-  
-  /* Forza le scritte dentro la tendina ad essere scure */
+
+  /* Forza i link della tendina a rimanere neri */
   .nav-links.active a {
-    color: #222222 !important;
+    color: #1a1a1a !important;
   }
 }
     /* ── HERO ── */
