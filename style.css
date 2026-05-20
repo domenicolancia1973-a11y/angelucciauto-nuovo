@@ -53,14 +53,14 @@ nav {
   padding: 0;
 }
 
-/* TESTI DEL MENU FORZATI IN NERO */
+/* TESTI DEL MENU IN NERO */
 .nav-links a {
   font-family: var(--font-head), sans-serif;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: #1a1a1a !important; /* Nero/Grigio scuro */
+  color: #1a1a1a !important;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -79,7 +79,7 @@ nav {
   align-items: center;
   gap: 8px;
   background-color: #25d366 !important;
-  color: #ffffff !important; /* Testo bianco dentro il verde */
+  color: #ffffff !important;
   padding: 9px 20px;
   border-radius: 999px;
   font-family: var(--font-head), sans-serif !important;
@@ -110,11 +110,11 @@ nav {
 .menu-toggle span {
   width: 25px;
   height: 3px;
-  background-color: #1a1a1a !important; /* Linee dell'hamburger nere */
+  background-color: #1a1a1a !important; /* Stanghette nere */
   display: block;
 }
 
-/* ── COSA SUCCEDE SU MOBILE (SOTTO I 768px) ── */
+/* ── ADATTAMENTO MOBILE (SOTTO I 768px) ── */
 @media (max-width: 768px) {
   nav {
     padding: 0 1rem;
@@ -125,7 +125,7 @@ nav {
     display: flex;
   }
 
-  /* Ridimensiona il logo per farlo stare comodo */
+  /* Ridimensiona il logo per mobile */
   .nav-logo img {
     height: 45px;
   }
@@ -135,15 +135,15 @@ nav {
     display: none !important;
   }
 
-  /* Nasconde il testo scritto del numero sul telefono, lascia solo l'icona tonda verde a destra */
-  .nav-right-wa .btn-wa padding {
+  /* Nasconde il testo scritto del numero, lascia l'icona verde a destra */
+  .nav-right-wa .btn-wa {
     padding: 10px;
   }
   .nav-right-wa .btn-wa span {
     display: none !important;
   }
 
-  /* Trasforma il menu in una tendina a comparsa verticale */
+  /* Menu a tendina verticale */
   .nav-links {
     display: none;
     flex-direction: column;
@@ -159,7 +159,7 @@ nav {
     z-index: 99;
   }
 
-  /* Quando clicchi l'hamburger la tendina si apre */
+  /* Quando attivo mostra i link verticali */
   .nav-links.active {
     display: flex !important;
   }
