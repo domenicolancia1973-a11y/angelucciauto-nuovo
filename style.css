@@ -18,62 +18,13 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--dark); color: var(--light); line-height: 1.6; }
 
-/* ── STRUTTURA BARRA (SFONDO BIANCO) ── */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: #ffffff !important;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 0 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 72px;
-  box-sizing: border-box;
-}
-
-/* LOGO */
-.nav-logo {
-  display: block !important;
-}
-.nav-logo img {
-  height: 58px;
-  width: auto;
-  display: block;
-}
-
-/* LISTA LINK PC */
+/* ── COMPORTAMENTO STRUTTURALE CSS ── */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 2.2rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
-/* TESTI DEL MENU IN NERO */
-.nav-links a {
-  font-family: var(--font-head), sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: #1a1a1a !important;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.nav-links a:hover {
-  color: #000000 !important;
-}
-
-/* BLOCCO DI DESTRA WHATSAPP */
-.nav-right-wa {
-  display: block !important;
-}
-
-/* PULSANTE WHATSAPP VERDE */
 .btn-wa {
   display: flex;
   align-items: center;
@@ -82,25 +33,20 @@ nav {
   color: #ffffff !important;
   padding: 9px 20px;
   border-radius: 999px;
-  font-family: var(--font-head), sans-serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
   text-decoration: none;
-  transition: background 0.2s, transform 0.15s;
+  font-weight: 700;
   white-space: nowrap;
 }
-.btn-wa:hover {
+.btn-wa hover {
   background-color: #1ebe5d !important;
-  transform: scale(1.03);
 }
 .btn-wa svg {
   width: 18px;
   height: 18px;
   fill: #ffffff !important;
-  flex-shrink: 0;
 }
 
-/* NASCONDE L'HAMBURGER SU PC */
+/* Gestione Hamburger Nascosto su PC */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -110,63 +56,63 @@ nav {
 .menu-toggle span {
   width: 25px;
   height: 3px;
-  background-color: #1a1a1a !important; /* Stanghette nere */
+  background-color: #1a1a1a !important;
   display: block;
 }
 
-/* ── ADATTAMENTO MOBILE (SOTTO I 768px) ── */
+/* ── REGOLE PER SMARTPHONE (SOTTO I 768px) ── */
 @media (max-width: 768px) {
   nav {
-    padding: 0 1rem;
+    padding: 0 1rem !important;
   }
 
-  /* Mostra le stanghette a sinistra */
   .menu-toggle {
-    display: flex;
+    display: flex !important;
   }
 
-  /* Ridimensiona il logo per mobile */
   .nav-logo img {
-    height: 45px;
+    height: 45px !important;
   }
 
-  /* Nasconde la voce Veicoli */
   .desktop-only {
     display: none !important;
   }
 
-  /* Nasconde il testo scritto del numero, lascia l'icona verde a destra */
-  .nav-right-wa .btn-wa {
-    padding: 10px;
-  }
   .nav-right-wa .btn-wa span {
     display: none !important;
   }
 
-  /* Menu a tendina verticale */
+  /* Tendina Mobile nascosta di base */
   .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 72px;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff !important; /* Sfondo tendina bianco */
-    border-bottom: 1px solid #e2e8f0;
-    padding: 2rem 0;
-    gap: 2rem;
-    align-items: center;
-    z-index: 99;
+    display: none !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 72px !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding: 2rem 0 !important;
+    gap: 2rem !important;
+    align-items: center !important;
+    z-index: 99991 !important;
   }
 
-  /* Quando attivo mostra i link verticali */
+  /* Mostra la tendina quando clicchi l'hamburger */
   .nav-links.active {
     display: flex !important;
   }
-
-  /* Forza i link della tendina a rimanere neri */
+  
+  .nav-links.active li {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  
   .nav-links.active a {
     color: #1a1a1a !important;
+    display: block !important;
+    padding: 10px 0 !important;
   }
 }
     /* ── HERO ── */
