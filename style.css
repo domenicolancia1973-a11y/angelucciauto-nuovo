@@ -18,7 +18,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--dark); color: var(--light); line-height: 1.6; }
 
-/* ── NAV ORIGINAL PC (RIPRISTINATO COMPLETO) ── */
+/* ── IL TUO CSS PER PC (IDENTICO AL TUO ORIGINALE, NON TOCCATO) ── */
 nav {
   position: sticky; top: 0; z-index: 100;
   background: rgba(15,15,15,0.97);
@@ -59,9 +59,13 @@ nav {
 .btn-wa:hover { background: #1ebe5d; transform: scale(1.03); }
 .btn-wa svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
 
-/* Hamburger nascosto di base su PC */
-.menu-toggle {
+/* Nascosti su PC di base */
+.menu-toggle, .mobile-only-wa {
   display: none;
+}
+
+/* Stile base delle stanghette hamburger */
+.menu-toggle {
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
@@ -70,36 +74,49 @@ nav {
   width: 25px;
   height: 3px;
   background-color: #fff;
-  transition: 0.3s;
 }
 
-/* ── REGOLE DI ADATTAMENTO SOLO PER MOBILE ── */
+
+/* ── MODIFICHE ESCLUSIVE PER MOBILE (AGGIUNTE SOTTO) ── */
 @media (max-width: 768px) {
   nav {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
 
-  /* Mostra le stanghette a sinistra */
+  /* Mostra hamburger a sinistra */
   .menu-toggle {
     display: flex;
   }
 
-  /* Gestione corretta dei tre blocchi visibili su mobile */
+  /* Il logo rimane visibile e centrato nello spazio */
   .nav-logo {
-    display: block !important;
+    display: block;
   }
   .nav-logo img {
-    height: 45px; /* Leggermente più piccolo per non affollare lo schermo del telefono */
+    height: 48px; /* Leggermente ridotto per mobile */
   }
 
-  /* Nasconde la voce Veicoli su mobile */
+  /* Nasconde le cose del PC */
   .desktop-only {
     display: none !important;
   }
 
-  /* Trasforma il menu in una tendina a comparsa verticale sotto la barra */
+  /* Mostra il pulsante WhatsApp a destra (solo icona tonda per salvare spazio) */
+  .mobile-only-wa {
+    display: block;
+  }
+  .mobile-only-wa .btn-wa {
+    padding: 10px;
+    border-radius: 50%;
+  }
+  .mobile-only-wa .btn-wa span, 
+  .mobile-only-wa .btn-wa text {
+    display: none; /* Nasconde il testo del numero sul cellulare per farlo stare a destra */
+  }
+
+  /* Menu a tendina verticale quando clicchi l'hamburger */
   .nav-links {
-    display: none; 
+    display: none;
     flex-direction: column;
     position: absolute;
     top: 72px;
@@ -108,25 +125,14 @@ nav {
     background: rgba(15,15,15,0.98);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid #222;
-    padding: 1.5rem 0;
-    gap: 1.5rem;
+    padding: 2rem 0;
+    gap: 2rem;
     align-items: center;
   }
 
-  /* Quando si clicca sulle stanghette si apre il menu */
+  /* Classe attivata dal JavaScript per aprire la tendina */
   .nav-links.active {
     display: flex;
-  }
-
-  /* Forza il pulsante WhatsApp a rimanere fermo e visibile a destra */
-  .nav-right-wa {
-    display: block !important;
-  }
-  
-  /* Rimpicciolisce leggermente il pulsante WhatsApp solo sul telefono per farlo stare bene a destra */
-  .btn-wa {
-    padding: 7px 14px;
-    font-size: 0.85rem !important;
   }
 }
     /* ── HERO ── */
