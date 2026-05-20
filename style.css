@@ -29,11 +29,10 @@
       height: 72px;
     }
 
-   .nav-logo img { 
-  height: 58px; 
-  width: auto; 
+  .nav-logo img {
+  height: 58px;
+  width: auto;
   display: block;
-  filter: brightness(2); /* Aumenta la luminosità, ma non inverte i colori */
 }
 
     .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
