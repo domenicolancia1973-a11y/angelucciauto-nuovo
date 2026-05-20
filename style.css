@@ -300,13 +300,21 @@ footer {
 }
 
 /* ── TESTI NITIDI E BIANCHI ── */
-.nav-links a, 
+/* A COSÌ: */
 .servizio-title, 
 .servizio-desc {
     color: #ffffff !important;
     text-shadow: none !important; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Forza il testo nero solo per i link della nav su PC */
+.nav-links a { 
+    color: #1a1a1a !important; 
+    font-weight: 700; 
+    letter-spacing: 0.05em; 
+    -webkit-font-smoothing: antialiased;
 }
 
 .nav-links a { font-weight: 700; letter-spacing: 0.05em; }
@@ -546,97 +554,114 @@ nav {
   fill: currentColor;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  nav {
-    position: sticky;
-    top: 0;
-    height: 72px;
-    padding: 0 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-burger {
-    display: flex;
-    position: relative;
-    z-index: 1002;
-    order: 1;
-  }
-
-  .nav-logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-    z-index: 1001;
-  }
-
-  .nav-logo img {
-    height: 44px !important;
-    width: auto;
-    display: block;
-  }
-
-  .wa-btn-mobile {
-    display: flex;
-    position: relative;
-    z-index: 1002;
-    order: 3;
-  }
-
-  .nav-links,
-  .nav-wa-desktop {
-    display: none !important;
-  }
-}
 /* ========================================================
-   PEZZO DA AGGIUNGERE IN FONDO AL FILE PER SISTEMARE LA NAVBAR
+   NAVBAR CONFIGURAZIONE FINALE (PC E MOBILE ALLINEATI)
    ======================================================== */
 
-/* Fix Desktop: mostra gli elementi corretti e nasconde il mobile */
-.main-nav {
-  display: flex;
-  align-items: center;
-  height: 72px;
-}
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.nav-menu {
-  display: flex !important;
-  align-items: center;
-  gap: 15px;
-  list-style: none;
-}
-.nav-burger, .wa-btn-mobile, .mobile-menu {
-  display: none !important;
+/* ── CONFIGURAZIONE BASE COMPILATA PER PC ── */
+.menu-toggle {
+  display: none !important; /* Nasconde l'hamburger su computer */
 }
 
-/* Fix Mobile: applica gli stili solo sotto i 768px */
+.nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2.2rem !important;
+  list-style: none !important;
+}
+
+.nav-right-wa {
+  display: block !important;
+}
+
+/* ── CONFIGURAZIONE SURGICALE PER MOBILE (SOTTO I 768px) ── */
 @media (max-width: 768px) {
-  .nav-menu, .nav-wa-desktop { 
-    display: none !important; 
-  }
-  .nav-burger {
+  nav {
     display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 1rem !important;
+    position: sticky !important;
+    top: 0;
+    height: 72px !important;
   }
-  .wa-btn-mobile {
+
+  /* 1. Hamburger visibile a sinistra */
+  .menu-toggle {
     display: flex !important;
+    position: relative !important;
+    z-index: 1002 !important;
   }
+
+  /* 2. Logo perfettamente centrato nello schermo */
   .nav-logo {
     position: absolute !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     margin: 0 !important;
-  }
-  .mobile-menu.open {
+    z-index: 1001 !important;
     display: flex !important;
+    justify-content: center !important;
+  }
+
+  .nav-logo img {
+    height: 42px !important; /* Leggermente ridimensionato per smartphone */
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* 3. WhatsApp a destra (Diventa l'icona tonda verde) */
+  .nav-right-wa {
+    display: block !important;
+    position: relative !important;
+    z-index: 1002 !important;
+  }
+  
+  .nav-right-wa .btn-wa {
+    padding: 10px !important;
+    border-radius: 50% !important; /* Diventa un cerchio */
+  }
+
+  .nav-right-wa .wa-text {
+    display: none !important; /* Nasconde il numero di telefono per non occupare spazio */
+  }
+
+  /* 4. Menu Link (Diventa la tendina verticale nascosta di base) */
+  .nav-links {
+    display: none !important; 
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 72px !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: #ffffff !important; /* Sfondo bianco della tendina */
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding: 2rem 0 !important;
+    gap: 2rem !important;
+    align-items: center !important;
+    z-index: 99998 !important;
+    margin: 0 !important;
+  }
+
+  /* Nasconde la voce "Veicoli" solo su mobile come richiesto */
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Quando l'hamburger viene cliccato, JavaScript aggiunge la classe .active e la tendina compare */
+  .nav-links.active {
+    display: flex !important;
+  }
+
+  .nav-links.active li {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .nav-links.active a {
+    color: #1a1a1a !important; /* Testo scuro leggibile dentro la tendina bianca */
+    display: block !important;
+    font-size: 1.1rem !important;
   }
 }
