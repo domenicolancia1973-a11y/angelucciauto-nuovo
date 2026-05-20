@@ -236,14 +236,21 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
-  // 1. Configurazione Supabase
+  // 1. Configurazione Supabase (Inalterata)
   const SUPABASE_URL = 'https://xuxpnzaarkoymrvwabxy.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh1eHBuemFhcmtveW1ydndhYnh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1MDg0NzQsImV4cCI6MjA5MzA4NDQ3NH0.5RCrbajUxvztZIZX7ZHff2WIPK-kg9v7WJ7litfQNyw';
   const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // 2. Funzione Sicurezza Testi
+  // 2. Vecchia Funzione per il Menu Mobile (Mantengo per sicurezza se usata da HTML)
+  function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    if (navLinks) {
+      navLinks.classList.toggle('open');
+    }
+  }
+
+  // 3. Funzione Sicurezza Testi (Inalterata)
   function escapeHtml(str) {
     if (str === null || str === undefined) return '';
     return String(str)
@@ -251,7 +258,7 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  // 3. Funzione Caricamento Auto da Supabase
+  // 4. Funzione Caricamento Auto (Inalterata)
   async function loadCars() {
     const container = document.getElementById('inventory-container');
     if (!container) return;
@@ -309,12 +316,12 @@
     }
   }
 
-  // 4. Gestione Menu Mobile e Inizializzazione al caricamento della pagina
+  // 5. Inizializzazione degli eventi al caricamento della pagina
   document.addEventListener('DOMContentLoaded', () => {
-    // Fai partire il caricamento delle auto
+    // Carica le macchine da Supabase
     loadCars();
 
-    // Gestione del menu Hamburger mobile
+    // Gestione click del tuo hamburger originale (Senza toccare le classi del CSS)
     const navBurger = document.getElementById('navBurger');
     const mobileMenu = document.getElementById('mobileMenu');
 
