@@ -242,7 +242,7 @@
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh1eHBuemFhcmtveW1ydndhYnh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1MDg0NzQsImV4cCI6MjA5MzA4NDQ3NH0.5RCrbajUxvztZIZX7ZHff2WIPK-kg9v7WJ7litfQNyw';
   const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // 2. Vecchia Funzione per il Menu Mobile (Preesistente nel tuo codice)
+  // 2. Vecchia Funzione per il Menu Mobile (Mantengo per l'ID navLinks)
   function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     if (navLinks) {
@@ -250,7 +250,7 @@
     }
   }
 
-  // 3. Funzione Sicurezza Testi (Inalterata)
+  // 3. Funzione Sicurezza Testi
   function escapeHtml(str) {
     if (str === null || str === undefined) return '';
     return String(str)
@@ -258,7 +258,7 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  // 4. Funzione Caricamento Auto (Inalterata)
+  // 4. Funzione Caricamento Auto da Supabase
   async function loadCars() {
     const container = document.getElementById('inventory-container');
     if (!container) return;
@@ -316,12 +316,12 @@
     }
   }
 
-  // 5. Gestione Eventi al caricamento sicuro del DOM
+  // 5. Inizializzazione pulita senza conflitti sul layout PC
   document.addEventListener('DOMContentLoaded', () => {
-    // Avvia la chiamata a Supabase per mostrare le auto
+    // Carica le auto da Supabase
     loadCars();
 
-    // Gestione del click sull'hamburger per dispositivi mobili
+    // Gestione click dell'hamburger (solo se gli elementi esistono nella pagina)
     const navBurger = document.getElementById('navBurger');
     const mobileMenu = document.getElementById('mobileMenu');
 
