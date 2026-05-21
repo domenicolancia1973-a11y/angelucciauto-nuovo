@@ -808,3 +808,53 @@ nav .nav-logo img {
     pointer-events: auto !important;
   }
 }
+/* ========================================================
+   FIX DEFINITIVO FRECCE VETRINA HOME PAGE SU MOBILE
+   ======================================================== */
+@media (max-width: 768px) {
+
+  /* 1. Isoliamo e forziamo le frecce virtuali generate dal CSS */
+  .car-card::before, 
+  .car-card::after {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-family: sans-serif !important;
+    font-weight: bold !important;
+    background: rgba(0, 0, 0, 0.75) !important; /* Sfondo scuro circolare identico a dettaglio */
+    color: #ffffff !important;
+    width: 50px !important;   /* Area di clic perfetta per il dito */
+    height: 50px !important;  /* Area di clic perfetta per il dito */
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    
+    /* TRUCCO MAGICO: Forza il browser a mettere le frecce in primissimo piano e cliccabili */
+    z-index: 999999 !important;
+    pointer-events: auto !important; 
+  }
+
+  /* Posizionamento millimetrico laterale delle frecce sulla scheda dell'auto */
+  .car-card::before {
+    left: 15px !important;
+    content: '‹' !important;
+  }
+  
+  .car-card::after {
+    right: 15px !important;
+    content: '›' !important;
+  }
+
+  /* 2. Evitiamo che il contenitore delle immagini blocchi il tocco */
+  .car-card {
+    pointer-events: auto !important;
+  }
+
+  .car-card img {
+    /* Impedisce al telefono di fare il "drag" dell'immagine nativa invece di cliccare */
+    pointer-events: none !important; 
+    -webkit-user-drag: none;
+  }
+}
