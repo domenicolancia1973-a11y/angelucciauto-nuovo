@@ -782,13 +782,8 @@ nav .nav-logo img {
     padding-top: 0 !important;      /* Elimina lo spazio vuoto interno sopra il titolo */
   }
 }
-@media (max-width: 768px) {
-
-  /* ... lascia tutto il resto com'è ... */
-
-  /* SPOSTA SOLO LA SCRITTA "DISPONIBILI ORA" VERSO IL BASSO */
-  #vetrina .section-tag {
-    margin-top: 25px !important; /* Aumenta questo numero se vuoi spingerla ancora più giù */
-    margin-bottom: 5px !important; /* Tiene controllato lo spazio rispetto a "Vetrina Auto" */
+/* Allontana tutto il blocco titoli dall'immagine della Hero */
+  #vetrina.section {
+    margin-top: -15px !important;  /* Prima era -50px. Riducendolo, tutto il blocco scende verso il basso */
+    padding-top: 15px !important;  /* Ridà un po' di respiro sopra i titoli */
   }
-}
