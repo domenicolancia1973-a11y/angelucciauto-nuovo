@@ -841,13 +841,22 @@ nav .nav-logo img {
   #servizi .servizi-grid a[href="acquisto-auto.html"]    { order: 3 !important; }
   #servizi .servizi-grid a[href="finanziamenti.html"]    { order: 4 !important; }
 
-  /* 4. PULIZIA CHIRURGICA: Nasconde QUALSIASI cosa che non sia l'header, la griglia o le frecce nuove */
-  #servizi > *:not(.section-header):not(.servizi-grid):not(.servizi-control-prev):not(.servizi-control-next) {
+ /* 4. ANIENTAMENTO TOTALE DELLE VECCHIE FRECCE INFAMI */
+  #servizi .carousel-control-prev,
+  #servizi .carousel-control-next,
+  #servizi .slick-prev,
+  #servizi .slick-next,
+  #servizi .swiper-button-prev,
+  #servizi .swiper-button-next,
+  .carousel-control-prev, /* Colpiamo anche quelle fuori dal raggio dell'ID */
+  .carousel-control-next {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
   }
-
   /* 5. POSIZIONAMENTO AL CENTRO DELLE NUOVE FRECCE CLICCABILI */
   #servizi {
     position: relative !important;
