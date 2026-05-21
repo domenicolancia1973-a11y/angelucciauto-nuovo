@@ -808,3 +808,45 @@ nav .nav-logo img {
     pointer-events: auto !important;
   }
 }
+/* ========================================================
+   SEZIONE I NOSTRI SERVIZI - SOLO CELLULARE (MAX 768px)
+   ======================================================== */
+@media (max-width: 768px) {
+  
+  /* 1. Trasformiamo la griglia in un elenco verticale flessibile per poter cambiare l'ordine */
+  #servizi .servizi-grid {
+    display: flex !important;
+    flex-direction: column !important; /* Mette le card una sotto l'altra */
+    gap: 20px !important;              /* Spazio tra una card e l'altra */
+  }
+
+  /* 2. FORZIAMO L'ORDINE PERFETTO USANDO I LINK (HREF) COME BERSAGLIO */
+  
+  /* 1° POSTO: OFFICINA */
+  #servizi .servizi-grid a[href="officina.html"] {
+    order: 1 !important;
+  }
+
+  /* 2° POSTO: GPL */
+  #servizi .servizi-grid a[href="gpl.html"] {
+    order: 2 !important;
+  }
+
+  /* 3° POSTO: ACQUISTO AUTO */
+  #servizi .servizi-grid a[href="acquisto-auto.html"] {
+    order: 3 !important;
+  }
+
+  /* 4° POSTO: FINANZIAMENTI */
+  #servizi .servizi-grid a[href="finanziamenti.html"] {
+    order: 4 !important;
+  }
+
+  /* 3. NASCONDIDAMO EVENTUALI FRECCE VECCHIE SE GENERATE DA COSE STRANE */
+  #servizi .carousel-control-prev,
+  #servizi .carousel-control-next,
+  #servizi [class*="arrow"],
+  #servizi [class*="control"] {
+    display: none !important;
+  }
+}
