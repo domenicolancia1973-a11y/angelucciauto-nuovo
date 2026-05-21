@@ -218,15 +218,19 @@
         box-sizing: border-box !important;
       }
 
-      /* Il pulsante su mobile: largo al 100%, testo dentro e dritto */
+      /* Il pulsante su mobile: scudo totale anti-straripamento */
       .cta-lista a.btn-lista {
         display: block !important;
         width: 100% !important;          
         min-width: 100% !important;
         max-width: 100% !important;      
-        white-space: nowrap !important; /* Forza la scritta su una sola riga */
-        padding: 16px 5px !important;   /* Spessore verticale, pochissimo ai lati così la scritta non esce */
-        font-size: 1.05rem !important;  /* Dimensione perfetta per non far tagliare o strabordare il testo */
+        white-space: nowrap !important; /* Forza la scritta su una riga */
+        
+        /* FIX DEFINITIVO SPAZIO */
+        padding: 16px 0px !important;    /* Zero padding ai lati per dare massimo spazio al testo */
+        font-size: 0.85rem !important;   /* Testo leggermente più piccolo, entra anche sugli schermi minuscoli */
+        letter-spacing: -0.5px !important; /* Stringe leggermente le lettere tra loro per guadagnare millimetri */
+        
         font-weight: bold !important;
         text-align: center !important;
         box-sizing: border-box !important;
