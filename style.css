@@ -787,3 +787,20 @@ nav .nav-logo img {
     margin-top: -15px !important;  /* Prima era -50px. Riducendolo, tutto il blocco scende verso il basso */
     padding-top: 15px !important;  /* Ridà un po' di respiro sopra i titoli */
   }
+@media (max-width: 768px) {
+
+  /* ... lascia le tue vecchie regole sopra ... */
+
+  /* FORZA LE FRECCE DELLE FOTO A DIVENTARE CLICCABILI */
+  .swiper-button-next, 
+  .swiper-button-prev,
+  .prev, 
+  .next,
+  .carousel-control-next, 
+  .carousel-control-prev,
+  .custom-arrow { 
+    z-index: 999 !important;      /* Le porta sopra a qualsiasi altro elemento visivo */
+    pointer-events: auto !important; /* Costringe il browser ad ascoltare il tocco del dito */
+    cursor: pointer !important;
+  }
+}
