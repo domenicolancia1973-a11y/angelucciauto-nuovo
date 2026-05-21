@@ -881,7 +881,7 @@ nav .nav-logo img {
   position: absolute !important;
   
   /* POSIZIONAMENTO FISSO IN PIXEL */
-  top: 210px !important; /* <--- SE LE FRECCE SONO ALTE O BASSE, MODIFICA SOLO QUESTO NUMERO! */
+  top: 240px !important; /* <--- SE LE FRECCE SONO ALTE O BASSE, MODIFICA SOLO QUESTO NUMERO! */
   transform: none !important;
   
   font-size: 20px !important;
