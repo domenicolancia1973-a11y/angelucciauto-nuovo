@@ -809,44 +809,80 @@ nav .nav-logo img {
   }
 }
 /* ========================================================
-   SEZIONE I NOSTRI SERVIZI - SOLO CELLULARE (MAX 768px)
+   SEZIONE SERVIZI - SCROLL ORIZZONTALE CON FRECCE (MOBILE)
    ======================================================== */
 @media (max-width: 768px) {
   
-  /* 1. Trasformiamo la griglia in un elenco verticale flessibile per poter cambiare l'ordine */
+  /* 1. Mette i servizi tutti su una riga e attiva lo scorrimento laterale */
   #servizi .servizi-grid {
     display: flex !important;
-    flex-direction: column !important; /* Mette le card una sotto l'altra */
-    gap: 20px !important;              /* Spazio tra una card e l'altra */
+    flex-direction: row !important; /* Forza la riga unica */
+    overflow-x: auto !important;    /* Attiva lo scroll con il dito */
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 15px !important;
+    padding: 10px 40px !important;  /* Spazio ai lati per non far finire le card sotto le frecce */
+    scrollbar-width: none !important; /* Nasconde la barra brutta su Android */
   }
-
-  /* 2. FORZIAMO L'ORDINE PERFETTO USANDO I LINK (HREF) COME BERSAGLIO */
   
-  /* 1° POSTO: OFFICINA */
-  #servizi .servizi-grid a[href="officina.html"] {
-    order: 1 !important;
+  #servizi .servizi-grid::-webkit-scrollbar {
+    display: none !important; /* Nasconde la barra brutta su iPhone */
   }
 
-  /* 2° POSTO: GPL */
-  #servizi .servizi-grid a[href="gpl.html"] {
-    order: 2 !important;
+  /* 2. Blocca la larghezza delle card così non si schiacciano */
+  #servizi .servizio-card {
+    flex: 0 0 75% !important; /* Ogni card prende il 75% della larghezza dello schermo */
+    max-width: 75% !important;
   }
 
-  /* 3° POSTO: ACQUISTO AUTO */
-  #servizi .servizi-grid a[href="acquisto-auto.html"] {
-    order: 3 !important;
+  /* 3. L'ORDINE PERFETTO CHE HAI CHIESTO */
+  #servizi .servizi-grid a[href="officina.html"]         { order: 1 !important; }
+  #servizi .servizi-grid a[href="gpl.html"]              { order: 2 !important; }
+  #servizi .servizi-grid a[href="acquisto-auto.html"]    { order: 3 !important; }
+  #servizi .servizi-grid a[href="finanziamenti.html"]    { order: 4 !important; }
+
+  /* 4. CREAZIONE DELLE FRECCE LATERALI */
+  #servizi {
+    position: relative !important;
   }
 
-  /* 4° POSTO: FINANZIAMENTI */
-  #servizi .servizi-grid a[href="finanziamenti.html"] {
-    order: 4 !important;
+  /* Freccia Sinistra (Indietro) */
+  #servizi::before {
+    content: "❮" !important;
+    position: absolute !important;
+    left: 10px !important;
+    top: 55% !important;
+    transform: translateY(-50%) !important;
+    font-size: 20px !important;
+    color: #fff !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    width: 35px !important;
+    height: 35px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    z-index: 100 !important;
+    pointer-events: none !important; /* Non blocca il click del dito */
   }
 
-  /* 3. NASCONDIDAMO EVENTUALI FRECCE VECCHIE SE GENERATE DA COSE STRANE */
-  #servizi .carousel-control-prev,
-  #servizi .carousel-control-next,
-  #servizi [class*="arrow"],
-  #servizi [class*="control"] {
-    display: none !important;
+  /* Freccia Destra (Avanti) */
+  #servizi::after {
+    content: "❯" !important;
+    position: absolute !important;
+    right: 10px !important;
+    top: 55% !important;
+    transform: translateY(-50%) !important;
+    font-size: 20px !important;
+    color: #fff !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    width: 35px !important;
+    height: 35px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    z-index: 100 !important;
+    pointer-events: none !important;
   }
 }
