@@ -156,12 +156,13 @@
 /* === PEZZO DA AGGIUNGERE ADESSO === */
 .hero p { 
   font-family: var(--font-body);
-  font-size: clamp(1.05rem, 2.5vw, 1.2rem) !important; 
-  color: var(--red) !important; /* Stesso identico rosso del titolo */
-  font-weight: 600 !important; /* Un po' più spesso per spiccare sullo sfondo */
+  /* Ridotto: ora parte da 0.95rem su mobile (più compatto e sta su meno righe) */
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem) !important; 
+  color: var(--red) !important; 
+  font-weight: 600 !important; 
   max-width: 480px; 
-  margin-bottom: 2rem; 
-  line-height: 1.4 !important;
+  margin-bottom: 1.5rem; /* Ridotto anche il margine sotto per avvicinare l'immagine */
+  line-height: 1.3 !important; /* Testo più denso e compatto */
 }
 /* ================================== */
 
