@@ -176,6 +176,26 @@
         margin-top: auto !important; /* Li ancora tassativamente al fondo della scheda dell'auto */
         padding: 10px !important;
       }
+  /* ========================================================
+         FIX: PULSANTE "LISTA VEICOLI" RETTANGOLARE SU UNA RIGA
+         ======================================================== */
+      .cta-lista {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        padding: 20px 10px !important;
+      }
+
+      .cta-lista a.btn-lista {
+        display: inline-block !important;
+        width: auto !important;          /* Evita che si allarghi all'infinito */
+        max-width: 90% !important;       /* Gli dà un limite fluido sul telefono */
+        white-space: nowrap !important;  /* FORZA IL TESTO SU UNA SOLA RIGA (Niente scritte a capo) */
+        padding: 14px 24px !important;   /* Lo rende un bel rettangolo proporzionato */
+        font-size: 0.95rem !important;   /* Riduce leggermente il font se lo schermo è molto stretto */
+        text-align: center !important;
+        box-sizing: border-box !important;
+      }
   </style>
 </head>
 </head>
