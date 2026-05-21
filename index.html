@@ -195,30 +195,34 @@
       }
     }
 
-    /* ========================================================
-       2. REGOLA PER CELLULARE (Schermi piccoli)
+/* ========================================================
+       2. REGOLA PER CELLULARE (Schermi piccoli) - FIX MARGINE
        ======================================================== */
     @media (max-width: 768px) {
-      /* Sblocca la sezione per incollarla a quella sotto */
+      /* 1. Allunghiamo il fondo del box vetrina per non far appiccicare il pulsante al bordo */
       #vetrina.section {
         width: 100% !important;
         max-width: 100% !important;
-        padding-bottom: 0px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        
+        /* CUSCINETTO INTERNO: Crea 25px di spazio sotto al pulsante prima che finisca lo sfondo del box */
+        padding-bottom: 25px !important; 
         margin-bottom: 0px !important;  
       }
 
-      /* Contenitore pulsante su mobile: sale verso l'alto */
+      /* 2. Il contenitore del pulsante si stacca in modo pulito dalle auto */
       .cta-lista {
         display: block !important;
         width: 100% !important;
         max-width: 100% !important;
-        padding: 0px 15px !important; /* Spazio solo ai lati per non toccare il bordo del telefono */
-        margin-top: -35px !important; /* Lo attacca alla fine della vetrina delle auto */
-        margin-bottom: 0px !important;
+        padding: 0px 15px !important; /* Spazio solo ai lati per lo schermo */
+        margin-top: 15px !important;   /* Spazio pulito tra le auto e il pulsante */
+        margin-bottom: 0px !important; 
         box-sizing: border-box !important;
       }
 
-      /* Il pulsante su mobile: scudo totale anti-straripamento */
+      /* 3. Il pulsante su mobile: scudo totale anti-straripamento */
       .cta-lista a.btn-lista {
         display: block !important;
         width: 100% !important;          
@@ -236,12 +240,12 @@
         box-sizing: border-box !important;
       }
 
-      /* Spinge in alto la sezione successiva dei servizi */
+      /* 4. La sezione successiva dei servizi ricomincia alla giusta distanza senza accavallarsi */
       #servizi, 
       .section:nth-of-type(3), 
       section[id*="serviz"] {
-        padding-top: 10px !important;  
-        margin-top: -25px !important;  
+        padding-top: 30px !important;  /* Ripristina uno spazio normale all'inizio dei servizi */
+        margin-top: 0px !important;    /* Cancella i vecchi scavalcamenti negativi */
       }
     }
   </style>
