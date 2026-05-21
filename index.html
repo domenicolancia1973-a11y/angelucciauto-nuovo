@@ -9,29 +9,73 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    /* Forza il tocco sulle frecce del carosello anche se generate da JavaScript */
+<style>
+    /* ========================================================
+       FIX DEFINITIVO: VETRINA SCROLLABILE CON FRECCE FUNZIONANTI
+       ======================================================== */
+    
+    /* 1. Contenitore principale della vetrina relativo per agganciare le frecce */
+    #vetrina {
+      position: relative !important;
+    }
+
+    /* 2. Configurazione della griglia auto su Mobile */
     @media (max-width: 768px) {
-      #inventory-container [class*="arrow"],
-      #inventory-container [class*="btn"],
-      #inventory-container [class*="nav"],
-      #inventory-container button,
-      #inventory-container span,
-      .carousel-arrow, 
-      .prev-arrow, 
-      .next-arrow {
-        min-width: 65px !important;
-        min-height: 65px !important;
-        background-color: rgba(0, 0, 0, 0.01) !important; /* Forza il browser a sentire il dito */
-        pointer-events: all !important;
+      #inventory-container {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-behavior: smooth !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 15px !important;
+        padding: 10px 20px !important;
+        scrollbar-width: none !important; /* Nasconde la barra di scorrimento brutta */
+      }
+      #inventory-container::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      /* Forza le schede delle auto a mostrare un'anteprima della successiva */
+      #inventory-container .car-card {
+        flex: 0 0 85% !important; 
+        max-width: 85% !important;
+        position: relative !important;
+      }
+
+      /* 3. STILE DELLE NUOVE FRECCE LATERALI SULLA VETRINA */
+      .vetrina-arrow {
+        position: absolute !important;
+        top: 220px !important; /* Centrate perfettamente sull'altezza delle foto delle auto */
+        transform: translateY(-50%) !important;
+        background: rgba(0, 0, 0, 0.75) !important;
+        color: #ffffff !important;
+        border: none !important;
+        width: 48px !important;
+        height: 48px !important;
+        border-radius: 50% !important;
+        font-size: 2rem !important;
+        font-weight: bold !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         z-index: 999999 !important;
         cursor: pointer !important;
+        line-height: 1 !important;
+        -webkit-tap-highlight-color: transparent !important;
       }
-      
-      /* Impedisce alle immagini o a layer invisibili di bloccare il click */
-      #inventory-container img, 
-      .carousel-track {
-        pointer-events: auto !important;
+
+      .vetrina-arrow:active {
+        background: rgba(0, 0, 0, 0.9) !important;
+        scale: 0.95;
+      }
+
+      #arrow-left { left: 5px !important; }
+      #arrow-right { right: 5px !important; }
+    }
+
+    /* Nasconde le frecce su Desktop */
+    @media (min-width: 769px) {
+      .vetrina-arrow {
+        display: none !important;
       }
     }
   </style>
@@ -80,18 +124,36 @@
   </div>
 
 </section>
-
 <section class="section" id="vetrina">
   <div class="section-header">
     <span class="section-tag">Disponibili ora</span>
     <h2>Vetrina Auto</h2>
   </div>
+
+  <button class="vetrina-arrow" id="arrow-left" onclick="scrollVetrina(-1)">‹</button>
+  <button class="vetrina-arrow" id="arrow-right" onclick="scrollVetrina(1)">›</button>
+
   <div class="inventory-grid" id="inventory-container">
     <p class="status-msg">Caricamento in corso…</p>
   </div>
+  
   <div class="cta-lista">
-    <a class="btn-lista" href="lista-veicoli.html">&#9660; Lista veicoli in vendita</a>
+    <a class="btn-lista" href="lista-veicoli.html">▼ Lista veicoli in vendita</a>
   </div>
+
+  <script>
+    function scrollVetrina(direction) {
+      const container = document.getElementById('inventory-container');
+      if (container) {
+        // Calcola lo spostamento in base alla larghezza dello schermo (75%)
+        const scrollAmount = window.innerWidth * 0.75;
+        container.scrollBy({
+          left: direction * scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+    }
+  </script>
 </section>
 
 <!-- ── SERVIZI ── -->
