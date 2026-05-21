@@ -809,19 +809,19 @@ nav .nav-logo img {
   }
 }
 /* ========================================================
-   SEZIONE SERVIZI - SCROLL ORIZZONTALE CON FRECCE VERE (MOBILE)
+   SEZIONE SERVIZI - SOLO CELLULARE (PULIZIA E CENTRAGGIO)
    ======================================================== */
 @media (max-width: 768px) {
   
   /* 1. Mette i servizi tutti su una riga e attiva lo scorrimento laterale */
   #servizi .servizi-grid {
     display: flex !important;
-    flex-direction: row !important; /* Riga unica */
-    overflow-x: auto !important;    /* Attiva lo scroll */
+    flex-direction: row !important; 
+    overflow-x: auto !important;    
     scroll-behavior: smooth !important;
     -webkit-overflow-scrolling: touch !important;
     gap: 15px !important;
-    padding: 10px 45px !important;  /* Spazio ai lati per non coprire il testo con le frecce */
+    padding: 10px 45px !important;  /* Spazio di sicurezza ai lati */
     scrollbar-width: none !important; 
   }
   
@@ -835,13 +835,26 @@ nav .nav-logo img {
     max-width: 75% !important;
   }
 
-  /* 3. L'ORDINE PERFETTO CHE HAI RICHIESTO */
+  /* 3. L'ORDINE PERFETTO DEI SERVIZI */
   #servizi .servizi-grid a[href="officina.html"]         { order: 1 !important; }
   #servizi .servizi-grid a[href="gpl.html"]              { order: 2 !important; }
   #servizi .servizi-grid a[href="acquisto-auto.html"]    { order: 3 !important; }
   #servizi .servizi-grid a[href="finanziamenti.html"]    { order: 4 !important; }
 
-  /* 4. STILE DELLE FRECCE REALI E CLICCABILI sui lati del box */
+  /* 4. ANIENTAMENTO TOTALE DELLE VECCHIE FRECCE INUTILI */
+  #servizi .carousel-control-prev,
+  #servizi .carousel-control-next,
+  #servizi .swiper-button-prev,
+  #servizi .swiper-button-next,
+  #servizi .owl-prev,
+  #servizi .owl-next {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* 5. POSIZIONAMENTO CENTRATO AL MILLIMETRO DELLE NUOVE FRECCE CLICCABILI */
   #servizi {
     position: relative !important;
   }
@@ -849,27 +862,31 @@ nav .nav-logo img {
   .servizi-control-prev,
   .servizi-control-next {
     position: absolute !important;
-    top: 55% !important;
+    
+    /* CENTRAGGIO VERTICALE RISPETTO AL BOX */
+    top: 50% !important;
     transform: translateY(-50%) !important;
+    
     font-size: 20px !important;
     color: #fff !important;
-    background: rgba(0, 0, 0, 0.7) !important;
-    width: 38px !important;
-    height: 38px !important;
+    background: rgba(0, 0, 0, 0.7) !important; /* Cerchio scuro visibile */
+    width: 40px !important;
+    height: 40px !important;
     border: none !important;
     border-radius: 50% !important;
-    z-index: 100 !important;
+    z-index: 999 !important; /* Passa sopra a tutto per farsi cliccare */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer !important;
   }
 
-  .servizi-control-prev { left: 8px !important; }
-  .servizi-control-next { right: 8px !important; }
+  /* Attaccate ai bordi laterali dello schermo */
+  .servizi-control-prev { left: 5px !important; }
+  .servizi-control-next { right: 5px !important; }
 }
 
-/* Nasconde le due nuove frecce su PC per non fare casini */
+/* Nasconde le nuove frecce su PC */
 @media (min-width: 769px) {
   .servizi-control-prev,
   .servizi-control-next {
