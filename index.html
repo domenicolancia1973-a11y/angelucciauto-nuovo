@@ -11,84 +11,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
     /* ========================================================
-       FIX DEFINITIVO: VETRINA SCROLLABILE CON FRECCE FUNZIONANTI
+       FIX REALE: BLOCCO PC/MOBILE E RIPRISTINO PULSANTI
        ======================================================== */
     
-    /* 1. Contenitore principale della vetrina relativo per agganciare le frecce */
+    /* 1. Regola generale per il contenitore */
     #vetrina {
       position: relative !important;
     }
 
-    /* 2. Configurazione della griglia auto su Mobile */
-    @media (max-width: 768px) {
-      #inventory-container {
-        display: flex !important;
-        overflow-x: auto !important;
-        scroll-behavior: smooth !important;
-        -webkit-overflow-scrolling: touch !important;
-        gap: 15px !important;
-        padding: 10px 20px !important;
-        scrollbar-width: none !important; /* Nasconde la barra di scorrimento brutta */
-      }
-      #inventory-container::-webkit-scrollbar {
-        display: none !important;
-      }
-
-      /* Forza le schede delle auto a mostrare un'anteprima della successiva e sblocca i pulsanti */
-      #inventory-container .car-card {
-        flex: 0 0 85% !important; 
-        max-width: 85% !important;
-        position: relative !important;
-        
-        /* FIX: Permette al box di allungarsi per mostrare i bottoni Dettagli e WA */
-        height: auto !important;
-        min-height: 440px !important; /* Spazio solido per contenere tutto senza tagliare */
-        
-        /* Spinge i bottoni del prezzo e di contatto sempre in fondo alla scheda */
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-      }
-    }
-
-      /* 3. STILE DELLE NUOVE FRECCE LATERALI SULLA VETRINA */
-      .vetrina-arrow {
-        position: absolute !important;
-        top: 270px !important; /* Centrate perfettamente sull'altezza delle foto delle auto */
-        transform: translateY(-50%) !important;
-        background: rgba(0, 0, 0, 0.75) !important;
-        color: #ffffff !important;
-        border: none !important;
-        width: 48px !important;
-        height: 48px !important;
-        border-radius: 50% !important;
-        font-size: 2rem !important;
-        font-weight: bold !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        z-index: 999999 !important;
-        cursor: pointer !important;
-        line-height: 1 !important;
-        -webkit-tap-highlight-color: transparent !important;
-      }
-
-      .vetrina-arrow:active {
-        background: rgba(0, 0, 0, 0.9) !important;
-        scale: 0.95;
-      }
-
-      #arrow-left { left: 5px !important; }
-      #arrow-right { right: 5px !important; }
-    }
-
-    /* Nasconde le frecce su Desktop */
+    /* NASCONDE TASSATIVAMENTE LE FRECCE SU DESKTOP/PC */
     @media (min-width: 769px) {
       .vetrina-arrow {
         display: none !important;
       }
     }
-  /* Nasconde definitivamente le vecchie frecce bianche generate da JS */
+
+    /* ELIMINAZIONE VECCHIE FRECCE BIANCHE IN OGNI CASO */
     .car-card::before,
     .car-card::after,
     .carousel-arrow,
@@ -98,6 +36,75 @@
       content: none !important;
       opacity: 0 !important;
       visibility: hidden !important;
+    }
+
+    /* 2. SOLO SU CELLULARE (MAX 768px) */
+    @media (max-width: 768px) {
+      
+      /* Configurazione scorrimento orizzontale vetrina */
+      #inventory-container {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-behavior: smooth !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 15px !important;
+        padding: 10px 20px 30px 20px !important; /* Aumentato il padding sotto per dare spazio ai bottoni */
+        scrollbar-width: none !important;
+      }
+      #inventory-container::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      /* STILE DELLE FRECCE (SOLO SU MOBILE) */
+      .vetrina-arrow {
+        display: flex !important; /* Forza la visibilità solo qui */
+        position: absolute !important;
+        top: 270px !important; /* Centrate sulla foto */
+        transform: translateY(-50%) !important;
+        background: rgba(0, 0, 0, 0.75) !important;
+        color: #ffffff !important;
+        border: none !important;
+        width: 48px !important;
+        height: 48px !important;
+        border-radius: 50% !important;
+        font-size: 2rem !important;
+        font-weight: bold !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 999999 !important;
+        cursor: pointer !important;
+        line-height: 1 !important;
+      }
+
+      #arrow-left { left: 5px !important; }
+      #arrow-right { right: 5px !important; }
+
+      /* FORZATURA TOTALE PER MOSTRARE I PULSANTI (DETTAGLI E WA) */
+      #inventory-container .car-card {
+        flex: 0 0 85% !important; 
+        max-width: 85% !important;
+        position: relative !important;
+        
+        /* Sovrascrive qualsiasi blocco del JavaScript */
+        height: auto !important;
+        min-height: 520px !important; /* Alza sensibilmente l'altezza per fare spazio */
+        overflow: visible !important;  /* Impedisce di tagliare i pulsanti in basso */
+        
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+      }
+
+      /* Trova i contenitori dei bottoni dentro la scheda e assicurati che si vedano */
+      #inventory-container .car-card .car-buttons,
+      #inventory-container .car-card .card-footer,
+      #inventory-container .car-card a.btn,
+      #inventory-container .car-card button {
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
     }
   </style>
 </head>
