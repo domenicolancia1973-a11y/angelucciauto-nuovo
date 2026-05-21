@@ -772,4 +772,13 @@ nav .nav-logo img {
     padding: 0 10px !important;
   }
 }
+@media (max-width: 768px) {
+  
+  /* ... lascia intatte le tue regole precedenti (navbar, hero-image, ecc.) ... */
 
+  /* INTERVENTO ISOLATO: Sposta la Vetrina verso l'alto solo su cellulare */
+  #vetrina.section {
+    margin-top: -50px !important;  /* Forza la sezione a salire verso l'immagine della hero */
+    padding-top: 0 !important;      /* Elimina lo spazio vuoto interno sopra il titolo */
+  }
+}
