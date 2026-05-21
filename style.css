@@ -772,18 +772,4 @@ nav .nav-logo img {
     padding: 0 10px !important;
   }
 }
-@media (max-width: 768px) {
-  
-  /* ... lascia qui le tue vecchie regole (navbar, hero-image, ecc.) ... */
 
-  /* COMPATTA LA HERO SU CELLULARE */
-  .hero {
-    padding: 3rem 1.5rem 0 1.5rem !important; /* Forziamo a ZERO lo spazio sotto la hero */
-  }
-
-  /* COMPATTA LA VETRINA SU CELLULARE */
-  #vetrina.section {
-    padding-top: 10px !important; /* Riduce al minimo lo spazio sopra il titolo "Disponibili ora" */
-    margin-top: 0 !important;
-  }
-}
