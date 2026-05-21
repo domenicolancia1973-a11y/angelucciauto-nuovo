@@ -762,13 +762,13 @@ nav .nav-logo img {
   }
 }
 @media (max-width: 768px) {
-  
-  /* ... qui ci sono le altre regole mobile della navbar ... */
 
-  /* SPOSTA L'IMMAGINE DELLA HERO PIÙ IN ALTO SU MOBILE */
+  /* ... lascia qui le tue regole della navbar mobile ... */
+
+  /* FORZA L'IMMAGINE A SALIRE E COMPATTA LO SPAZIO SU CELLULARE */
   .hero-image {
-    margin-top: -25px !important; /* Valore modificabile: più alzi il numero, più l'immagine sale */
-    padding: 0 10px !important;    /* Stringe leggermente i lati per non incollarla ai bordi */
+    transform: translateY(-40px) !important; /* Sposta fisicamente l'immagine verso l'alto di 40 pixel */
+    margin-bottom: -40px !important; /* Recupera lo spazio vuoto che si creerebbe sotto */
+    padding: 0 10px !important;
   }
-
 }
