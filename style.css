@@ -789,23 +789,24 @@ nav .nav-logo img {
   }
 @media (max-width: 768px) {
 
-  /* FORZA TUTTI I TIPI DI FRECCE E PULSANTI SULLE FOTO AD ESSERE CLICCABILI */
-  .carousel-btn,
-  .arrow,
-  .arrow-btn,
-  .nav-btn,
-  .slider-arrow,
+  /* SBLOCCO TOTALE DELLE FRECCE NEGLI SLIDER TOUCH */
+  .arrow, 
+  .prev, 
+  .next, 
   [class*="arrow"], 
-  [class*="btn-next"], 
-  [class*="btn-prev"],
-  [class*="swiper-button"] {
-    z-index: 9999 !important;        /* Livello massimo assoluto */
-    pointer-events: auto !important;  /* Attiva il click/tocco del dito */
-    position: relative;               /* Forza il controllo del livello */
+  [class*="nav"],
+  [class*="chevron"],
+  button[class*="btn"] {
+    z-index: 99999 !important;       /* Livello altissimo, davanti a foto e scritte */
+    pointer-events: all !important;  /* Forza il browser a sentire il tocco del dito */
+    visibility: visible !important;  /* Impedisce al browser di nasconderle */
+    opacity: 1 !important;           /* Le rende totalmente visibili */
   }
 
-  /* Se le frecce sono dentro un contenitore che le blocca, liberiamo anche quello */
-  .carousel-container, .slider-container, .image-slider {
-    pointer-events: auto !important;
+  /* Rende l'area cliccabile delle frecce più grande sul cellulare */
+  .prev, .next, [class*="arrow-left"], [class*="arrow-right"] {
+    padding: 15px !important;       /* Più spazio per il polpastrello */
+    min-width: 44px !important;      /* Dimensione minima consigliata da Google per i telefoni */
+    min-height: 44px !important;
   }
 }
