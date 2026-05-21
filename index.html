@@ -9,6 +9,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Forza il tocco sulle frecce del carosello anche se generate da JavaScript */
+    @media (max-width: 768px) {
+      #inventory-container [class*="arrow"],
+      #inventory-container [class*="btn"],
+      #inventory-container [class*="nav"],
+      #inventory-container button,
+      #inventory-container span,
+      .carousel-arrow, 
+      .prev-arrow, 
+      .next-arrow {
+        min-width: 65px !important;
+        min-height: 65px !important;
+        background-color: rgba(0, 0, 0, 0.01) !important; /* Forza il browser a sentire il dito */
+        pointer-events: all !important;
+        z-index: 999999 !important;
+        cursor: pointer !important;
+      }
+      
+      /* Impedisce alle immagini o a layer invisibili di bloccare il click */
+      #inventory-container img, 
+      .carousel-track {
+        pointer-events: auto !important;
+      }
+    }
+  </style>
+</head>
 </head>
 <body>
 <nav style="position: sticky; top: 0; z-index: 99999 !important; background-color: #ffffff !important; border-bottom: 1px solid #e2e8f0 !important; padding: 0 1.5rem; display: flex !important; align-items: center !important; justify-content: space-between !important; height: 72px !important; box-sizing: border-box !important;">
