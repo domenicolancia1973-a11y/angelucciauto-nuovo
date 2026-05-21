@@ -106,6 +106,54 @@
         pointer-events: auto !important;
       }
     }
+  /* ========================================================
+         FIX GRAFICO: RICOSTRUZIONE BOTTONI "DETTAGLI" SU MOBILE
+         ======================================================== */
+      
+      /* Cerca tutti i link di azione/bottoni dentro la scheda dell'auto */
+      #inventory-container .car-card a, 
+      #inventory-container .car-card button,
+      #inventory-container .car-card [class*="btn"],
+      #inventory-container .car-card [class*="button"] {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 12px 15px !important; /* Dà spessore e altezza al bottone */
+        margin-top: 8px !important;
+        border-radius: 6px !important; /* Angoli arrotondati puliti */
+        font-weight: bold !important;
+        text-decoration: none !important;
+        font-size: 0.95rem !important;
+        box-sizing: border-box !important;
+        line-height: 1.2 !important;
+      }
+
+      /* Forza lo stile specifico sul tasto DETTAGLI (sfondo scuro/rosso o quello del tuo sito) */
+      #inventory-container .car-card a:not([href*="wa.me"]),
+      #inventory-container .car-card button:not([class*="wa"]) {
+        background-color: #1a1a1a !important; /* Cambialo con var(--red) se preferisci il rosso del tuo brand */
+        color: #ffffff !important; /* Scritta bianca ben visibile */
+        border: 1px solid #1a1a1a !important;
+      }
+
+      /* Forza lo stile specifico sul tasto WHATSAPP (sfondo verde) */
+      #inventory-container .car-card a[href*="wa.me"],
+      #inventory-container .car-card [class*="wa"] {
+        background-color: #25d366 !important; /* Verde WhatsApp ufficiale */
+        color: #ffffff !important;
+        border: 1px solid #25d366 !important;
+      }
+
+      /* Crea un contenitore flessibile in fondo se i due bottoni devono stare affiancati o impilati puliti */
+      #inventory-container .car-card .car-buttons,
+      #inventory-container .car-card .card-footer {
+        display: flex !important;
+        flex-direction: column !important; /* Li mette uno sotto l'altro per comodità su mobile */
+        gap: 8px !important;
+        width: 100% !important;
+        margin-top: auto !important; /* Li ancora tassativamente al fondo della scheda */
+        padding: 10px !important;
+      }
   </style>
 </head>
 </head>
