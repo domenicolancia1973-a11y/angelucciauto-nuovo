@@ -78,6 +78,17 @@
         display: none !important;
       }
     }
+  /* Nasconde definitivamente le vecchie frecce bianche generate da JS */
+    .car-card::before,
+    .car-card::after,
+    .carousel-arrow,
+    .prev-arrow,
+    .next-arrow {
+      display: none !important;
+      content: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
   </style>
 </head>
 </head>
