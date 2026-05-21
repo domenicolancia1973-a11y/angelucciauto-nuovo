@@ -176,37 +176,36 @@
         margin-top: auto !important; /* Li ancora tassativamente al fondo della scheda dell'auto */
         padding: 10px !important;
       }
- /* ========================================================
-         FIX COMPATTEZZA: PULSANTE PIÙ GRANDE E MENO SPAZIO VUOTO
+  /* ========================================================
+         FIX DEFINITIVO: SCRITTA DENTRO IL PULSANTE SU CELLULARE
          ======================================================== */
       .cta-lista {
         width: 100% !important;
         display: flex !important;
         justify-content: center !important;
-        
-        /* RIDOTTO SPAZIO: Meno margine tra fine vetrina e pulsante */
         padding: 5px 10px 10px 10px !important; 
         margin-bottom: 0px !important; 
       }
 
       .cta-lista a.btn-lista {
-        display: inline-block !important;
-        width: 90% !important;           /* Allarga il pulsante al 90% dello schermo così la scritta ci sta comoda */
-        max-width: 340px !important;     /* Gli dà una bella forma rettangolare proporzionata */
+        display: block !important;
+        width: 92% !important;           /* Occupa quasi tutta la larghezza disponibile */
+        max-width: 350px !important;     
         white-space: nowrap !important;  /* Impedisce categoricamente alla scritta di andare a capo */
+        overflow: hidden !important;     /* Sicurezza extra */
         
-        /* DIMENSIONI: Pulsante leggermente più grande e facile da cliccare */
-        padding: 16px 20px !important;   
-        font-size: 1.05rem !important;   /* Testo leggermente più grande e leggibile */
+        /* BILANCIAMENTO: Pulsante alto il giusto, ma con testo protetto */
+        padding: 16px 10px !important;   /* Ridotto lo spazio ai lati (da 20px a 10px) per far stare la scritta */
+        font-size: 0.90rem !important;   /* Testo leggermente più piccolo così entra matematicamente nel pulsante */
         font-weight: bold !important;
         text-align: center !important;
         box-sizing: border-box !important;
       }
 
-      /* RIDOTTO SPAZIO: Accorcia lo spazio tra il pulsante e la sezione "I nostri servizi" */
+      /* SPAZIO COMPATTO CON I NOSTRI SERVIZI */
       #vetrina.section {
-        padding-bottom: 10px !important; /* Riduce l'altezza interna vuota sul fondo della vetrina */
-        margin-bottom: 5px !important;  /* Avvicina la sezione successiva */
+        padding-bottom: 5px !important; 
+        margin-bottom: 0px !important;  
       }
   </style>
 </head>
