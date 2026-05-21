@@ -34,12 +34,22 @@
         display: none !important;
       }
 
-      /* Forza le schede delle auto a mostrare un'anteprima della successiva */
+      /* Forza le schede delle auto a mostrare un'anteprima della successiva e sblocca i pulsanti */
       #inventory-container .car-card {
         flex: 0 0 85% !important; 
         max-width: 85% !important;
         position: relative !important;
+        
+        /* FIX: Permette al box di allungarsi per mostrare i bottoni Dettagli e WA */
+        height: auto !important;
+        min-height: 440px !important; /* Spazio solido per contenere tutto senza tagliare */
+        
+        /* Spinge i bottoni del prezzo e di contatto sempre in fondo alla scheda */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
       }
+    }
 
       /* 3. STILE DELLE NUOVE FRECCE LATERALI SULLA VETRINA */
       .vetrina-arrow {
