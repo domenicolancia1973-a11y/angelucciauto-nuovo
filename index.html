@@ -177,43 +177,50 @@
         padding: 10px !important;
       }
 /* ========================================================
-         RIVOLUZIONE FORZATA: DEMOLIZIONE DEI LIMITI DEI CONTENITORI
+         FIX COMPATTEZZA: ELIMINAZIONE SPAZI VUOTI SU MOBILE
          ======================================================== */
       
-      /* 1. Sblocchiamo la sezione principale e eliminiamo lo spazio vuoto sotto */
+      /* 1. Sblocchiamo la sezione principale e azzeriamo lo spazio vuoto sotto */
       #vetrina.section {
         width: 100% !important;
         max-width: 100% !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
-        padding-bottom: 5px !important; 
-        margin-bottom: 0px !important;  
+        padding-bottom: 0px !important; /* Azzerato lo spazio interno finale */
+        margin-bottom: 0px !important;  /* Azzerato il margine esterno */
       }
 
-      /* 2. Sblocchiamo il contenitore del pulsante */
+      /* 2. Sblocchiamo il contenitore del pulsante e lo spingiamo verso l'ALTO */
       .cta-lista {
         display: block !important;
         width: 100% !important;
         max-width: 100% !important;
-        padding: 5px 15px 10px 15px !important; /* Unico margine rimasto per non toccare i bordi del telefono */
+        padding: 0px 15px !important; /* Azzerato lo spazio sopra e sotto, tiene solo i lati */
+        margin-top: -15px !important; /* Calamita il pulsante verso l'alto, attaccandolo alla vetrina */
+        margin-bottom: 0px !important;
         box-sizing: border-box !important;
-        margin: 0 auto !important;
       }
 
-      /* 3. Il pulsante ADESSO DEVE ALLARGARSI PER FORZA */
+      /* 3. Il pulsante largo al 100% su una riga */
       .cta-lista a.btn-lista {
         display: block !important;
-        width: 100% !important;          /* Prende tutta la larghezza sbloccata sopra */
+        width: 100% !important;          
         min-width: 100% !important;
         max-width: 100% !important;      
-        white-space: nowrap !important;  /* Testo dritto su una riga */
-        
-        /* Grafica e testo grande */
+        white-space: nowrap !important;  
         padding: 16px 5px !important;   
         font-size: 1.1rem !important;    
         font-weight: bold !important;
         text-align: center !important;
         box-sizing: border-box !important;
+      }
+
+      /* 4. SEZIONE SUCCESSIVA: Prende la sezione "I nostri servizi" e la tira in ALTO */
+      #servizi, 
+      .section:nth-of-type(3), 
+      section[id*="serviz"] {
+        padding-top: 10px !important;  /* Riduce lo spazio vuoto iniziale interno dei servizi */
+        margin-top: -25px !important;  /* Spinge tutta la sezione in su per incollarla al pulsante */
       }
   </style>
 </head>
