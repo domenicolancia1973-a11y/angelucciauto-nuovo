@@ -747,3 +747,14 @@ nav .nav-logo img {
     text-decoration: none !important;
   }
 }
+@media (max-width: 768px) {
+  
+  /* ... qui ci sono le altre regole mobile della navbar ... */
+
+  /* SPOSTA L'IMMAGINE DELLA HERO PIÙ IN ALTO SU MOBILE */
+  .hero-image {
+    margin-top: -25px !important; /* Valore modificabile: più alzi il numero, più l'immagine sale */
+    padding: 0 10px !important;    /* Stringe leggermente i lati per non incollarla ai bordi */
+  }
+
+}
