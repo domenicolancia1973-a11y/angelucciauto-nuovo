@@ -248,60 +248,7 @@
         margin-top: 0px !important;    /* Cancella i vecchi scavalcamenti negativi */
       }
     }
-  /* ========================================================
-         SEZIONE I NOSTRI SERVIZI (SOLO MOBILE)
-         ======================================================== */
-      
-      /* 1. APPLICHIAMO LA STESSA LOGICA DELLA VETRINA PER LE FRECCE */
-      #servizi .carousel-control-prev,
-      #servizi .carousel-control-next {
-        position: absolute !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        width: 40px !important;
-        height: 40px !important;
-        background-color: rgba(0, 0, 0, 0.6) !important; /* Sfondo scuro per farle risaltare */
-        border-radius: 50% !important;
-        z-index: 10 !important;
-      }
-      
-      #servizi .carousel-control-prev { left: 5px !important; }
-      #servizi .carousel-control-next { right: 5px !important; }
-
-      /* 2. RIORDINAMENTO DEI SERVIZI SU CELLULARE */
-      /* Forza il contenitore a usare Flexbox per gestire l'ordine */
-      #servizi .row, 
-      #servizi .services-container {
-        display: flex !important;
-        flex-direction: column !important; /* Li tiene incolonnati puliti su mobile */
-      }
-
-      /* NOTA: Sostituisci i selettori qui sotto con le classi o ID reali dei tuoi servizi */
-      
-      /* 1° Posto: OFFICINA */
-      #servizi .servizio-officina, 
-      #servizi [class*="officina"] {
-        order: 1 !important;
-      }
-
-      /* 2° Posto: GPL */
-      #servizi .servizio-gpl, 
-      #servizi [class*="gpl"] {
-        order: 2 !important;
-      }
-
-      /* 3° Posto: ACQUISTO AUTO */
-      #servizi .servizio-acquisto, 
-      #servizi [class*="acquisto"],
-      #servizi [class*="compra"] {
-        order: 3 !important;
-      }
-
-      /* 4° Posto: FINANZIAMENTI */
-      #servizi .servizio-finanziamenti, 
-      #servizi [class*="finanziam"] {
-        order: 4 !important;
-      }
+  
   </style>
 </head>
 </head>
