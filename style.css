@@ -789,18 +789,23 @@ nav .nav-logo img {
   }
 @media (max-width: 768px) {
 
-  /* ... lascia le tue vecchie regole sopra ... */
+  /* FORZA TUTTI I TIPI DI FRECCE E PULSANTI SULLE FOTO AD ESSERE CLICCABILI */
+  .carousel-btn,
+  .arrow,
+  .arrow-btn,
+  .nav-btn,
+  .slider-arrow,
+  [class*="arrow"], 
+  [class*="btn-next"], 
+  [class*="btn-prev"],
+  [class*="swiper-button"] {
+    z-index: 9999 !important;        /* Livello massimo assoluto */
+    pointer-events: auto !important;  /* Attiva il click/tocco del dito */
+    position: relative;               /* Forza il controllo del livello */
+  }
 
-  /* FORZA LE FRECCE DELLE FOTO A DIVENTARE CLICCABILI */
-  .swiper-button-next, 
-  .swiper-button-prev,
-  .prev, 
-  .next,
-  .carousel-control-next, 
-  .carousel-control-prev,
-  .custom-arrow { 
-    z-index: 999 !important;      /* Le porta sopra a qualsiasi altro elemento visivo */
-    pointer-events: auto !important; /* Costringe il browser ad ascoltare il tocco del dito */
-    cursor: pointer !important;
+  /* Se le frecce sono dentro un contenitore che le blocca, liberiamo anche quello */
+  .carousel-container, .slider-container, .image-slider {
+    pointer-events: auto !important;
   }
 }
