@@ -789,30 +789,22 @@ nav .nav-logo img {
   }
 @media (max-width: 768px) {
 
-  /* ... lascia le tue regole della navbar e della hero sopra ... */
-
-  /* SBLOCCO GENERALE PER LE FRECCE GENERATE DA JAVASCRIPT */
-  #inventory-container .carousel-btn,
-  #inventory-container .arrow,
+  /* TRUCCO EXTREME: Forza l'intercettazione del tocco su qualsiasi cosa funga da freccia */
+  #inventory-container [class*="arrow"],
+  #inventory-container [class*="btn"],
+  #inventory-container [class*="nav"],
   #inventory-container button,
-  #inventory-container span[class*="arrow"],
-  #inventory-container div[class*="arrow"],
-  #inventory-container span[class*="btn"],
-  #inventory-container div[class*="btn"],
-  #inventory-container i,
-  #inventory-container svg {
-    position: absolute !important;   /* Forza la sovrapposizione corretta sulla foto */
-    z-index: 99999 !important;       /* Le spinge davanti a tutto */
-    pointer-events: auto !important; /* Dice al browser: "Ascolta il tocco del dito qui" */
-    cursor: pointer !important;
+  #inventory-container span {
+    min-width: 60px !important;      /* Rende l'area del tasto molto più grande, a prova di dito */
+    min-height: 60px !important;
+    background-color: rgba(0,0,0,0.02) !important; /* Diamo un micro-colore quasi invisibile per forzare il touch */
+    pointer-events: all !important;
+    z-index: 999999 !important;
   }
 
-  /* Impedisce ai contenitori delle foto di coprire o bloccare il click */
-  #inventory-container .carousel-container,
-  #inventory-container .images-container,
-  #inventory-container .car-images,
-  #inventory-container .swiper-wrapper {
+  /* Se lo slider usa una protezione invisibile sopra le foto, la disattiviamo */
+  #inventory-container .carousel-track,
+  #inventory-container .images-slider {
     pointer-events: auto !important;
-    z-index: 1 !important;
   }
 }
