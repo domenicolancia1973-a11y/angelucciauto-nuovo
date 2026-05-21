@@ -792,23 +792,26 @@ nav .nav-logo img {
   /* ... lascia le tue regole della navbar e della hero sopra ... */
 
   /* SBLOCCO GENERALE PER LE FRECCE GENERATE DA JAVASCRIPT */
-  .inventory-grid .car-card .carousel-btn,
-  .inventory-grid .car-card .arrow,
-  .inventory-grid .car-card button,
-  .inventory-grid .car-card span[class*="arrow"],
-  .inventory-grid .car-card div[class*="arrow"],
-  .inventory-grid .car-card span[class*="btn"],
-  .inventory-grid .car-card div[class*="btn"] {
+  #inventory-container .carousel-btn,
+  #inventory-container .arrow,
+  #inventory-container button,
+  #inventory-container span[class*="arrow"],
+  #inventory-container div[class*="arrow"],
+  #inventory-container span[class*="btn"],
+  #inventory-container div[class*="btn"],
+  #inventory-container i,
+  #inventory-container svg {
     position: absolute !important;   /* Forza la sovrapposizione corretta sulla foto */
     z-index: 99999 !important;       /* Le spinge davanti a tutto */
-    pointer-events: auto !important;  /* Dice al browser: "Ascolta il tocco del dito qui" */
+    pointer-events: auto !important; /* Dice al browser: "Ascolta il tocco del dito qui" */
     cursor: pointer !important;
   }
 
-  /* Evita che la scatola della foto o del testo copra le frecce */
-  .inventory-grid .car-card .carousel-container,
-  .inventory-grid .car-card .images-container,
-  .inventory-grid .car-card .car-images {
+  /* Impedisce ai contenitori delle foto di coprire o bloccare il click */
+  #inventory-container .carousel-container,
+  #inventory-container .images-container,
+  #inventory-container .car-images,
+  #inventory-container .swiper-wrapper {
     pointer-events: auto !important;
     z-index: 1 !important;
   }
