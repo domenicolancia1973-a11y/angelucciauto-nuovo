@@ -128,30 +128,52 @@
         line-height: 1.2 !important;
       }
 
-      /* Forza lo stile specifico sul tasto DETTAGLI (sfondo scuro/rosso o quello del tuo sito) */
-      #inventory-container .car-card a:not([href*="wa.me"]),
-      #inventory-container .car-card button:not([class*="wa"]) {
-        background-color: #1a1a1a !important; /* Cambialo con var(--red) se preferisci il rosso del tuo brand */
-        color: #ffffff !important; /* Scritta bianca ben visibile */
-        border: 1px solid #1a1a1a !important;
+/* ========================================================
+         FIX COLORE: BOTTONE DETTAGLI ROSSO E WHATSAPP VERDE
+         ======================================================== */
+      
+      /* Regola base per dare la forma di un vero bottone a tutti i link in fondo alla scheda */
+      #inventory-container .car-card a, 
+      #inventory-container .car-card button,
+      #inventory-container .car-card [class*="btn"],
+      #inventory-container .car-card [class*="button"] {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 12px 15px !important; /* Spessore del bottone per renderlo facile da cliccare */
+        margin-top: 8px !important;
+        border-radius: 6px !important; /* Angoli leggermente arrotondati */
+        font-weight: 700 !important;   /* Testo in grassetto */
+        text-decoration: none !important;
+        font-size: 0.95rem !important;
+        box-sizing: border-box !important;
+        line-height: 1.2 !important;
       }
 
-      /* Forza lo stile specifico sul tasto WHATSAPP (sfondo verde) */
+      /* FIX ROSSO: Forza lo stile sul tasto DETTAGLI (sfondo rosso, scritta bianca) */
+      #inventory-container .car-card a:not([href*="wa.me"]),
+      #inventory-container .car-card button:not([class*="wa"]) {
+        background-color: var(--red, #e50914) !important; /* Usa il rosso del sito o un rosso vivo di sicurezza */
+        color: #ffffff !important; /* Testo bianco che stacca sul rosso */
+        border: 1px solid var(--red, #e50914) !important;
+      }
+
+      /* BI-COLORE: Forza lo stile sul tasto WHATSAPP (Resta verde ufficiale) */
       #inventory-container .car-card a[href*="wa.me"],
       #inventory-container .car-card [class*="wa"] {
         background-color: #25d366 !important; /* Verde WhatsApp ufficiale */
-        color: #ffffff !important;
+        color: #ffffff !important; /* Testo bianco */
         border: 1px solid #25d366 !important;
       }
 
-      /* Crea un contenitore flessibile in fondo se i due bottoni devono stare affiancati o impilati puliti */
+      /* Struttura per impilare i bottoni in modo pulito senza sovrapposizioni */
       #inventory-container .car-card .car-buttons,
       #inventory-container .car-card .card-footer {
         display: flex !important;
-        flex-direction: column !important; /* Li mette uno sotto l'altro per comodità su mobile */
+        flex-direction: column !important;
         gap: 8px !important;
         width: 100% !important;
-        margin-top: auto !important; /* Li ancora tassativamente al fondo della scheda */
+        margin-top: auto !important; /* Li ancora tassativamente al fondo della scheda dell'auto */
         padding: 10px !important;
       }
   </style>
