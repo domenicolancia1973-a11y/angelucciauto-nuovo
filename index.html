@@ -176,33 +176,32 @@
         margin-top: auto !important; /* Li ancora tassativamente al fondo della scheda dell'auto */
         padding: 10px !important;
       }
-  /* ========================================================
-         FIX DEFINITIVO: SCRITTA DENTRO IL PULSANTE SU CELLULARE
+ /* ========================================================
+         FIX TOTALE: PULSANTE LARGO AL 100% SENZA LIMITI
          ======================================================== */
       .cta-lista {
         width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
-        padding: 5px 10px 10px 10px !important; 
+        display: block !important; /* Cambiato a block per gestire meglio la larghezza piena */
+        padding: 5px 15px 10px 15px !important; /* Padding laterale per non farlo appiccicare al vetro dello schermo */
+        box-sizing: border-box !important;
         margin-bottom: 0px !important; 
       }
 
       .cta-lista a.btn-lista {
         display: block !important;
-        width: 92% !important;           /* Occupa quasi tutta la larghezza disponibile */
-        max-width: 350px !important;     
-        white-space: nowrap !important;  /* Impedisce categoricamente alla scritta di andare a capo */
-        overflow: hidden !important;     /* Sicurezza extra */
+        width: 100% !important;          /* Si allarga per tutta la larghezza dello schermo del telefono */
+        max-width: none !important;      /* CANCELLA qualsiasi limite vecchio che lo stringeva */
+        white-space: nowrap !important;  /* La scritta resta tassativamente su una riga */
         
-        /* BILANCIAMENTO: Pulsante alto il giusto, ma con testo protetto */
-        padding: 16px 10px !important;   /* Ridotto lo spazio ai lati (da 20px a 10px) per far stare la scritta */
-        font-size: 0.90rem !important;   /* Testo leggermente più piccolo così entra matematicamente nel pulsante */
+        /* DIMENSIONI GRANDI E LEGGEBILI */
+        padding: 16px 0 !important;      /* Spessore verticale generoso, zero ai lati perché è già largo al massimo */
+        font-size: 1.1rem !important;    /* Scritta bella grande e leggibile */
         font-weight: bold !important;
         text-align: center !important;
         box-sizing: border-box !important;
       }
 
-      /* SPAZIO COMPATTO CON I NOSTRI SERVIZI */
+      /* COMPATTA LO SPAZIO CON I NOSTRI SERVIZI */
       #vetrina.section {
         padding-bottom: 5px !important; 
         margin-bottom: 0px !important;  
