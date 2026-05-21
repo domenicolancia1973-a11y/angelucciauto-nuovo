@@ -5,14 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dettaglio Auto | Angelucci Auto</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root { --brand: #c1121f; --bg: #ffffff; --text: #111; }
     body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
     .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
     
-    /* Galleria */
-    .gallery { display: flex; flex-direction: column; gap: 10px; }
-    #main-view { width: 100%; height: 500px; object-fit: cover; border-radius: 24px; border: 1px solid #eee; background: #f9f9f9; transition: opacity 0.3s; }
+    /* Galleria Relativa per ospitare le frecce */
+    .gallery { display: flex; flex-direction: column; gap: 10px; position: relative; }
+    .main-view-container { position: relative; width: 100%; height: 500px; }
+    #main-view { width: 100%; height: 100%; object-fit: cover; border-radius: 24px; border: 1px solid #eee; background: #f9f9f9; transition: opacity 0.3s; }
+    
+    /* Stile delle Frecce (Ottimizzate per Mobile Touch) */
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border: none;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      z-index: 10;
+      transition: background 0.2s, transform 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      pointer-events: all !important;
+    }
+    .nav-arrow:active { transform: translateY(-50%) scale(0.9); background: rgba(0, 0, 0, 0.8); }
+    .left-arrow { left: 15px; }
+    .right-arrow { right: 15px; }
+
     .thumbnails { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
     .thumb { width: 100%; height: 70px; object-fit: cover; border-radius: 12px; cursor: pointer; opacity: 0.6; transition: 0.3s; border: 2px solid transparent; }
     .thumb:hover, .thumb.active { opacity: 1; border-color: var(--brand); }
@@ -23,7 +51,13 @@
     .price { font-size: 32px; font-weight: 800; color: var(--brand); }
     
     .grid-specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 40px; }
-    @media (min-width: 600px) { .grid-specs { grid-template-columns: repeat(4, 1fr); } }
+    @media (min-width: 600px) { 
+      .grid-specs { grid-template-columns: repeat(4, 1fr); } 
+    }
+    @media (max-width: 768px) {
+      .main-view-container { height: 320px; } /* Più basso sui telefoni per vederlo intero */
+    }
+
     .spec-item { background: #f8fafc; padding: 20px; border-radius: 20px; text-align: center; border: 1px solid #f1f5f9; }
     .label { display: block; font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; }
     .val { font-weight: 700; font-size: 16px; }
@@ -45,7 +79,11 @@
   <a href="index.html" class="back-link">← Torna alla vetrina</a>
 
   <div class="gallery">
-    <img id="main-view" src="https://via.placeholder.com/1000x500?text=Caricamento..." alt="Foto principale">
+    <div class="main-view-container">
+      <button class="nav-arrow left-arrow" onclick="cambiaFoto(-1)"><i class="fas fa-chevron-left"></i></button>
+      <img id="main-view" src="https://via.placeholder.com/1000x500?text=Caricamento..." alt="Foto principale">
+      <button class="nav-arrow right-arrow" onclick="cambiaFoto(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
     <div id="thumb-list" class="thumbnails"></div>
   </div>
 
@@ -81,6 +119,10 @@
   const urlParams = new URLSearchParams(window.location.search);
   const autoId = urlParams.get('id');
 
+  // Variabili globali per gestire lo scorrimento delle foto
+  let listaImmagini = [];
+  let indiceCorrente = 0;
+
   async function loadDetail() {
     if (!autoId) return;
 
@@ -100,7 +142,6 @@
       document.getElementById('auto-descrizione').innerText = auto.descrizione || "";
       document.getElementById('wa-link').href = "https://wa.me/393330000000?text=Info%20" + encodeURIComponent(auto.modello);
 
-      // --- LOGICA FOTO ---
       const cartella = auto.cartella_foto ? auto.cartella_foto.trim() : null;
       
       if (!cartella) {
@@ -108,7 +149,6 @@
         return;
       }
 
-      // Proviamo a elencare i file
       const { data: files, error: sError } = await _supabase.storage
         .from('veicoli')
         .list(cartella);
@@ -119,7 +159,7 @@
       }
 
       if (!files || files.length === 0) {
-        alert("Il codice sta cercando le foto nella cartella: '" + cartella + "' ma non ha trovato nulla. Controlla che il nome sia identico (maiuscole incluse)!");
+        alert("Nessuna foto trovata nella cartella: '" + cartella + "'");
         return;
       }
 
@@ -127,22 +167,53 @@
       const thumbList = document.getElementById('thumb-list');
       thumbList.innerHTML = '';
 
-      // Filtra i file validi
+      // Filtriamo e salviamo i link reali nella nostra variabile globale
       const immaginiValide = files.filter(f => f.name !== '.empty');
+      listaImmagini = immaginiValide.map(file => `${SUPABASE_URL}/storage/v1/object/public/veicoli/${cartella}/${file.name}`);
 
-      immaginiValide.forEach((file, index) => {
-        // COSTRUIAMO IL LINK DIRETTAMENTE (visto che sappiamo che funziona)
-       const url = `${SUPABASE_URL}/storage/v1/object/public/veicoli/${cartella}/${file.name}`;
-        if (index === 0) mainView.src = url;
+      if (listaImmagini.length > 0) {
+        mainView.src = listaImmagini[0];
+      }
 
+      // Generiamo le miniature sotto
+      listaImmagini.forEach((url, index) => {
         const img = document.createElement('img');
         img.src = url;
-        img.className = 'thumb';
-        img.onclick = () => { mainView.src = url; };
+        img.className = 'thumb' + (index === 0 ? ' active' : '');
+        img.onclick = () => { selezionaFoto(index); };
         thumbList.appendChild(img);
       });
     }
   }
+
+  // Funzione per aggiornare la foto quando clicchi una miniatura o usi le frecce
+  function selezionaFoto(index) {
+    if (index < 0 || index >= listaImmagini.length) return;
+    indiceCorrente = index;
+    
+    // Aggiorna la vista principale
+    document.getElementById('main-view').src = listaImmagini[indiceCorrente];
+    
+    // Aggiorna lo stato "attivo" visivo sulle miniature sotto
+    const thumbs = document.querySelectorAll('.thumb');
+    thumbs.forEach((t, i) => {
+      if (i === indiceCorrente) t.classList.add('active');
+      else t.classList.remove('active');
+    });
+  }
+
+  // Funzione collegata direttamente alle nuove frecce destre/sinistre
+  function cambiaFoto(direzione) {
+    if (listaImmagini.length === 0) return;
+    let nuovoIndice = indiceCorrente + direzione;
+    
+    // Se finiscono le foto a destra torna alla prima, se finiscono a sinistra va all'ultima
+    if (nuovoIndice >= listaImmagini.length) nuovoIndice = 0;
+    if (nuovoIndice < 0) nuovoIndice = listaImmagini.length - 1;
+    
+    selezionaFoto(nuovoIndice);
+  }
+
   loadDetail();
 </script>
 </body>
