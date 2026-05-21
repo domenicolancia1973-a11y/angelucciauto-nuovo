@@ -876,19 +876,22 @@ nav .nav-logo img {
     position: relative !important;
   }
 
-  .servizi-control-prev,
+.servizi-control-prev,
   .servizi-control-next {
     position: absolute !important;
-    top: 135px !important; /* Si allinea perfettamente al centro dell'immagine da 250px */
+    
+    /* MODIFICA QUESTE DUE RIGHE PER CENTRARLE PERFETTAMENTE */
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     
     font-size: 20px !important;
     color: #fff !important;
-    background: rgba(0, 0, 0, 0.7) !important; /* Cerchio scuro visibile */
+    background: rgba(0, 0, 0, 0.7) !important; 
     width: 40px !important;
     height: 40px !important;
     border: none !important;
     border-radius: 50% !important;
-    z-index: 999 !important; /* Passa sopra a tutto per farsi cliccare */
+    z-index: 999 !important; 
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
