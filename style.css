@@ -871,37 +871,36 @@ nav .nav-logo img {
     width: 0 !important;
     height: 0 !important;
   }
-/* 5. POSIZIONAMENTO AL CENTRO DELLE NUOVE FRECCE CLICCABILI RISPETTO ALLA FOTO */
-  #servizi {
+/* 5. POSIZIONAMENTO FISSO IN PIXEL DELLE NUOVE FRECCE CLICCABILI */
+#servizi {
   position: relative !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
 }
+
 .servizi-control-prev,
-  .servizi-control-next {
-    position: absolute !important;
-    
-    /* CENTRAGGIO MATEMATICO RISPETTO AL CONTENITORE */
-    top: auto !important;
-    bottom: calc(50% - 20px) !important;
-    
-    font-size: 20px !important;
-    color: #fff !important;
-    background: rgba(0, 0, 0, 0.7) !important; 
-    width: 40px !important;
-    height: 40px !important;
-    border: none !important;
-    border-radius: 50% !important;
-    z-index: 999 !important; 
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-  }
-  /* Attaccate ai bordi laterali dello schermo */
-  .servizi-control-prev { left: 10px !important; }
-  .servizi-control-next { right: 10px !important; }
+.servizi-control-next {
+  position: absolute !important;
+  
+  /* POSIZIONAMENTO FISSO IN PIXEL */
+  top: 210px !important; /* <--- SE LE FRECCE SONO ALTE O BASSE, MODIFICA SOLO QUESTO NUMERO! */
+  transform: none !important;
+  
+  font-size: 20px !important;
+  color: #fff !important;
+  background: rgba(0, 0, 0, 0.7) !important; /* Cerchio scuro visibile */
+  width: 40px !important;
+  height: 40px !important;
+  border: none !important;
+  border-radius: 50% !important;
+  z-index: 999 !important; /* Passa sopra a tutto per farsi cliccare */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+}
+
+/* Attaccate ai bordi laterali dello schermo */
+.servizi-control-prev { left: 10px !important; }
+.servizi-control-next { right: 10px !important; }
 }
 
 /* Nasconde le nuove frecce su PC */
