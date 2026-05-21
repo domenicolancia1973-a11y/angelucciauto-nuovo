@@ -177,48 +177,69 @@
         padding: 10px !important;
       }
 /* ========================================================
-         FIX REALE: ISOLAMENTO TOTALE MOBILE - IL PC NON SI TOCCA
-         ======================================================== */
-      
-      /* 1. Sblocchiamo la sezione principale e azzeriamo lo spazio vuoto sotto (SOLO SU MOBILE) */
+       1. REGOLA PER DESKTOP/PC (Schermi grandi)
+       ======================================================== */
+    @media (min-width: 769px) {
+      .cta-lista {
+        width: auto !important;
+        max-width: none !important;
+        padding: 40px 0 !important; /* Ripristina lo spazio originale del PC */
+        margin: 0 auto !important;
+      }
+      .cta-lista a.btn-lista {
+        display: inline-block !important;
+        width: auto !important; /* Torna della grandezza originale su PC */
+        max-width: none !important;
+        font-size: 1rem !important; /* Testo standard del tuo PC */
+        padding: 12px 30px !important;
+      }
+    }
+
+    /* ========================================================
+       2. REGOLA PER CELLULARE (Schermi piccoli)
+       ======================================================== */
+    @media (max-width: 768px) {
+      /* Sblocca la sezione per incollarla a quella sotto */
       #vetrina.section {
-        padding-bottom: 0px !important; 
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-bottom: 0px !important;
         margin-bottom: 0px !important;  
       }
 
-      /* 2. Il contenitore del pulsante si stringe e sale SOLO SU MOBILE */
+      /* Contenitore pulsante su mobile: sale verso l'alto */
       .cta-lista {
         display: block !important;
         width: 100% !important;
         max-width: 100% !important;
-        padding: 0px 15px !important; 
-        margin-top: -15px !important; 
+        padding: 0px 15px !important; /* Spazio solo ai lati per non toccare il bordo del telefono */
+        margin-top: -15px !important; /* Lo attacca alla fine della vetrina delle auto */
         margin-bottom: 0px !important;
         box-sizing: border-box !important;
       }
 
-      /* 3. Il pulsante diventa enorme E RETTANGOLARE TASSATIVAMENTE SOLO SU MOBILE */
+      /* Il pulsante su mobile: largo al 100%, testo dentro e dritto */
       .cta-lista a.btn-lista {
         display: block !important;
         width: 100% !important;          
         min-width: 100% !important;
         max-width: 100% !important;      
-        white-space: nowrap !important;  
-        padding: 16px 5px !important;   
-        font-size: 1.1rem !important;    
+        white-space: nowrap !important; /* Forza la scritta su una sola riga */
+        padding: 16px 5px !important;   /* Spessore verticale, pochissimo ai lati così la scritta non esce */
+        font-size: 1.05rem !important;  /* Dimensione perfetta per non far tagliare o strabordare il testo */
         font-weight: bold !important;
         text-align: center !important;
         box-sizing: border-box !important;
       }
 
-      /* 4. Tira in alto i servizi SOLO SU MOBILE */
+      /* Spinge in alto la sezione successiva dei servizi */
       #servizi, 
       .section:nth-of-type(3), 
       section[id*="serviz"] {
         padding-top: 10px !important;  
         margin-top: -25px !important;  
       }
-    } /* <--- QUESTA GRAFFA CHIUDA IL MOBILE. DA QUI IN POI IL PC È INVIOLABILE */
+    }
   </style>
 </head>
 </head>
