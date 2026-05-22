@@ -92,7 +92,17 @@
     .tech-name span{color:var(--green)}
     .tech-tag{display:inline-block;font-family:var(--font-head);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(46,204,113,.1);color:var(--green);border:1px solid rgba(46,204,113,.2);padding:2px 9px;border-radius:4px;margin-bottom:.8rem}
     .tech-desc{font-size:.9rem;color:#888;line-height:1.7}
-
+/* ── SEZIONE BOMBOLE ── */
+    .bombole-section {background:var(--dark3); padding:4rem; border-top:1px solid #1c1c1c; border-bottom:1px solid #1c1c1c;}
+    .bombole-grid {display:grid; grid-template-columns:1fr 1fr; gap:2rem;}
+    .bombole-box {background:var(--dark4); border:1px solid #252525; padding:2rem; border-radius:var(--radius); position:relative;}
+    .bombole-box.gpl {border-left:4px solid var(--green);}
+    .bombole-box.metano {border-left:4px solid var(--red);}
+    .bombole-box h3 {font-family:var(--font-head); font-size:1.6rem; color:var(--white); margin-bottom:1rem; text-transform:uppercase;}
+    .bombole-box ul {list-style:none; margin-top:1rem;}
+    .bombole-box li {font-size:0.95rem; color:#bbb; margin-bottom:0.6rem; display:flex; align-items:center; gap:10px;}
+    .bombole-box li i {color:var(--green);}
+    .bombole-box.metano li i {color:var(--red);}
     /* ── VANTAGGI ── */
     .why-section{background:var(--dark2);padding:4rem}
     .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
@@ -144,7 +154,9 @@
       .hero-visual{min-height:300px;padding:0 1.5rem 2.5rem}
       .hero-img-wrap img{height:280px}
       .intro-section,.tech-section,.why-section,.service-section{padding:2.5rem 1.5rem}
+      .intro-section,.tech-section,.bombole-section,.why-section,.service-section{padding:2.5rem 1.5rem}
       .intro-grid,.tech-grid,.why-grid,.service-grid{grid-template-columns:1fr}
+      .intro-grid,.tech-grid,.bombole-grid,.why-grid,.service-grid{grid-template-columns:1fr}
       .stat-grid{grid-template-columns:1fr 1fr}
       .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
       footer{padding:2rem 1.5rem 1rem}
