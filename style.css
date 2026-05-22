@@ -911,3 +911,18 @@ nav .nav-logo img {
     display: none !important;
   }
 }
+/* FORCE RESET ROSSO PER BOTTONE DETTAGLI VETRINA */
+.car-card .car-actions .btn-detail,
+#vetrina .btn-detail,
+.btn-detail {
+    background: #c0392b !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.car-card .car-actions .btn-detail:hover,
+#vetrina .btn-detail:hover,
+.btn-detail:hover {
+    background: #96281b !important;
+}
