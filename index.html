@@ -610,5 +610,48 @@
     }
   });
 </script>
+  <div id="cookie-privacy-banner" style="position: fixed; bottom: 20px; left: 20px; right: 20px; max-width: 600px; background: #1a1a1a; color: #ffffff; border: 1px solid #242424; padding: 20px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 99999; font-family: sans-serif; display: none;">
+    <h4 style="margin: 0 0 10px 0; color: #2ecc71; font-size: 1.1rem; text-transform: uppercase;">La tua Privacy prima di tutto</h4>
+    <p style="margin: 0 0 15px 0; font-size: 0.9rem; color: #ccccccc; line-height: 1.4;">
+        Utilizziamo cookie statistici di terze parti (Google Analytics e Facebook) per migliorare l'esperienza sul sito. Puoi scegliere di accettarli o rifiutarli. Per saperne di più, leggi la nostra <a href="cookie.html" style="color: #2ecc71; text-decoration: none; font-weight: bold;">Cookie Policy</a>.
+    </p>
+    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+        <button id="btn-cookie-reject" style="background: #c0392b; color: white; border: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">Rifiuta</button>
+        <button id="btn-cookie-accept" style="background: #2ecc71; color: white; border: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">Accetta tutto</button>
+    </div>
+</div>
+
+<script>
+    // Logica per mostrare o nascondere il banner in base alla scelta passata
+    document.addEventListener("DOMContentLoaded", function() {
+        const banner = document.getElementById("cookie-privacy-banner");
+        const acceptBtn = document.getElementById("btn-cookie-accept");
+        const rejectBtn = document.getElementById("btn-cookie-reject");
+
+        // Controlla se l'utente ha già fatto una scelta in passato
+        const cookieChoice = localStorage.getItem("angelucci_cookie_choice");
+
+        if (!cookieChoice) {
+            // Se non ha scelto, mostra il banner dopo 1 secondo
+            setTimeout(() => {
+                banner.style.display = "block";
+            }, 1000);
+        }
+
+        // Se clicca "Accetta tutto"
+        acceptBtn.addEventListener("click", function() {
+            localStorage.setItem("angelucci_cookie_choice", "accepted");
+            banner.style.display = "none";
+            // Qui inseriremo il via libera a Google e Facebook al prossimo passo!
+            location.reload(); // Ricarica la pagina per attivare i tracciamenti accettati
+        });
+
+        // Se clicca "Rifiuta"
+        rejectBtn.addEventListener("click", function() {
+            localStorage.setItem("angelucci_cookie_choice", "rejected");
+            banner.style.display = "none";
+        });
+    });
+</script>
 </body>
 </html>
