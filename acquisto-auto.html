@@ -53,14 +53,24 @@
 
     .hero-visual{position:relative;z-index:2;height:100%;min-height:88vh;display:flex;align-items:center;justify-content:center;padding:2.5rem 2.5rem 2.5rem 1rem}
     .hero-img-stack{position:relative;width:100%;max-width:520px}
-    .img-main-svg{width:100%;height:460px;display:block;border-radius:12px;overflow:hidden;border:1px solid #1e1e1e;background:linear-gradient(160deg,#111820 0%,#0b0f14 100%);box-shadow:0 18px 50px rgba(0,0,0,.45)}
-    .img-secondary-card{position:absolute;bottom:-28px;left:-30px;width:230px;min-height:150px;border-radius:10px;border:3px solid var(--dark);background:rgba(9,9,9,.95);box-shadow:0 12px 32px rgba(0,0,0,.6);padding:1rem 1rem .9rem}
+    
+    /* Nuovo Box Immagine Auto */
+    .img-main-car{width:100%;height:380px;border-radius:12px;overflow:hidden;border:1px solid #1e1e1e;box-shadow:0 18px 50px rgba(0,0,0,.45);position:relative}
+    .img-main-car img{width:100%;height:100%;object-fit:cover;display:block}
+    .img-main-car::after{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(9,9,9,0.8) 0%, transparent 40%)}
+    
+    .img-car-label{position:absolute;bottom:20px;left:20px;z-index:3}
+    .img-car-label h3{font-family:var(--font-head);font-size:1.8rem;font-weight:700;letter-spacing:1px;color:var(--white);text-transform:uppercase;line-height:1.1}
+    .img-car-label p{font-size:.85rem;color:#ccc}
+
+    .img-secondary-card{position:absolute;bottom:-45px;left:-30px;width:240px;min-height:140px;border-radius:10px;border:1px solid #222;background:rgba(16,16,16,.95);box-shadow:0 12px 32px rgba(0,0,0,.6);padding:1.2rem;backdrop-filter:blur(8px)}
     .img-secondary-card h4{font-family:var(--font-head);font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase;color:var(--white);margin-bottom:.35rem}
     .img-secondary-card p{font-size:.84rem;color:#8d98a5;line-height:1.55}
-    .img-badge{position:absolute;top:18px;right:18px;z-index:3;background:rgba(9,9,9,.88);border:1px solid rgba(52,152,219,.22);backdrop-filter:blur(8px);border-radius:var(--radius);padding:.9rem 1.2rem;text-align:center}
-    .img-badge .num{font-family:var(--font-head);font-size:2.1rem;font-weight:800;color:var(--blue);line-height:1}
-    .img-badge .lbl{font-family:var(--font-head);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#555;margin-top:.2rem}
-    .hero-img-stack::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#2980b9,var(--blue));border-radius:0 0 12px 12px}
+    
+    .img-badge{position:absolute;top:-20px;right:-20px;z-index:4;background:var(--blue);border-radius:var(--radius);padding:.8rem 1.2rem;text-align:center;box-shadow:0 8px 20px rgba(52,152,219,0.3)}
+    .img-badge .num{font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:var(--white);line-height:1;text-transform:uppercase}
+    .img-badge .lbl{font-family:var(--font-head);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-top:.2rem}
+    .hero-img-stack::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#2980b9,var(--blue));border-radius:0 0 12px 12px;z-index:3}
 
     /* ── SEZIONI ── */
     .section-tag{font-family:var(--font-head);font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:.5rem}
@@ -125,7 +135,7 @@
     /* ── FOOTER ── */
     footer{background:#060606;border-top:1px solid #141414;padding:3rem 4rem 1.5rem}
     .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
-    .footer-logo img{height:52px;margin-bottom:1rem}
+    .footer-logo img{height:52px;width:auto;display:block;margin-bottom:1rem}
     .footer-desc{font-size:.88rem;color:#4a4a4a;max-width:260px}
     .footer-col h4{font-family:var(--font-head);font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:1rem}
     .footer-col p,.footer-col a{font-size:.88rem;color:#5a5a5a;text-decoration:none;display:block;margin-bottom:.4rem;transition:color .2s}
@@ -139,14 +149,15 @@
     }
     @media(max-width:1000px){
       nav{padding:0 1.2rem}
-      .nav-links{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#0a0a0a;padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid #1a1a1a}
+      .nav-links{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#0a0a0a;padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid #1a1a1a;align-items: stretch}
       .nav-links.open{display:flex}
       .nav-burger{display:block}
       .hero{grid-template-columns:1fr;min-height:auto}
       .hero-copy{padding:3rem 1.5rem 2rem}
-      .hero-visual{min-height:auto;padding:0 1.5rem 3rem}
-      .img-main-svg{height:300px}
+      .hero-visual{min-height:auto;padding:3rem 1.5rem}
+      .img-main-car{height:320px}
       .img-secondary-card{display:none}
+      .img-badge{right: 10px; top: 10px;}
       .intro-section,.innovation-section,.services-section,.why-section{padding:3rem 1.5rem}
       .intro-grid,.why-grid,.services-grid{grid-template-columns:1fr}
       .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
@@ -163,7 +174,7 @@
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="INSERISCI-QUI-LO-STESSO-LOGO-DEL-TUO-SITO" alt="Angelucci Domenico Auto"/>
+    <img src="URL_DEL_TUO_LOGO.png" alt="Angelucci Domenico Auto"/>
   </a>
 
   <ul class="nav-links">
@@ -183,7 +194,7 @@
     </li>
   </ul>
 
-  <button class="nav-burger" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <button class="nav-burger" aria-label="Menu">&#9776;</button>
 </nav>
 
 <section class="hero">
@@ -209,59 +220,13 @@
 
   <div class="hero-visual">
     <div class="hero-img-stack">
-      <div class="img-main-svg">
-        <svg viewBox="0 0 900 520" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrazione compravendita auto">
-          <defs>
-            <linearGradient id="bg1" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" stop-color="#101820"/>
-              <stop offset="100%" stop-color="#0b0f14"/>
-            </linearGradient>
-            <linearGradient id="car" x1="0" x2="1">
-              <stop offset="0%" stop-color="#3498db"/>
-              <stop offset="100%" stop-color="#1d6fa5"/>
-            </linearGradient>
-          </defs>
-
-          <rect width="900" height="520" fill="url(#bg1)"/>
-          <circle cx="180" cy="110" r="120" fill="rgba(52,152,219,.08)"/>
-          <circle cx="760" cy="80" r="100" fill="rgba(52,152,219,.06)"/>
-
-          <!-- Card documento -->
-          <rect x="560" y="90" rx="18" ry="18" width="220" height="140" fill="#131b24" stroke="rgba(52,152,219,.25)"/>
-          <rect x="590" y="125" width="110" height="10" rx="5" fill="#3498db"/>
-          <rect x="590" y="150" width="150" height="8" rx="4" fill="#5c6a78"/>
-          <rect x="590" y="170" width="120" height="8" rx="4" fill="#5c6a78"/>
-          <circle cx="720" cy="145" r="22" fill="#1fbe6d"/>
-          <path d="M710 145l8 8 14-18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-
-          <!-- Euro -->
-          <circle cx="165" cy="310" r="48" fill="rgba(52,152,219,.12)" stroke="rgba(52,152,219,.25)"/>
-          <text x="165" y="325" font-size="54" text-anchor="middle" fill="#3498db" font-family="Arial, sans-serif" font-weight="700">€</text>
-
-          <!-- Stretta di mano stilizzata -->
-          <g transform="translate(455 260)">
-            <rect x="-75" y="-16" width="82" height="34" rx="14" fill="#d6a77a"/>
-            <rect x="0" y="-16" width="82" height="34" rx="14" fill="#c99467"/>
-            <rect x="-102" y="-24" width="34" height="50" rx="10" fill="#2e3f51"/>
-            <rect x="68" y="-24" width="34" height="50" rx="10" fill="#3498db"/>
-            <path d="M-6 -12c12 0 18 10 26 18 6 7 16 7 22 2 5-4 5-11 0-16l-14-14" fill="none" stroke="#f0c39d" stroke-width="16" stroke-linecap="round"/>
-            <path d="M-38 -2l26 18c8 5 17 4 23-1" fill="none" stroke="#f0c39d" stroke-width="16" stroke-linecap="round"/>
-          </g>
-
-          <!-- Auto -->
-          <g transform="translate(140 280)">
-            <path d="M78 95h360c21 0 38-17 38-38v-8c0-15-8-29-22-36l-55-27c-18-9-39-14-59-14H194c-23 0-45 9-61 24l-62 57H46c-16 0-28 12-28 28v4c0 5 4 10 10 10h50z" fill="url(#car)"/>
-            <path d="M164 19h164c18 0 34 5 49 13l28 14H130l34-19z" fill="#70b8e7" opacity=".65"/>
-            <circle cx="130" cy="97" r="32" fill="#0d1117"/>
-            <circle cx="130" cy="97" r="15" fill="#8aa3b8"/>
-            <circle cx="382" cy="97" r="32" fill="#0d1117"/>
-            <circle cx="382" cy="97" r="15" fill="#8aa3b8"/>
-          </g>
-
-          <!-- label -->
-          <text x="82" y="465" fill="#ffffff" opacity=".95" font-family="Barlow Condensed, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="3">VALUTAZIONE RAPIDA</text>
-          <text x="82" y="498" fill="#8d98a5" font-family="Arial, sans-serif" font-size="18">Trattativa chiara • Pagamento immediato • Passaggio in sede</text>
-        </svg>
+      
+      <div class="img-main-car">
+        <img src="URL_DELLA_FOTO_DELL_AUTO.jpg" alt="Acquisto e Valutazione Auto Usate a Roma"/>
+        <div class="img-car-label">
+          <h3>Valutazione Rapida</h3>
+          <p>Trattativa chiara • Pagamento immediato</p>
+        </div>
       </div>
 
       <div class="img-secondary-card">
@@ -299,7 +264,7 @@
       </div>
 
       <p>
-        La nostra esperienza ci permette di offrirti un servizio diretto e affidabile:
+        La nostra esperienza ci permette di offrirti un servizio directo e affidabile:
         niente lunghe attese, niente giri inutili, niente sorprese.
         Se la tua intenzione è vendere bene e con tranquillità, siamo pronti ad aiutarti.
       </p>
@@ -488,7 +453,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-logo">
-        <img src="INSERISCI-QUI-LO-STESSO-LOGO-DEL-TUO-SITO" alt="Angelucci Domenico Auto"/>
+        <img src="URL_DEL_TUO_LOGO.png" alt="Angelucci Domenico Auto"/>
       </div>
       <p class="footer-desc">Dal 1967 professionalità e trasparenza al servizio dell’auto a Roma.</p>
     </div>
@@ -520,9 +485,15 @@
 
   <div class="footer-bottom">
     <p>Angelucci Domenico – Via della Pisana, 313 – 00163 Roma – C.F./P.IVA: 09496981003 – Registro Imprese RM</p>
-    <p>&copy; 2025 Tutti i diritti riservati</p>
+    <p>&copy; 2026 Tutti i diritti riservati</p>
   </div>
 </footer>
+
+<script>
+  document.querySelector('.nav-burger').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('open');
+  });
+</script>
 
 </body>
 </html>
