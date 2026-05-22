@@ -2,8 +2,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-      --red: #c0392b;
-      --red-dark: #96281b;
+      --red: #2ecc71;       /* <--- ADESSO È UN BEL VERDE ACCESO */
+      --red-dark: #27ae60;  /* <--- VERDE PIÙ SCURO PER GLI HOVER (QUANDO CI PASSI SOPRA) */
       --dark: #0f0f0f;
       --dark2: #1a1a1a;
       --dark3: #242424;
@@ -131,14 +131,13 @@
 .hero h1 {
   font-family: var(--font-head);
   font-size: clamp(2.0rem, 4.5vw, 3.2rem) !important;
-  font-weight: 900; /* Massimo spessore, stile logo stilizzato */
+  font-weight: 900; 
   line-height: 1.1 !important; 
-  color: var(--red) !important; /* Diventa rosso brand */
+  color: #c0392b !important; /* <--- BLINDATO IN ROSSO BRAND ORIGINALE */
   margin-bottom: 1.2rem;
   text-transform: uppercase; 
-  letter-spacing: 0.05em; /* Lettere più staccate e moderne */
+  letter-spacing: 0.05em; 
 }
-
 /* Lo stile per il sottotitolo (il testo dentro <em>) */
 .hero h1 em { 
   color: #ffffff !important; /* Bianco puro, si legge benissimo */
