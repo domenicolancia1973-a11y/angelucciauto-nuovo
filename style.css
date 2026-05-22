@@ -221,8 +221,10 @@
       letter-spacing: 0.05em; padding: 9px 0; border-radius: var(--radius);
       transition: background 0.2s, color 0.2s;
     }
-    .btn-detail { background: var(--red); color: #fff; }
-    .btn-detail:hover { background: var(--red-dark); }
+    .btn-detail { background: #c0392b !important; color: #fff !important; }
+    .btn-detail:hover { background: #96281b !important; }
+    .btn-chat { background: transparent; color: #25d366; border: 1px solid #25d366; }
+    .btn-chat:hover { background: #25d366; color: #fff; }
     .btn-chat { background: transparent; color: #25d366; border: 1px solid #25d366; }
     .btn-chat:hover { background: #25d366; color: #fff; }
 
