@@ -32,57 +32,47 @@
     .btn-wa svg{width:17px;height:17px;fill:#fff;flex-shrink:0}
     .nav-burger{display:none;background:none;border:none;color:#666;font-size:1.5rem;cursor:pointer}
 
-    /* ── HERO ── */
-    .hero{position:relative;min-height:88vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden}
-    .hero-bg{position:absolute;inset:0;background:linear-gradient(155deg,#060606 0%,#0e1218 55%,#060606 100%);z-index:0}
-    .hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 55%,rgba(52,152,219,.07) 0%,transparent 60%)}
-    .hero-bg::after{content:'';position:absolute;top:15%;right:49%;width:1px;height:70%;background:linear-gradient(to bottom,transparent,rgba(52,152,219,.3),transparent)}
+   
+   /* ── HERO ── */
+.hero{position:relative;min-height:88vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(155deg,#060606 0%,#0e1218 55%,#060606 100%);z-index:0}
+.hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 55%,rgba(52,152,219,.07) 0%,transparent 60%)}
+.hero-bg::after{content:'';position:absolute;top:15%;right:49%;width:1px;height:70%;background:linear-gradient(to bottom,transparent,rgba(52,152,219,.3),transparent)}
 
-    .hero-copy{position:relative;z-index:2;padding:5rem 3rem 5rem 4rem}
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-head);font-size:.76rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);margin-bottom:1.4rem}
-    .hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--blue);display:block}
-    .hero h1{font-family:var(--font-head);font-size:clamp(2.8rem,5.5vw,5.2rem);font-weight:800;line-height:.98;color:var(--white);margin-bottom:1rem}
-    .hero h1 .accent{color:var(--blue);display:block}
-    .hero h1 .year{font-size:.42em;color:#555;display:block;letter-spacing:.05em;margin-top:.45rem}
-    .hero-sub{font-size:1.05rem;font-weight:300;font-style:italic;color:#999;max-width:520px;margin-bottom:2.2rem;line-height:1.65}
-    .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
-    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--blue);color:#fff;font-family:var(--font-head);font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:var(--radius);transition:background .2s,transform .15s,box-shadow .2s}
-    .btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(52,152,219,.28)}
-    .btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1.5px solid #333;color:#999;font-family:var(--font-head);font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:13px 28px;border-radius:var(--radius);transition:border-color .2s,color .2s,transform .15s}
-    .btn-outline:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.hero-copy{position:relative;z-index:2;padding:5rem 3rem 5rem 4rem}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-head);font-size:.76rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);margin-bottom:1.4rem}
+.hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--blue);display:block}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.8rem,5.5vw,5.2rem);font-weight:800;line-height:.98;color:var(--white);margin-bottom:1rem}
+.hero h1 .accent{color:var(--blue);display:block}
+.hero h1 .year{font-size:.42em;color:#555;display:block;letter-spacing:.05em;margin-top:.45rem}
+.hero-sub{font-size:1.05rem;font-weight:300;font-style:italic;color:#999;max-width:520px;margin-bottom:2.2rem;line-height:1.65}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--blue);color:#fff;font-family:var(--font-head);font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:var(--radius);transition:background .2s,transform .15s,box-shadow .2s}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(52,152,219,.28)}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1.5px solid #333;color:#999;font-family:var(--font-head);font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:13px 28px;border-radius:var(--radius);transition:border-color .2s,color .2s,transform .15s}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
 
-    .hero-visual{position:relative;z-index:2;height:100%;min-height:88vh;display:flex;align-items:center;justify-content:center;padding:2.5rem 2.5rem 2.5rem 1rem}
-    .hero-img-stack{position:relative;width:100%;max-width:520px}
-    
-    
+.hero-visual{position:relative;z-index:2;height:100%;min-height:88vh;display:flex;align-items:center;justify-content:center;padding:2.5rem 2.5rem 2.5rem 1rem}
+.hero-img-stack{position:relative;width:100%;max-width:520px;z-index:2}
 
-<div class="hero-visual">
-  <div class="hero-img-stack">
-    
-    <div class="img-main-car">
-      <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&q=80&w=800" alt="Passaggio di proprietà e acquisto auto immediato"/>
-      
-      <div class="img-car-label">
-        <h3>Trattativa Diretta</h3>
-        <p>Valutazione reale • Zero attese</p>
-      </div>
-    </div>
+/* Coesione e Stile Box Immagine Auto */
+.img-main-car{width:100%;height:380px;border-radius:12px;overflow:hidden;border:1px solid #1e1e1e;box-shadow:0 18px 50px rgba(0,0,0,.45);position:relative;z-index:2}
+.img-main-car img{width:100%;height:100%;object-fit:cover;display:block}
+.img-main-car::after{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(9,9,9,0.85) 0%, transparent 45%);z-index:1}
 
-    <div class="img-secondary-card">
-      <h4>Vendita senza stress</h4>
-      <p>
-        Ti offriamo una procedura semplice, trasparente e veloce: controlliamo l’auto, facciamo la proposta e gestiamo tutto in sede.
-      </p>
-    </div>
+.img-car-label{position:absolute;bottom:20px;left:20px;z-index:3}
+.img-car-label h3{font-family:var(--font-head);font-size:1.8rem;font-weight:700;letter-spacing:1px;color:var(--white);text-transform:uppercase;line-height:1.1}
+.img-car-label p{font-size:.85rem;color:#ccc}
 
-    <div class="img-badge">
-      <div class="num">Subito</div>
-      <div class="lbl">pagamento immediato</div>
-    </div>
+.img-secondary-card{position:absolute;bottom:-35px;left:-25px;width:240px;min-height:140px;border-radius:10px;border:1px solid #222;background:rgba(16,16,16,.95);box-shadow:0 12px 32px rgba(0,0,0,.6);padding:1.2rem;backdrop-filter:blur(8px);z-index:4}
+.img-secondary-card h4{font-family:var(--font-head);font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase;color:var(--white);margin-bottom:.35rem}
+.img-secondary-card p{font-size:.84rem;color:#8d98a5;line-height:1.55}
 
-  </div>
-</div>
+.img-badge{position:absolute;top:-20px;right:-20px;z-index:4;background:var(--blue);border-radius:var(--radius);padding:.8rem 1.2rem;text-align:center;box-shadow:0 8px 20px rgba(52,152,219,0.3)}
+.img-badge .num{font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:var(--white);line-height:1;text-transform:uppercase}
+.img-badge .lbl{font-family:var(--font-head);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-top:.2rem}
 
+.hero-img-stack::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#2980b9,var(--blue));border-radius:0 0 12px 12px;z-index:3}
     /* ── SEZIONI ── */
     .section-tag{font-family:var(--font-head);font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:.5rem}
     .section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--white);margin-bottom:1.8rem}
@@ -240,10 +230,10 @@
     <div class="hero-img-stack">
       
       <div class="img-main-car">
-        <img src="URL_DELLA_FOTO_DELL_AUTO.jpg" alt="Acquisto e Valutazione Auto Usate a Roma"/>
+        <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&q=80&w=800" alt="Passaggio di proprietà e acquisto auto immediato a Roma"/>
         <div class="img-car-label">
-          <h3>Valutazione Rapida</h3>
-          <p>Trattativa chiara • Pagamento immediato</p>
+          <h3>Trattativa Diretta</h3>
+          <p>Valutazione reale • Zero attese</p>
         </div>
       </div>
 
