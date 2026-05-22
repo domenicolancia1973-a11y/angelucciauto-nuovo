@@ -186,11 +186,19 @@
 </nav>
 <div class="back-home-bar" style="background: var(--dark3); width: 100%; border-bottom: 1px solid #1c1c1c; box-sizing: border-box;">
   <div style="max-width: 1200px; margin: 0 auto; padding: 0.7rem 1.5rem; display: flex; align-items: center; box-sizing: border-box;">
-    <a href="index.html#servizi" style="color: #bbb; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-main); transition: color 0.3s;" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='#bbb'">
+    <a href="index.html#servizi" id="btn-ai-servizi" style="color: #bbb; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-main); transition: color 0.3s;" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='#bbb'">
       <i class="fas fa-arrow-left" style="font-size: 0.8rem;"></i> Torna ai nostri servizi
     </a>
   </div>
 </div>
+
+<script>
+  // Questo script dice al browser: "Quando vai alla Home, aspetta un attimo che la pagina sia caricata e poi posizionati calcolando lo spazio della navbar"
+  document.getElementById('btn-ai-servizi').addEventListener('click', function(e) {
+    // Salviamo l'informazione che l'utente vuole andare ai servizi
+    localStorage.setItem('scrollto', '#servizi');
+  });
+</script>
 
 <!-- ── HERO ── -->
 <section class="hero">
