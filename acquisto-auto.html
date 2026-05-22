@@ -55,22 +55,154 @@
     .hero-img-stack{position:relative;width:100%;max-width:520px}
     
     /* Nuovo Box Immagine Auto */
-    .img-main-car{width:100%;height:380px;border-radius:12px;overflow:hidden;border:1px solid #1e1e1e;box-shadow:0 18px 50px rgba(0,0,0,.45);position:relative}
-    .img-main-car img{width:100%;height:100%;object-fit:cover;display:block}
-    .img-main-car::after{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(9,9,9,0.8) 0%, transparent 40%)}
+<style>
+    /* ── Nuovo Box Immagine Auto & Gestione Stack ── */
+    .hero-img-stack {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      z-index: 2;
+    }
     
-    .img-car-label{position:absolute;bottom:20px;left:20px;z-index:3}
-    .img-car-label h3{font-family:var(--font-head);font-size:1.8rem;font-weight:700;letter-spacing:1px;color:var(--white);text-transform:uppercase;line-height:1.1}
-    .img-car-label p{font-size:.85rem;color:#ccc}
+    .img-main-car {
+      width: 100%;
+      height: 380px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #1e1e1e;
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+      position: relative;
+      z-index: 2;
+    }
+    .img-main-car img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .img-main-car::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9,9,9,0.85) 0%, transparent 45%);
+      z-index: 1;
+    }
+    
+    .img-car-label {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 3;
+    }
+    .img-car-label h3 {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .img-car-label p {
+      font-size: .85rem;
+      color: #ccc;
+    }
 
-    .img-secondary-card{position:absolute;bottom:-45px;left:-30px;width:240px;min-height:140px;border-radius:10px;border:1px solid #222;background:rgba(16,16,16,.95);box-shadow:0 12px 32px rgba(0,0,0,.6);padding:1.2rem;backdrop-filter:blur(8px)}
-    .img-secondary-card h4{font-family:var(--font-head);font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase;color:var(--white);margin-bottom:.35rem}
-    .img-secondary-card p{font-size:.84rem;color:#8d98a5;line-height:1.55}
+    .img-secondary-card {
+      position: absolute;
+      bottom: -35px;
+      left: -25px;
+      width: 240px;
+      min-height: 140px;
+      border-radius: 10px;
+      border: 1px solid #222;
+      background: rgba(16,16,16,.95);
+      box-shadow: 0 12px 32px rgba(0,0,0,.6);
+      padding: 1.2rem;
+      backdrop-filter: blur(8px);
+      z-index: 4;
+    }
+    .img-secondary-card h4 {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: .35rem;
+    }
+    .img-secondary-card p {
+      font-size: .84rem;
+      color: #8d98a5;
+      line-height: 1.55;
+    }
     
-    .img-badge{position:absolute;top:-20px;right:-20px;z-index:4;background:var(--blue);border-radius:var(--radius);padding:.8rem 1.2rem;text-align:center;box-shadow:0 8px 20px rgba(52,152,219,0.3)}
-    .img-badge .num{font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:var(--white);line-height:1;text-transform:uppercase}
-    .img-badge .lbl{font-family:var(--font-head);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-top:.2rem}
-    .hero-img-stack::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#2980b9,var(--blue));border-radius:0 0 12px 12px;z-index:3}
+    .img-badge {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      z-index: 4;
+      background: var(--blue);
+      border-radius: var(--radius);
+      padding: .8rem 1.2rem;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(52,152,219,0.3);
+    }
+    .img-badge .num {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .img-badge .lbl {
+      font-family: var(--font-head);
+      font-size: .66rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-top: .2rem;
+    }
+    
+    .hero-img-stack::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg,var(--blue),#2980b9,var(--blue));
+      border-radius: 0 0 12px 12px;
+      z-index: 3;
+    }
+</style>
+
+<div class="hero-visual">
+  <div class="hero-img-stack">
+    
+    <div class="img-main-car">
+      <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&q=80&w=800" alt="Passaggio di proprietà e acquisto auto immediato"/>
+      
+      <div class="img-car-label">
+        <h3>Trattativa Diretta</h3>
+        <p>Valutazione reale • Zero attese</p>
+      </div>
+    </div>
+
+    <div class="img-secondary-card">
+      <h4>Vendita senza stress</h4>
+      <p>
+        Ti offriamo una procedura semplice, trasparente e veloce: controlliamo l’auto, facciamo la proposta e gestiamo tutto in sede.
+      </p>
+    </div>
+
+    <div class="img-badge">
+      <div class="num">Subito</div>
+      <div class="lbl">pagamento immediato</div>
+    </div>
+
+  </div>
+</div>
 
     /* ── SEZIONI ── */
     .section-tag{font-family:var(--font-head);font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:.5rem}
