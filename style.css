@@ -926,3 +926,18 @@ nav .nav-logo img {
 .btn-detail:hover {
     background: #96281b !important;
 }
+/* TRUCCO DEFINITIVO PER VETRINA DINAMICA: FORZA IL ROSSO SUI PULSANTI GENERATI DA JAVASCRIPT */
+#inventory-container .btn-detail,
+#inventory-container a.btn-detail,
+div#inventory-container .car-card .car-actions a.btn-detail {
+    background-color: #c0392b !important;
+    background: #c0392b !important;
+    color: #ffffff !important;
+}
+
+/* Gestione del passaggio del mouse (Hover) */
+#inventory-container .btn-detail:hover,
+#inventory-container a.btn-detail:hover {
+    background-color: #96281b !important;
+    background: #96281b !important;
+}
