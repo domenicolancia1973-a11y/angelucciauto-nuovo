@@ -47,66 +47,17 @@
     }
 
     /* NAV */
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(11,11,11,.95);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--border);
-    }
+    nav{position:sticky;top:0;z-index:100;background:rgba(9,9,9,.97);backdrop-filter:blur(14px);border-bottom:1px solid #1a1a1a;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:72px}
+    .nav-logo img{height:58px;width:auto;display:block}
+    .nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
+    .nav-links a{font-family:var(--font-head);font-size:.95rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#666;text-decoration:none;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}
+    .nav-links a.active{border-bottom:2px solid var(--blue);padding-bottom:2px}
+    .btn-wa{display:flex;align-items:center;gap:8px;background:#25d366;color:#fff!important;padding:9px 18px;border-radius:999px;font-family:var(--font-head)!important;font-size:.9rem!important;font-weight:700!important;text-decoration:none;transition:background .2s,transform .15s;white-space:nowrap}
+    .btn-wa:hover{background:#1ebe5d;transform:scale(1.03)}
+    .btn-wa svg{width:17px;height:17px;fill:#fff;flex-shrink:0}
+    .nav-burger{display:none;background:none;border:none;color:#666;font-size:1.5rem;cursor:pointer}
 
-    .nav-inner{
-      min-height:74px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-    }
-
-    .logo img{
-      height:52px;
-      width:auto;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:1.2rem;
-      flex-wrap:wrap;
-    }
-
-    .nav-links a{
-      color:var(--muted);
-      font-family:var(--font-head);
-      font-size:.95rem;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-      transition:.2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active{
-      color:var(--text);
-    }
-
-    .nav-cta{
-      padding:.8rem 1rem;
-      border-radius:999px;
-      background:var(--whatsapp);
-      color:#fff !important;
-      font-weight:700;
-      white-space:nowrap;
-    }
-
-    .menu-toggle{
-      display:none;
-      background:none;
-      border:none;
-      color:var(--text);
-      font-size:1.7rem;
-      cursor:pointer;
-    }
 
     /* HERO */
     .hero{
