@@ -46,50 +46,59 @@
       margin:auto;
     }
 
-   /* NAV */
-nav {
+ /* NAV */
+.main-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.96); /* Sfondo bianco semi-trasparente */
+  width: 100%;
+  background: rgba(255, 255, 255, 0.96); /* Bianco su tutta la larghezza, lati compresi */
   backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px); /* Per compatibilità con Safari */
-  border-bottom: 1px solid #e0e0e0; /* Linea di separazione grigio chiaro */
-  padding: 0 2.5rem;
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 72px;
 }
+
 .nav-logo img {
   height: 58px;
   width: auto;
   display: block;
 }
+
 .nav-links {
   display: flex;
   align-items: center;
   gap: 1.8rem;
   list-style: none;
 }
+
 .nav-links a {
   font-family: var(--font-head);
   font-size: .95rem;
   font-weight: 600;
   letter-spacing: .07em;
   text-transform: uppercase;
-  color: #333333; /* Testo grigio scuro/nero per sfondo bianco */
+  color: #333333;
   text-decoration: none;
   transition: color .2s;
 }
+
 .nav-links a:hover, 
 .nav-links a.active {
-  color: var(--primary); /* Cambia colore usando il tuo blu principale al passaggio del mouse */
+  color: var(--primary);
 }
+
 .nav-links a.active {
-  border-bottom: 2px solid var(--primary); /* Sostituito var(--blue) con var(--primary) per coerenza */
+  border-bottom: 2px solid var(--primary);
   padding-bottom: 2px;
 }
+
 .btn-wa {
   display: flex;
   align-items: center;
@@ -105,25 +114,27 @@ nav {
   transition: background .2s, transform .15s;
   white-space: nowrap;
 }
+
 .btn-wa:hover {
   background: #1ebe5d;
   transform: scale(1.03);
 }
+
 .btn-wa svg {
   width: 17px;
   height: 17px;
   fill: #fff;
   flex-shrink: 0;
 }
+
 .nav-burger {
   display: none;
   background: none;
   border: none;
-  color: #333333; /* Icona hamburger scura sui dispositivi mobili */
+  color: #333333;
   font-size: 1.5rem;
   cursor: pointer;
 }
-
     /* HERO */
     .hero{
       padding:4.5rem 0 3rem;
@@ -498,8 +509,8 @@ nav {
 </head>
 <body>
 
- <header>
-  <nav class="container">
+ <header class="main-header">
+  <div class="container nav-inner">
     <a href="index.html" class="nav-logo">
       <img src="logo.png" alt="Angelucci Domenico Auto">
     </a>
@@ -519,7 +530,7 @@ nav {
         </a>
       </li>
     </ul>
-  </nav>
+  </div>
 </header>
   <main>
     <section class="hero">
