@@ -551,6 +551,7 @@
       const { data, error } = await _supabase
         .from('auto')
         .select('id, modello, anno, km, alimentazione, cambio, prezzo, cartella_foto, foto_principale, foto_url')
+        .eq('in_vetrina', true)
         .order('created_at', { ascending: false })
         .limit(3);
 
