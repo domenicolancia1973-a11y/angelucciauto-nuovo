@@ -14,6 +14,96 @@
       "source": "/lista-veicoli",
       "destination": "/lista-veicoli.html",
       "permanent": true
+    },
+    {
+      "source": "/contatti/(.*)",
+      "destination": "/contatti.html",
+      "permanent": true
+    },
+    {
+      "source": "/contatti/",
+      "destination": "/contatti.html",
+      "permanent": true
+    },
+    {
+      "source": "/contatti",
+      "destination": "/contatti.html",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/(.*)",
+      "destination": "/chi-siamo.html",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/",
+      "destination": "/chi-siamo.html",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo",
+      "destination": "/chi-siamo.html",
+      "permanent": true
+    },
+    {
+      "source": "/dove-siamo/(.*)",
+      "destination": "/dove-siamo.html",
+      "permanent": true
+    },
+    {
+      "source": "/dove-siamo/",
+      "destination": "/dove-siamo.html",
+      "permanent": true
+    },
+    {
+      "source": "/dove-siamo",
+      "destination": "/dove-siamo.html",
+      "permanent": true
+    },
+    {
+      "source": "/officina/(.*)",
+      "destination": "/officina.html",
+      "permanent": true
+    },
+    {
+      "source": "/officina/",
+      "destination": "/officina.html",
+      "permanent": true
+    },
+    {
+      "source": "/officina",
+      "destination": "/officina.html",
+      "permanent": true
+    },
+    {
+      "source": "/acquisto-auto/(.*)",
+      "destination": "/acquisto-auto.html",
+      "permanent": true
+    },
+    {
+      "source": "/acquisto-auto/",
+      "destination": "/acquisto-auto.html",
+      "permanent": true
+    },
+    {
+      "source": "/acquisto-auto",
+      "destination": "/acquisto-auto.html",
+      "permanent": true
+    },
+    {
+      "source": "/finanziamenti/(.*)",
+      "destination": "/finanziamenti.html",
+      "permanent": true
+    },
+    {
+      "source": "/finanziamenti/",
+      "destination": "/finanziamenti.html",
+      "permanent": true
+    },
+    {
+      "source": "/finanziamenti",
+      "destination": "/finanziamenti.html",
+      "permanent": true
     }
   ]
 }
