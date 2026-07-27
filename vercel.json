@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/lista-veicoli/(.*)",
+      "destination": "/lista-veicoli.html",
+      "permanent": true
+    },
+    {
+      "source": "/lista-veicoli/",
+      "destination": "/lista-veicoli.html",
+      "permanent": true
+    },
+    {
+      "source": "/lista-veicoli",
+      "destination": "/lista-veicoli.html",
+      "permanent": true
+    }
+  ]
+}
