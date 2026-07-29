@@ -193,3 +193,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+// Google Analytics 4 (GA4)
+(function() {
+  var gaScript = document.createElement('script');
+  gaScript.async = true;
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-4G3JT0Q1V5';
+  document.head.appendChild(gaScript);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-4G3JT0Q1V5');
+})();
