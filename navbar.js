@@ -199,3 +199,10 @@ if (!document.querySelector('script[src*="analytics.js"]')) {
   analyticsScript.src = '/analytics.js';
   document.head.appendChild(analyticsScript);
 }
+// Verification Meta Tag per Google Search Console
+(function() {
+  var meta = document.createElement('meta');
+  meta.name = 'google-site-verification';
+  meta.content = 'INCOLLA_SOLO_IL_VALORE_CONTENT_QUI'; // oppure incolla l'intero meta tag
+  document.head.appendChild(meta);
+})();
