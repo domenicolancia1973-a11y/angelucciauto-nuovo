@@ -1,4 +1,15 @@
 {
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.angelucciauto.it>; rel=\"canonical\""
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
       "source": "/lista-veicoli/(.*)",
