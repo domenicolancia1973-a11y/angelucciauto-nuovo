@@ -199,10 +199,10 @@ if (!document.querySelector('script[src*="analytics.js"]')) {
   analyticsScript.src = '/analytics.js';
   document.head.appendChild(analyticsScript);
 }
-// Verification Meta Tag per Google Search Console
+// Google Search Console Verification
 (function() {
   var meta = document.createElement('meta');
   meta.name = 'google-site-verification';
-  meta.content = 'INCOLLA_SOLO_IL_VALORE_CONTENT_QUI'; // oppure incolla l'intero meta tag
+  meta.content = 'vreZXYB_mfMTT-48Mls5UCvFz9dwZaiirDz7DJXg9OA';
   document.head.appendChild(meta);
 })();
